@@ -2,6 +2,8 @@
 
 Statisches, zweisprachiges Lernquiz. Alle 96 Fragen basieren ausschließlich auf dem aktuellen Stoff in `../CTF-26a`; der Ordner `vorbereitung` wurde nicht verwendet.
 
+Die ausschließlich helle Oberfläche orientiert sich bei Typografie, 5-Pixel-Abstandsraster, Formularfeldern, Buttons und Statusmeldungen am GOV.UK Design System. Sie verwendet bewusst weder GOV.UK-Branding noch dessen Hausschrift.
+
 ## Lokal starten
 
 ```bash

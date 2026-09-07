@@ -2,7 +2,7 @@ export const translations = {
   de: {
     skipLink: "Zum Inhalt springen",
     brandTitle: "Lernquiz",
-    brandSubtitle: "Core Tech Fundamentals",
+    brandSubtitle: "Computergrundlagen",
     eyebrow: "In deinem Tempo lernen",
     welcomeTitle: "Was möchtest du heute üben?",
     welcomeText: "Wähle deine Themen. Nach jeder Antwort bekommst du direkt eine verständliche Erklärung.",
