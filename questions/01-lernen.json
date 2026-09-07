@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "lernen",
+    "title": { "de": "Lernen und Lernstrategien", "en": "Learning and study strategies" },
+    "group": { "de": "Lernen", "en": "Learning" },
+    "description": { "de": "Gedächtnis, Lernmethoden, Planung und Praxistransfer", "en": "Memory, study methods, planning and practical transfer" },
+    "order": 1
+  },
+  "questions": [
+    {
+      "id": "lernen-001", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Was beschreibt Aufmerksamkeit beim Lernen am besten?", "en": "What best describes attention while learning?" },
+      "answers": [{ "id": "a", "de": "Alle Reize werden dauerhaft gespeichert", "en": "All stimuli are stored permanently" }, { "id": "b", "de": "Ein Teil der Informationen wird bewusst ausgewählt", "en": "Part of the information is consciously selected" }, { "id": "c", "de": "Das Langzeitgedächtnis wird ausgeschaltet", "en": "Long-term memory is switched off" }, { "id": "d", "de": "Nur visuelle Informationen werden verarbeitet", "en": "Only visual information is processed" }],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Aufmerksamkeit richtet die begrenzte Verarbeitung bewusst auf ausgewählte Informationen.", "en": "Attention consciously directs limited processing capacity towards selected information." },
+      "source": "02-Lernen/02_Kognitive_Grundlagen/lesson-article-de.md#Informationen aufnehmen und verarbeiten"
+    },
+    {
+      "id": "lernen-002", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Welche Aussage unterscheidet Arbeits- und Langzeitgedächtnis richtig?", "en": "Which statement correctly distinguishes working memory from long-term memory?" },
+      "answers": [{ "id": "a", "de": "Beide speichern unbegrenzt viele Inhalte", "en": "Both store unlimited amounts of content" }, { "id": "b", "de": "Das Arbeitsgedächtnis speichert immer dauerhaft", "en": "Working memory always stores information permanently" }, { "id": "c", "de": "Das Arbeitsgedächtnis verarbeitet wenig kurzfristig, das Langzeitgedächtnis speichert langfristig", "en": "Working memory processes a small amount briefly; long-term memory stores it for longer" }, { "id": "d", "de": "Das Langzeitgedächtnis arbeitet nur beim Schlafen", "en": "Long-term memory works only during sleep" }],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Das Arbeitsgedächtnis ist knapp und kurzfristig; verknüpfte und wiederholte Inhalte können ins Langzeitgedächtnis gelangen.", "en": "Working memory is limited and short-lived; connected and repeated content can reach long-term memory." },
+      "source": "02-Lernen/02_Kognitive_Grundlagen/lesson-article-de.md#Speicherung und Abruf im Gedächtnis"
+    },
+    {
+      "id": "lernen-003", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Handlungen fördern aktives Lernen?", "en": "Which actions support active learning?" },
+      "answers": [{ "id": "a", "de": "Inhalte in eigenen Worten erklären", "en": "Explain content in your own words" }, { "id": "b", "de": "Eine praktische Aufgabe lösen", "en": "Solve a practical task" }, { "id": "c", "de": "Text nur mehrfach passiv ansehen", "en": "Only look at the text repeatedly and passively" }, { "id": "d", "de": "Sich selbst Fragen zum Stoff stellen", "en": "Ask yourself questions about the material" }],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": { "de": "Erklären, Anwenden und Abrufen verarbeiten Wissen aktiv. Reines Wiederlesen kann leicht eine Illusion von Sicherheit erzeugen.", "en": "Explaining, applying and retrieving process knowledge actively. Rereading alone can easily create an illusion of confidence." },
+      "source": "02-Lernen/02_Kognitive_Grundlagen/lesson-article-de.md#Verschiedene Arten des Lernens"
+    },
+    {
+      "id": "lernen-004", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Wozu dient eine Mindmap hauptsächlich?", "en": "What is the main purpose of a mind map?" },
+      "answers": [{ "id": "a", "de": "Inhalte und Zusammenhänge sichtbar strukturieren", "en": "Visibly structure content and relationships" }, { "id": "b", "de": "Pausen vollständig ersetzen", "en": "Completely replace breaks" }, { "id": "c", "de": "Dateien automatisch sichern", "en": "Automatically back up files" }, { "id": "d", "de": "Nur einzelne Begriffe auswendig lernen", "en": "Memorise isolated terms only" }],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Eine Mindmap ordnet ein zentrales Thema, Unterthemen und deren Beziehungen visuell.", "en": "A mind map visually organises a central topic, subtopics and their relationships." },
+      "source": "02-Lernen/03-Lerntechniken/lesson-article-de.md#Gedankenkarten"
+    },
+    {
+      "id": "lernen-005", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Welche Reihenfolge gehört zur SQ3R-Methode?", "en": "Which sequence belongs to the SQ3R method?" },
+      "answers": [{ "id": "a", "de": "Survey, Question, Read, Recite, Review", "en": "Survey, Question, Read, Recite, Review" }, { "id": "b", "de": "Search, Quote, Repeat, Rest, Rewrite", "en": "Search, Quote, Repeat, Rest, Rewrite" }, { "id": "c", "de": "Scan, Quit, Read, Remember, Report", "en": "Scan, Quit, Read, Remember, Report" }, { "id": "d", "de": "Study, Quiz, Recall, Record, Restart", "en": "Study, Quiz, Recall, Record, Restart" }],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "SQ3R führt vom Überblick über eigene Fragen und gezieltes Lesen bis zum Wiedergeben und Wiederholen.", "en": "SQ3R moves from an overview through your own questions and focused reading to reciting and reviewing." },
+      "source": "02-Lernen/03-Lerntechniken/lesson-article-de.md#Die SQ3R-Methode"
+    },
+    {
+      "id": "lernen-006", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Was ist der Unterschied zwischen Chunking und Spaced Repetition?", "en": "What is the difference between chunking and spaced repetition?" },
+      "answers": [{ "id": "a", "de": "Chunking gruppiert Inhalte; Spaced Repetition wiederholt sie in Abständen", "en": "Chunking groups content; spaced repetition reviews it at intervals" }, { "id": "b", "de": "Beide bedeuten pausenloses Wiederholen", "en": "Both mean reviewing without breaks" }, { "id": "c", "de": "Chunking ist nur für Bilder, Spaced Repetition nur für Texte", "en": "Chunking is only for images; spaced repetition only for text" }, { "id": "d", "de": "Es gibt keinen Unterschied", "en": "There is no difference" }],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Chunking reduziert Komplexität durch sinnvolle Einheiten; verteiltes Wiederholen stärkt langfristigen Abruf.", "en": "Chunking reduces complexity through meaningful units; spaced review strengthens long-term recall." },
+      "source": "02-Lernen/03-Lerntechniken/lesson-article-de.md#Wissen langfristig sichern"
+    },
+    {
+      "id": "lernen-007", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Was gehört zu einem realistischen Lernplan?", "en": "What belongs in a realistic study plan?" },
+      "answers": [{ "id": "a", "de": "Klare, kleine Aufgaben", "en": "Clear, small tasks" }, { "id": "b", "de": "Pausen und Pufferzeit", "en": "Breaks and buffer time" }, { "id": "c", "de": "Mehr Stoff als zeitlich möglich", "en": "More material than can fit into the time" }, { "id": "d", "de": "Prioritäten und feste Lernzeiten", "en": "Priorities and fixed study times" }],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": { "de": "Ein tragfähiger Plan enthält erreichbare Aufgaben, Prioritäten, Zeitfenster, Pausen und Reserve.", "en": "A workable plan contains achievable tasks, priorities, time slots, breaks and a buffer." },
+      "source": "02-Lernen/04-Lernmanagement/lesson-article-de.md#Einen persönlichen Lernplan entwickeln"
+    },
+    {
+      "id": "lernen-008", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Warum sind geplante Pausen beim Lernen sinnvoll?", "en": "Why are planned breaks useful when studying?" },
+      "answers": [{ "id": "a", "de": "Sie helfen, Konzentration und Leistungsfähigkeit zu erhalten", "en": "They help maintain concentration and performance" }, { "id": "b", "de": "Sie machen Wiederholung unnötig", "en": "They make review unnecessary" }, { "id": "c", "de": "Sie ersetzen ein Lernziel", "en": "They replace a learning goal" }, { "id": "d", "de": "Sie erhöhen automatisch den Schwierigkeitsgrad", "en": "They automatically increase difficulty" }],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Realistische Lernphasen berücksichtigen, dass Aufmerksamkeit nachlässt und Erholung benötigt.", "en": "Realistic study sessions account for attention declining and needing recovery." },
+      "source": "02-Lernen/04-Lernmanagement/lesson-article-de.md#Lernphasen und Pausen realistisch planen"
+    },
+    {
+      "id": "lernen-009", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Welches Lernziel ist am besten überprüfbar?", "en": "Which learning goal is the easiest to verify?" },
+      "answers": [{ "id": "a", "de": "Ich möchte Linux irgendwann besser können", "en": "I want to become better at Linux someday" }, { "id": "b", "de": "Bis Freitag kann ich ohne Anleitung Ordner anlegen und Dateien verschieben", "en": "By Friday I can create folders and move files without instructions" }, { "id": "c", "de": "Ich lese möglichst viel", "en": "I will read as much as possible" }, { "id": "d", "de": "Technik soll leichter werden", "en": "Technology should become easier" }],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Ein gutes Lernziel beschreibt eine konkrete Handlung, einen Rahmen und eine erkennbare Erfolgskontrolle.", "en": "A good learning goal describes a specific action, a timeframe and a recognisable success check." },
+      "source": "02-Lernen/05-Transfer-in-die-Praxis/lesson-article-de.md#Eigene Lernziele formulieren"
+    },
+    {
+      "id": "lernen-010", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Was macht ein kleines Übungsprojekt lernwirksam?", "en": "What makes a small practice project effective for learning?" },
+      "answers": [{ "id": "a", "de": "Es verbindet ein klares Ziel mit einer lösbaren praktischen Aufgabe", "en": "It connects a clear goal with a manageable practical task" }, { "id": "b", "de": "Es muss möglichst viele neue Technologien enthalten", "en": "It must contain as many new technologies as possible" }, { "id": "c", "de": "Es darf keine Fehler geben", "en": "There must be no mistakes" }, { "id": "d", "de": "Es besteht nur aus dem Kopieren einer Musterlösung", "en": "It only consists of copying a model solution" }],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Überschaubare Projekte ermöglichen Anwendung, Rückmeldung und Erfolg, ohne durch zu großen Umfang zu überfordern.", "en": "Manageable projects enable application, feedback and success without overwhelming learners through excessive scope." },
+      "source": "02-Lernen/05-Transfer-in-die-Praxis/lesson-article-de.md#Lerninhalte in kleinen Übungsprojekten umsetzen"
+    },
+    {
+      "id": "lernen-011", "type": "multiple", "difficulty": "hard",
+      "prompt": { "de": "Welche Fragen helfen bei einer sachlichen Lernreflexion?", "en": "Which questions support objective reflection on learning?" },
+      "answers": [{ "id": "a", "de": "Was hat funktioniert?", "en": "What worked?" }, { "id": "b", "de": "Wo traten Schwierigkeiten auf?", "en": "Where did difficulties occur?" }, { "id": "c", "de": "Welche Strategie sollte ich anpassen?", "en": "Which strategy should I adjust?" }, { "id": "d", "de": "Warum bin ich grundsätzlich ungeeignet?", "en": "Why am I fundamentally unsuitable?" }],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Reflexion sucht beobachtbare Muster und Verbesserungen; sie ist keine pauschale Selbstabwertung.", "en": "Reflection looks for observable patterns and improvements; it is not blanket self-criticism." },
+      "source": "02-Lernen/05-Transfer-in-die-Praxis/lesson-article-de.md#Reflexion und Weiterentwicklung"
+    },
+    {
+      "id": "lernen-012", "type": "single", "difficulty": "hard",
+      "prompt": { "de": "Du kannst einen Begriff wiedererkennen, aber nicht ohne Hilfe erklären. Was ist der sinnvollste nächste Schritt?", "en": "You recognise a term but cannot explain it without help. What is the most useful next step?" },
+      "answers": [{ "id": "a", "de": "Noch einmal nur markieren", "en": "Only highlight it again" }, { "id": "b", "de": "Das Thema sofort aufgeben", "en": "Give up the topic immediately" }, { "id": "c", "de": "Den Begriff aus dem Gedächtnis erklären und die Lücken anschließend prüfen", "en": "Explain the term from memory, then check the gaps" }, { "id": "d", "de": "Die Musterlösung wortwörtlich abschreiben", "en": "Copy the model answer word for word" }],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Aktiver Abruf macht Wissenslücken sichtbar. Danach kann gezielt nachgearbeitet werden.", "en": "Active recall makes knowledge gaps visible. You can then review them deliberately." },
+      "source": "02-Lernen/03-Lerntechniken/lesson-article-de.md#Wiederholen, Ordnen und Verknüpfen"
+    }
+  ]
+}

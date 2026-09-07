@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "topics": [
+    {
+      "file": "01-lernen.json",
+      "topic": {
+        "id": "lernen",
+        "title": {
+          "de": "Lernen und Lernstrategien",
+          "en": "Learning and study strategies"
+        },
+        "group": {
+          "de": "Lernen",
+          "en": "Learning"
+        },
+        "description": {
+          "de": "Gedächtnis, Lernmethoden, Planung und Praxistransfer",
+          "en": "Memory, study methods, planning and practical transfer"
+        },
+        "order": 1
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "02-hardware-dateien.json",
+      "topic": {
+        "id": "hardware-dateien",
+        "title": {
+          "de": "Hardware, Betriebssystem und Dateien",
+          "en": "Hardware, operating systems and files"
+        },
+        "group": {
+          "de": "Computergrundlagen",
+          "en": "Computer fundamentals"
+        },
+        "description": {
+          "de": "Komponenten, Betriebssystemaufgaben und Dateiverwaltung",
+          "en": "Components, operating-system tasks and file management"
+        },
+        "order": 2
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "03-internet-sicherheit.json",
+      "topic": {
+        "id": "internet-sicherheit",
+        "title": {
+          "de": "Internet, E-Mail und IT-Sicherheit",
+          "en": "Internet, email and IT security"
+        },
+        "group": {
+          "de": "Computergrundlagen",
+          "en": "Computer fundamentals"
+        },
+        "description": {
+          "de": "Browser, Recherche, Datenschutz und Schutzmaßnahmen",
+          "en": "Browsers, research, privacy and protective measures"
+        },
+        "order": 3
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "04-virtualisierung.json",
+      "topic": {
+        "id": "virtualisierung",
+        "title": {
+          "de": "Virtualisierung und virtuelle Netzwerke",
+          "en": "Virtualisation and virtual networks"
+        },
+        "group": {
+          "de": "Virtualisierung",
+          "en": "Virtualisation"
+        },
+        "description": {
+          "de": "VMs, Hypervisoren, Ressourcen, Snapshots und Netzwerkmodi",
+          "en": "VMs, hypervisors, resources, snapshots and network modes"
+        },
+        "order": 4
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "05-linux-grundlagen.json",
+      "topic": {
+        "id": "linux-grundlagen",
+        "title": {
+          "de": "Linux-Grundlagen",
+          "en": "Linux fundamentals"
+        },
+        "group": {
+          "de": "Linux",
+          "en": "Linux"
+        },
+        "description": {
+          "de": "Kernel, Distributionen, WSL und erste Schritte",
+          "en": "Kernel, distributions, WSL and first steps"
+        },
+        "order": 5
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "06-linux-terminal.json",
+      "topic": {
+        "id": "linux-terminal",
+        "title": {
+          "de": "Linux-Terminal",
+          "en": "Linux terminal"
+        },
+        "group": {
+          "de": "Linux",
+          "en": "Linux"
+        },
+        "description": {
+          "de": "Pfade, Navigation, Dateioperationen, nano und less",
+          "en": "Paths, navigation, file operations, nano and less"
+        },
+        "order": 6
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "07-linux-rechte.json",
+      "topic": {
+        "id": "linux-rechte",
+        "title": {
+          "de": "Linux-Rechte und Softwareverwaltung",
+          "en": "Linux permissions and software management"
+        },
+        "group": {
+          "de": "Linux",
+          "en": "Linux"
+        },
+        "description": {
+          "de": "Berechtigungen, chmod, Pakete und sicheres Arbeiten",
+          "en": "Permissions, chmod, packages and safe working"
+        },
+        "order": 7
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "08-git.json",
+      "topic": {
+        "id": "git",
+        "title": {
+          "de": "Versionskontrolle mit Git",
+          "en": "Version control with Git"
+        },
+        "group": {
+          "de": "Versionskontrolle",
+          "en": "Version control"
+        },
+        "description": {
+          "de": "Repository, Arbeitsbereich, Staging Area und Commits",
+          "en": "Repository, working tree, staging area and commits"
+        },
+        "order": 8
+      },
+      "questionCount": 12
+    }
+  ]
+}

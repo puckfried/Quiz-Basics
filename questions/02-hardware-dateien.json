@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "hardware-dateien", "title": { "de": "Hardware, Betriebssystem und Dateien", "en": "Hardware, operating systems and files" },
+    "group": { "de": "Computergrundlagen", "en": "Computer fundamentals" },
+    "description": { "de": "Komponenten, Betriebssystemaufgaben und Dateiverwaltung", "en": "Components, operating-system tasks and file management" }, "order": 2
+  },
+  "questions": [
+    {
+      "id": "hardware-001", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Welche Hauptaufgabe hat die CPU?", "en": "What is the CPU's main task?" },
+      "answers": [{ "id": "a", "de": "Anweisungen verarbeiten und Berechnungen ausführen", "en": "Process instructions and perform calculations" }, { "id": "b", "de": "Daten dauerhaft ohne Strom speichern", "en": "Store data permanently without power" }, { "id": "c", "de": "Papierdokumente drucken", "en": "Print paper documents" }, { "id": "d", "de": "Nur die Internetverbindung verwalten", "en": "Only manage the internet connection" }],
+      "correctAnswers": ["a"], "explanation": { "de": "Die CPU führt Programmanweisungen aus und verarbeitet Daten.", "en": "The CPU executes program instructions and processes data." },
+      "source": "03-Hardware-und-Betriebssystem/06-Hardware-und-OS-Grundlagen/lesson-article-de.md#Die wichtigsten Bestandteile eines Computers"
+    },
+    {
+      "id": "hardware-002", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Was geschieht normalerweise mit dem Inhalt des RAM beim Ausschalten?", "en": "What normally happens to RAM contents when the computer is switched off?" },
+      "answers": [{ "id": "a", "de": "Er wird automatisch auf Papier gedruckt", "en": "It is automatically printed" }, { "id": "b", "de": "Er bleibt immer vollständig erhalten", "en": "It always remains intact" }, { "id": "c", "de": "Er geht verloren", "en": "It is lost" }, { "id": "d", "de": "Er wird zur CPU verschoben", "en": "It is moved to the CPU" }],
+      "correctAnswers": ["c"], "explanation": { "de": "RAM ist schneller, flüchtiger Arbeitsspeicher. Dauerhafte Daten liegen etwa auf SSD oder HDD.", "en": "RAM is fast, volatile working memory. Persistent data is stored on an SSD or HDD, for example." },
+      "source": "03-Hardware-und-Betriebssystem/06-Hardware-und-OS-Grundlagen/lesson-article-de.md#Die wichtigsten Bestandteile eines Computers"
+    },
+    {
+      "id": "hardware-003", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Aufgaben übernimmt ein Betriebssystem?", "en": "Which tasks does an operating system perform?" },
+      "answers": [{ "id": "a", "de": "Hardware-Ressourcen verwalten", "en": "Manage hardware resources" }, { "id": "b", "de": "Programme ausführen und verwalten", "en": "Run and manage programs" }, { "id": "c", "de": "Eine Oberfläche für Benutzer bereitstellen", "en": "Provide an interface for users" }, { "id": "d", "de": "Defekte Hardware körperlich reparieren", "en": "Physically repair broken hardware" }],
+      "correctAnswers": ["a", "b", "c"], "explanation": { "de": "Das Betriebssystem vermittelt zwischen Hardware, Anwendungen und Benutzern; mechanische Reparaturen gehören nicht dazu.", "en": "The operating system connects hardware, applications and users; physical repairs are not part of its job." },
+      "source": "03-Hardware-und-Betriebssystem/06-Hardware-und-OS-Grundlagen/lesson-article-de.md#Was ein Betriebssystem überhaupt macht"
+    },
+    {
+      "id": "hardware-004", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Was ist der Unterschied zwischen Abmelden und Herunterfahren?", "en": "What is the difference between logging out and shutting down?" },
+      "answers": [{ "id": "a", "de": "Beim Abmelden endet die Sitzung; der Computer bleibt an", "en": "Logging out ends the session; the computer stays on" }, { "id": "b", "de": "Abmelden löscht alle Dateien", "en": "Logging out deletes all files" }, { "id": "c", "de": "Herunterfahren wechselt nur den Benutzer", "en": "Shutting down only changes the user" }, { "id": "d", "de": "Beide Vorgänge sind identisch", "en": "Both operations are identical" }],
+      "correctAnswers": ["a"], "explanation": { "de": "Abmelden beendet das Benutzerkonto, Herunterfahren beendet das System ordnungsgemäß und schaltet das Gerät aus.", "en": "Logging out ends the user session; shutting down closes the system properly and powers off the device." },
+      "source": "03-Hardware-und-Betriebssystem/06-Hardware-und-OS-Grundlagen/lesson-article-de.md#An- und Abmeldung"
+    },
+    {
+      "id": "hardware-005", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Was kann ein Ordner enthalten?", "en": "What can a folder contain?" },
+      "answers": [{ "id": "a", "de": "Nur genau eine Datei", "en": "Only exactly one file" }, { "id": "b", "de": "Dateien und weitere Ordner", "en": "Files and other folders" }, { "id": "c", "de": "Nur Programme", "en": "Only programs" }, { "id": "d", "de": "Ausschließlich Verknüpfungen", "en": "Shortcuts only" }],
+      "correctAnswers": ["b"], "explanation": { "de": "Ordner bilden eine Hierarchie und können sowohl Dateien als auch Unterordner aufnehmen.", "en": "Folders form a hierarchy and can contain both files and subfolders." },
+      "source": "03-Hardware-und-Betriebssystem/07-Dateien-und-Ordner/lesson-article-de.md#Ordnerstruktur und Hierarchie verstehen"
+    },
+    {
+      "id": "hardware-006", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Was passiert beim Kopieren einer Datei?", "en": "What happens when a file is copied?" },
+      "answers": [{ "id": "a", "de": "Das Original bleibt und eine weitere Datei entsteht", "en": "The original remains and another file is created" }, { "id": "b", "de": "Das Original wird immer gelöscht", "en": "The original is always deleted" }, { "id": "c", "de": "Die Datei wird nur umbenannt", "en": "The file is only renamed" }, { "id": "d", "de": "Der Inhalt wird geleert", "en": "The content is emptied" }],
+      "correctAnswers": ["a"], "explanation": { "de": "Kopieren erzeugt ein Duplikat; Verschieben verändert dagegen den Speicherort des Originals.", "en": "Copying creates a duplicate; moving changes the original file's location." },
+      "source": "03-Hardware-und-Betriebssystem/07-Dateien-und-Ordner/lesson-article-de.md#Dateien und Ordner kopieren, verschieben und löschen"
+    },
+    {
+      "id": "hardware-007", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Eine Datei soll in einen anderen Ordner gelangen, ohne am alten Ort zu bleiben. Welche Operation passt?", "en": "A file should go to another folder without remaining in its old location. Which operation fits?" },
+      "answers": [{ "id": "a", "de": "Drucken", "en": "Print" }, { "id": "b", "de": "Kopieren", "en": "Copy" }, { "id": "c", "de": "Verschieben", "en": "Move" }, { "id": "d", "de": "Öffnen", "en": "Open" }],
+      "correctAnswers": ["c"], "explanation": { "de": "Beim Verschieben wechselt die Datei ihren Ort. Kopieren würde das Original zurücklassen.", "en": "Moving changes the file's location. Copying would leave the original behind." },
+      "source": "03-Hardware-und-Betriebssystem/07-Dateien-und-Ordner/lesson-article-de.md#Dateioperationen"
+    },
+    {
+      "id": "hardware-008", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Eigenschaften machen einen Dateinamen hilfreich?", "en": "Which qualities make a filename useful?" },
+      "answers": [{ "id": "a", "de": "Er beschreibt den Inhalt verständlich", "en": "It describes the content clearly" }, { "id": "b", "de": "Er folgt einer einheitlichen Benennung", "en": "It follows a consistent naming scheme" }, { "id": "c", "de": "Er besteht immer nur aus „neu“", "en": "It always consists only of 'new'" }, { "id": "d", "de": "Bei Bedarf enthält er ein sinnvolles Datum", "en": "It includes a meaningful date when needed" }],
+      "correctAnswers": ["a", "b", "d"], "explanation": { "de": "Klare, konsistente Namen erleichtern das Finden und Einordnen von Dateien.", "en": "Clear, consistent names make files easier to find and classify." },
+      "source": "03-Hardware-und-Betriebssystem/07-Dateien-und-Ordner/lesson-article-de.md#Dateien und Ordner erstellen, benennen und speichern"
+    },
+    {
+      "id": "hardware-009", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Warum sollte ein Dokument vor dem Schließen bewusst gespeichert werden?", "en": "Why should a document be deliberately saved before closing it?" },
+      "answers": [{ "id": "a", "de": "Damit nicht gespeicherte Änderungen erhalten bleiben", "en": "So unsaved changes are preserved" }, { "id": "b", "de": "Damit der Bildschirm heller wird", "en": "So the screen becomes brighter" }, { "id": "c", "de": "Damit der Drucker startet", "en": "So the printer starts" }, { "id": "d", "de": "Damit die Datei automatisch gelöscht wird", "en": "So the file is deleted automatically" }],
+      "correctAnswers": ["a"], "explanation": { "de": "Speichern schreibt den aktuellen Stand in eine Datei und schützt vor dem Verlust neuer Änderungen.", "en": "Saving writes the current state to a file and protects new changes from being lost." },
+      "source": "03-Hardware-und-Betriebssystem/07-Dateien-und-Ordner/lesson-article-de.md#Einfache Dokumente öffnen, speichern und drucken"
+    },
+    {
+      "id": "hardware-010", "type": "single", "difficulty": "hard",
+      "prompt": { "de": "Ein Programm reagiert nicht mehr. Welche Maßnahme ist zunächst am umsichtigsten?", "en": "A program has stopped responding. What is the most careful first action?" },
+      "answers": [{ "id": "a", "de": "Sofort den Netzstecker ziehen", "en": "Immediately pull the power plug" }, { "id": "b", "de": "Kurz warten und versuchen, das betroffene Programm kontrolliert zu schließen", "en": "Wait briefly and try to close the affected program in a controlled way" }, { "id": "c", "de": "Alle persönlichen Dateien löschen", "en": "Delete all personal files" }, { "id": "d", "de": "Die Uhrzeit ändern", "en": "Change the time" }],
+      "correctAnswers": ["b"], "explanation": { "de": "Ein kontrolliertes Vorgehen verringert das Risiko von Datenverlust. Ein hartes Ausschalten ist nur die letzte Möglichkeit.", "en": "A controlled approach reduces the risk of data loss. A hard power-off is a last resort." },
+      "source": "03-Hardware-und-Betriebssystem/06-Hardware-und-OS-Grundlagen/lesson-article-de.md#Fensterverwaltung"
+    },
+    {
+      "id": "hardware-011", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Welche Aussage über SSD und HDD stimmt?", "en": "Which statement about SSDs and HDDs is correct?" },
+      "answers": [{ "id": "a", "de": "Beide verlieren beim Ausschalten immer alle Daten", "en": "Both always lose all data when powered off" }, { "id": "b", "de": "Eine SSD arbeitet ohne bewegliche mechanische Teile und ist meist schneller", "en": "An SSD has no moving mechanical parts and is usually faster" }, { "id": "c", "de": "Eine HDD ist Arbeitsspeicher", "en": "An HDD is working memory" }, { "id": "d", "de": "Eine SSD ersetzt die CPU", "en": "An SSD replaces the CPU" }],
+      "correctAnswers": ["b"], "explanation": { "de": "SSD und HDD speichern dauerhaft; SSDs arbeiten elektronisch, HDDs mit beweglichen Bauteilen.", "en": "SSDs and HDDs store data persistently; SSDs work electronically, while HDDs use moving parts." },
+      "source": "03-Hardware-und-Betriebssystem/06-Hardware-und-OS-Grundlagen/lesson-article-de.md#Die wichtigsten Bestandteile eines Computers"
+    },
+    {
+      "id": "hardware-012", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Was bewirkt ein Neustart?", "en": "What does a restart do?" },
+      "answers": [{ "id": "a", "de": "Nur das aktuelle Fenster wird minimiert", "en": "Only the current window is minimised" }, { "id": "b", "de": "Das Betriebssystem wird beendet und direkt wieder gestartet", "en": "The operating system is shut down and started again immediately" }, { "id": "c", "de": "Das Benutzerkonto wird gelöscht", "en": "The user account is deleted" }, { "id": "d", "de": "Alle gespeicherten Dateien werden entfernt", "en": "All saved files are removed" }],
+      "correctAnswers": ["b"], "explanation": { "de": "Beim Neustart wird das System kontrolliert beendet und anschließend neu geladen.", "en": "During a restart, the system shuts down in a controlled manner and then loads again." },
+      "source": "03-Hardware-und-Betriebssystem/06-Hardware-und-OS-Grundlagen/lesson-article-de.md#Herunterfahren und Neustarten"
+    }
+  ]
+}

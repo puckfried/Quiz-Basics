@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ein zweisprachiges Lernquiz zu den Core Tech Fundamentals."
+    />
+    <title>CTF Lernquiz</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="skipLink">Zum Inhalt springen</a>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="CTF Lernquiz Startseite">
+        <span class="brand__mark" aria-hidden="true">CTF</span>
+        <span class="brand__copy">
+          <strong data-i18n="brandTitle">Lernquiz</strong>
+          <span data-i18n="brandSubtitle">Core Tech Fundamentals</span>
+        </span>
+      </a>
+
+      <div class="language-switch" role="group" aria-label="Language / Sprache">
+        <button class="language-switch__button is-active" type="button" data-language="de" aria-pressed="true">DE</button>
+        <button class="language-switch__button" type="button" data-language="en" aria-pressed="false">EN</button>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section id="setup-view" class="view setup-view" aria-labelledby="welcome-title">
+        <div class="hero">
+          <p class="eyebrow" data-i18n="eyebrow">In deinem Tempo lernen</p>
+          <h1 id="welcome-title" data-i18n="welcomeTitle">Was möchtest du heute üben?</h1>
+          <p class="hero__intro" data-i18n="welcomeText">
+            Wähle deine Themen. Nach jeder Antwort bekommst du direkt eine verständliche Erklärung.
+          </p>
+        </div>
+
+        <div id="load-error" class="notice notice--error" role="alert" hidden></div>
+
+        <section class="setup-panel" aria-labelledby="topic-title">
+          <div class="section-heading">
+            <div>
+              <span class="step-number" aria-hidden="true">1</span>
+              <h2 id="topic-title" data-i18n="chooseTopics">Themen auswählen</h2>
+            </div>
+            <div class="selection-actions">
+              <button class="text-button" id="select-all" type="button" data-i18n="selectAll">Alle auswählen</button>
+              <button class="text-button" id="select-none" type="button" data-i18n="selectNone">Auswahl aufheben</button>
+            </div>
+          </div>
+
+          <div id="topic-groups" class="topic-groups" aria-live="polite">
+            <div class="loading-card" data-i18n="loadingTopics">Themen werden geladen …</div>
+          </div>
+        </section>
+
+        <section class="setup-panel setup-panel--compact" aria-labelledby="amount-title">
+          <div class="section-heading">
+            <div>
+              <span class="step-number" aria-hidden="true">2</span>
+              <h2 id="amount-title" data-i18n="chooseAmount">Länge festlegen</h2>
+            </div>
+          </div>
+
+          <fieldset class="amount-options" id="amount-options">
+            <legend class="visually-hidden" data-i18n="questionCount">Anzahl der Fragen</legend>
+            <label class="amount-option"><input type="radio" name="amount" value="5" /><span>5</span></label>
+            <label class="amount-option"><input type="radio" name="amount" value="10" checked /><span>10</span></label>
+            <label class="amount-option"><input type="radio" name="amount" value="15" /><span>15</span></label>
+            <label class="amount-option"><input type="radio" name="amount" value="20" /><span>20</span></label>
+          </fieldset>
+          <p id="selection-summary" class="selection-summary" aria-live="polite"></p>
+        </section>
+
+        <button id="start-quiz" class="primary-button primary-button--large" type="button" disabled>
+          <span data-i18n="startQuiz">Quiz starten</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </section>
+
+      <section id="quiz-view" class="view quiz-view" aria-labelledby="question-heading" hidden>
+        <div class="quiz-toolbar">
+          <button id="quit-quiz" class="icon-button" type="button">
+            <span aria-hidden="true">←</span>
+            <span data-i18n="backToTopics">Zur Themenauswahl</span>
+          </button>
+          <div class="progress-copy">
+            <span id="progress-label"></span>
+            <strong id="score-label"></strong>
+          </div>
+        </div>
+        <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+
+        <article class="question-card">
+          <div class="question-meta">
+            <span id="question-topic" class="topic-pill"></span>
+            <span id="question-difficulty" class="difficulty-pill"></span>
+          </div>
+          <h1 id="question-heading"></h1>
+          <p id="question-instruction" class="question-instruction"></p>
+
+          <form id="answer-form">
+            <fieldset id="answer-options" class="answer-options">
+              <legend class="visually-hidden" data-i18n="answersLegend">Antwortmöglichkeiten</legend>
+            </fieldset>
+            <p id="answer-error" class="inline-error" role="alert" hidden></p>
+            <button id="submit-answer" class="primary-button" type="submit" data-i18n="submitAnswer">Antwort abgeben</button>
+          </form>
+
+          <section id="feedback" class="feedback" tabindex="-1" aria-live="polite" hidden>
+            <div class="feedback__heading">
+              <span id="feedback-icon" class="feedback__icon" aria-hidden="true"></span>
+              <h2 id="feedback-title"></h2>
+            </div>
+            <p id="feedback-explanation"></p>
+            <button id="next-question" class="primary-button" type="button"></button>
+          </section>
+        </article>
+      </section>
+
+      <section id="results-view" class="view results-view" aria-labelledby="results-title" hidden>
+        <div class="result-card">
+          <p class="eyebrow" data-i18n="finished">Durchgang beendet</p>
+          <h1 id="results-title" data-i18n="resultsTitle">Gut geübt!</h1>
+          <div class="result-score" aria-live="polite">
+            <strong id="result-percentage"></strong>
+            <span id="result-total"></span>
+          </div>
+          <p id="result-message" class="result-message"></p>
+
+          <section class="topic-results" aria-labelledby="topic-results-title">
+            <h2 id="topic-results-title" data-i18n="topicResults">Ergebnis nach Thema</h2>
+            <div id="topic-result-list"></div>
+          </section>
+
+          <div class="result-actions">
+            <button id="retry-wrong" class="secondary-button" type="button" data-i18n="retryWrong">Fehler wiederholen</button>
+            <button id="new-round" class="primary-button" type="button" data-i18n="newRound">Neuen Durchgang starten</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footerText">Lernen ohne Druck. Dein Fortschritt bleibt nur in diesem Browser.</p>
+      <button id="reset-history" class="text-button" type="button" data-i18n="resetHistory">Lernverlauf zurücksetzen</button>
+    </footer>
+
+    <template id="topic-template">
+      <label class="topic-card">
+        <input type="checkbox" class="topic-card__input" />
+        <span class="topic-card__check" aria-hidden="true">✓</span>
+        <span class="topic-card__body">
+          <strong class="topic-card__title"></strong>
+          <span class="topic-card__description"></span>
+          <span class="topic-card__count"></span>
+        </span>
+      </label>
+    </template>
+  </body>
+</html>
