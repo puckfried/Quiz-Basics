@@ -1,4 +1,4 @@
-# CTF Learning Quiz
+# Computer Fundamentals Learning Quiz
 
 A static, bilingual learning quiz for practising essential computer fundamentals.
 
