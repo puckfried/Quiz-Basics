@@ -1,30 +1,15 @@
-# CTF Lernquiz
+# CTF Learning Quiz
 
-Statisches, zweisprachiges Lernquiz. Alle 96 Fragen basieren ausschließlich auf dem aktuellen Stoff in `../CTF-26a`; der Ordner `vorbereitung` wurde nicht verwendet.
+A static, bilingual learning quiz for practising essential computer fundamentals.
 
-Die ausschließlich helle Oberfläche orientiert sich bei Typografie, 5-Pixel-Abstandsraster, Formularfeldern, Buttons und Statusmeldungen am GOV.UK Design System. Sie verwendet bewusst weder GOV.UK-Branding noch dessen Hausschrift.
+The light-only interface takes inspiration from the GOV.UK Design System for its typography, 5-pixel spacing scale, form controls, buttons and status messages.
 
-## Lokal starten
+## Adding a new topic
 
-```bash
-python3 scripts/questions.py
-python3 -m http.server 8000
-```
+1. Add another JSON file to `questions/`. An existing file can be used as a template.
+2. Run `python3 scripts/questions.py`. The script validates all question data and regenerates `questions/index.json`.
+3. Push the changes. The GitHub Pages workflow performs the same validation and publishes the site.
 
-Danach `http://localhost:8000` öffnen. Ein direktes Öffnen von `index.html` funktioniert wegen der JSON-Ladezugriffe nicht zuverlässig.
+No manual changes to the HTML or JavaScript are required. IDs must be unique across the entire project. Every question must include both German and English text.
 
-## Ein neues Thema hinzufügen
 
-1. Eine weitere JSON-Datei in `questions/` anlegen; eine vorhandene Datei eignet sich als Vorlage.
-2. `python3 scripts/questions.py` ausführen. Das Skript validiert alle Daten und erzeugt `questions/index.json` neu.
-3. Änderungen pushen. Der GitHub-Pages-Workflow erledigt dieselben Prüfungen und veröffentlicht die Seite.
-
-Damit ist keine manuelle Änderung an HTML oder JavaScript nötig. IDs müssen projektweit eindeutig sein. Jede Frage benötigt deutsche und englische Texte sowie einen Quellenpfad innerhalb von `CTF-26a`.
-
-## GitHub Pages
-
-Das Verzeichnis ist als eigenes Repository gedacht. Unter **Settings → Pages → Source** muss **GitHub Actions** ausgewählt sein.
-
-## VPS
-
-Nach dem Kopieren oder Auschecken einmal `python3 scripts/questions.py` ausführen und den Ordner anschließend mit einem statischen Webserver wie Nginx bereitstellen. Eine serverseitige Anwendung ist nicht erforderlich.
