@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-import json, pathlib, sys
+import argparse, json, pathlib, sys
+
+parser = argparse.ArgumentParser(description="Validate question files and build the topic catalogue.")
+parser.add_argument(
+    "--source-root",
+    type=pathlib.Path,
+    help="Optionally verify question source paths against this directory.",
+)
+args = parser.parse_args()
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 folder = ROOT / "questions"
-course = ROOT.parent / "CTF-26a"
+source_root = args.source_root.resolve() if args.source_root else None
 files = sorted(p for p in folder.glob("*.json") if p.name != "index.json")
 catalog, ids, errors = [], set(), []
 for path in files:
@@ -26,7 +34,10 @@ for path in files:
         source = q.get("source", "")
         source_file = source.split("#", 1)[0]
         if not source: errors.append(f"{prefix}: Quelle fehlt")
-        elif "vorbereitung" in source_file.lower() or not (course / source_file).is_file(): errors.append(f"{prefix}: Quelle außerhalb von CTF-26a oder nicht vorhanden")
+        elif source_root:
+            source_path = (source_root / source_file).resolve()
+            if not source_path.is_relative_to(source_root) or not source_path.is_file():
+                errors.append(f"{prefix}: Quelldatei nicht im angegebenen Quellenordner gefunden")
     catalog.append({"file": path.name, "topic": topic, "questionCount": len(questions)})
 if errors:
     print("\n".join(errors), file=sys.stderr); sys.exit(1)
