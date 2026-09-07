@@ -26,15 +26,33 @@ for path in files:
         prefix = f"{path.name}/{q.get('id', '?')}"
         if q.get("id") in ids: errors.append(f"{prefix}: doppelte ID")
         ids.add(q.get("id"))
-        if q.get("type") not in ("single", "multiple") or q.get("difficulty") not in ("easy", "medium", "hard"): errors.append(f"{prefix}: Typ/Schwierigkeit ungültig")
+        question_type = q.get("type")
+        if question_type not in ("single", "multiple", "terminal") or q.get("difficulty") not in ("easy", "medium", "hard"): errors.append(f"{prefix}: Typ/Schwierigkeit ungültig")
         if any(lang not in q.get("prompt", {}) or lang not in q.get("explanation", {}) for lang in ("de", "en")): errors.append(f"{prefix}: Übersetzung fehlt")
-        answers = q.get("answers", []); answer_ids = {a.get("id") for a in answers}
-        if len(answers) < 3 or any(lang not in a for a in answers for lang in ("de", "en")): errors.append(f"{prefix}: Antworten ungültig")
-        if not q.get("correctAnswers") or not set(q.get("correctAnswers", [])).issubset(answer_ids): errors.append(f"{prefix}: Lösung ungültig")
+        if question_type == "terminal":
+            terminal = q.get("terminal", {})
+            goals, hints, solution = terminal.get("goals", []), terminal.get("hints", []), terminal.get("solution", [])
+            goal_types = {"cwdEquals", "pathExists", "pathAbsent", "fileContentEquals", "gitInitializedAt", "gitConfigEquals", "gitStagedExactly", "gitCommitExists"}
+            if any(lang not in q.get("title", {}) for lang in ("de", "en")): errors.append(f"{prefix}: Terminal-Titel fehlt")
+            if terminal.get("kind") not in ("bash", "git") or not isinstance(terminal.get("cwd"), str): errors.append(f"{prefix}: Terminal-Konfiguration ungültig")
+            if not goals or any(goal.get("type") not in goal_types for goal in goals): errors.append(f"{prefix}: Terminal-Ziele ungültig")
+            if not hints or any(any(lang not in hint for lang in ("de", "en")) for hint in hints): errors.append(f"{prefix}: Terminal-Hinweise ungültig")
+            if not solution or any(not isinstance(command, str) or not command.strip() for command in solution): errors.append(f"{prefix}: Terminal-Musterlösung ungültig")
+            for entry in terminal.get("filesystem", []):
+                if not isinstance(entry.get("path"), str) or entry.get("type") not in ("file", "directory"): errors.append(f"{prefix}: virtueller Dateisystemeintrag ungültig")
+            for goal in goals:
+                if goal.get("type") == "pathExists" and goal.get("entryType") not in ("file", "directory"): errors.append(f"{prefix}: pathExists benötigt entryType")
+                if goal.get("type") in ("cwdEquals", "pathExists", "pathAbsent", "fileContentEquals", "gitInitializedAt") and not isinstance(goal.get("path"), str): errors.append(f"{prefix}: Zielpfad fehlt")
+                if goal.get("type") == "gitStagedExactly" and not isinstance(goal.get("paths"), list): errors.append(f"{prefix}: Staging-Ziel ungültig")
+                if goal.get("type") == "gitConfigEquals" and goal.get("key") not in ("user.name", "user.email"): errors.append(f"{prefix}: Git-Konfigurationsziel ungültig")
+                if goal.get("type") == "gitCommitExists" and not isinstance(goal.get("message"), str): errors.append(f"{prefix}: Commit-Ziel ungültig")
+        else:
+            answers = q.get("answers", []); answer_ids = {a.get("id") for a in answers}
+            if len(answers) < 3 or any(lang not in a for a in answers for lang in ("de", "en")): errors.append(f"{prefix}: Antworten ungültig")
+            if not q.get("correctAnswers") or not set(q.get("correctAnswers", [])).issubset(answer_ids): errors.append(f"{prefix}: Lösung ungültig")
         source = q.get("source", "")
         source_file = source.split("#", 1)[0]
-        if not source: errors.append(f"{prefix}: Quelle fehlt")
-        elif source_root:
+        if source and source_root:
             source_path = (source_root / source_file).resolve()
             if not source_path.is_relative_to(source_root) or not source_path.is_file():
                 errors.append(f"{prefix}: Quelldatei nicht im angegebenen Quellenordner gefunden")

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Ein zweisprachiges Lernquiz zu den Core Tech Fundamentals."
+      content="Ein zweisprachiges Lernquiz zu grundlegenden Computerthemen."
     />
-    <title>CTF Lernquiz</title>
+    <title>Lernquiz – Computergrundlagen</title>
     <link rel="stylesheet" href="css/styles.css" />
     <script type="module" src="js/app.js"></script>
   </head>
@@ -15,8 +15,8 @@
     <a class="skip-link" href="#main-content" data-i18n="skipLink">Zum Inhalt springen</a>
 
     <header class="site-header">
-      <a class="brand" href="./" aria-label="CTF Lernquiz Startseite">
-        <span class="brand__mark" aria-hidden="true">CTF</span>
+      <a class="brand" href="./" aria-label="Lernquiz Startseite">
+        <span class="brand__mark" aria-hidden="true">CF</span>
         <span class="brand__copy">
           <strong data-i18n="brandTitle">Lernquiz</strong>
           <span data-i18n="brandSubtitle">Computergrundlagen</span>
@@ -103,6 +103,28 @@
           <h1 id="question-heading"></h1>
           <p id="question-instruction" class="question-instruction"></p>
 
+          <section id="terminal-panel" class="terminal-panel" hidden>
+            <div class="terminal-window">
+              <div class="terminal-window__bar" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <strong>learning-terminal</strong>
+              </div>
+              <div id="terminal-output" class="terminal-output" role="log" aria-live="polite"></div>
+              <form id="terminal-form" class="terminal-command-form" autocomplete="off">
+                <label class="visually-hidden" for="terminal-input" data-i18n="terminalInputLabel">Terminalbefehl</label>
+                <span id="terminal-prompt" class="terminal-prompt" aria-hidden="true"></span>
+                <input id="terminal-input" class="terminal-input" type="text" spellcheck="false" autocapitalize="none" maxlength="500" />
+              </form>
+            </div>
+            <div class="terminal-actions">
+              <button id="terminal-hint" class="secondary-button" type="button" data-i18n="showHint">Hinweis anzeigen</button>
+              <button id="terminal-reset" class="text-button" type="button" data-i18n="resetTerminal">Terminal zurücksetzen</button>
+              <button id="terminal-solution" class="text-button terminal-solution-button" type="button" data-i18n="showSolution">Lösung anzeigen</button>
+            </div>
+            <div id="terminal-hints" class="terminal-hints" aria-live="polite" hidden></div>
+            <p class="terminal-solution-note" data-i18n="solutionNote">Wenn du die Lösung anzeigst, wird die Aufgabe als nicht gelöst gewertet.</p>
+          </section>
+
           <form id="answer-form">
             <fieldset id="answer-options" class="answer-options">
               <legend class="visually-hidden" data-i18n="answersLegend">Antwortmöglichkeiten</legend>
@@ -117,6 +139,7 @@
               <h2 id="feedback-title"></h2>
             </div>
             <p id="feedback-explanation"></p>
+            <pre id="feedback-solution" class="feedback-solution" hidden></pre>
             <button id="next-question" class="primary-button" type="button"></button>
           </section>
         </article>

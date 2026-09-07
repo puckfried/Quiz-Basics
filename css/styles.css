@@ -152,6 +152,30 @@ h1 { max-width: 18ch; margin: 0; font-size: 48px; line-height: 1.0417; letter-sp
 .answer-option.is-correct .answer-option__body { background: var(--pale-green); border-left-color: var(--green); }
 .answer-option.is-incorrect .answer-option__body { background: var(--pale-red); border-left-color: var(--red); }
 
+.terminal-panel { margin-top: 30px; }
+.terminal-window { overflow: hidden; color: #f5f5f5; background: #111817; border: 3px solid var(--black); }
+.terminal-window__bar { position: relative; display: flex; gap: 7px; align-items: center; min-height: 36px; padding: 8px 12px; color: var(--black); background: var(--grey-3); border-bottom: 2px solid var(--black); }
+.terminal-window__bar span { width: 11px; height: 11px; background: var(--grey-1); border: 1px solid var(--black); border-radius: 50%; }
+.terminal-window__bar strong { position: absolute; left: 50%; font: 700 14px/1 Arial, Helvetica, sans-serif; transform: translateX(-50%); }
+.terminal-output { min-height: 260px; max-height: 420px; overflow: auto; padding: 18px 18px 8px; font: 16px/1.5 "Courier New", Courier, monospace; scrollbar-color: #76807e #111817; }
+.terminal-transcript-command { margin: 10px 0 2px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-transcript-prompt, .terminal-prompt { color: #7ee2b8; font-weight: 700; }
+.terminal-message { margin: 0 0 5px; color: #f5f5f5; font: inherit; white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-message--muted { color: #c7cfcd; }
+.terminal-message--error { color: #ffb4a8; }
+.terminal-command-form { display: flex; gap: 10px; align-items: flex-start; min-height: 55px; padding: 8px 18px 15px; font: 16px/1.5 "Courier New", Courier, monospace; }
+.terminal-prompt { flex: 0 0 auto; padding-top: 6px; white-space: nowrap; }
+.terminal-input { width: 100%; min-width: 0; padding: 5px 3px; color: #fff; background: transparent; border: 0; border-bottom: 2px solid #87918f; border-radius: 0; caret-color: var(--yellow); font: inherit; }
+.terminal-input:focus { outline: 3px solid var(--yellow); outline-offset: 2px; box-shadow: none; }
+.terminal-input:disabled { border-color: transparent; opacity: 0.65; }
+.terminal-actions { display: flex; gap: 20px; align-items: center; margin-top: 20px; flex-wrap: wrap; }
+.terminal-actions .text-button:disabled { border-color: transparent; text-decoration: none; }
+.terminal-solution-button { color: var(--red); }
+.terminal-hints { margin-top: 20px; padding: 15px 20px; background: #fff7bf; border-left: 5px solid var(--yellow); }
+.terminal-hints p { margin: 0 0 10px; }
+.terminal-hints p:last-child { margin-bottom: 0; }
+.terminal-solution-note { max-width: 42em; margin: 15px 0 0; color: var(--grey-1); font-size: 16px; }
+
 .feedback { margin-top: 30px; padding: 20px; border-left: 5px solid; }
 .feedback.is-correct { background: var(--pale-green); border-color: var(--green); }
 .feedback.is-incorrect { background: var(--pale-red); border-color: var(--red); }
@@ -159,6 +183,7 @@ h1 { max-width: 18ch; margin: 0; font-size: 48px; line-height: 1.0417; letter-sp
 .feedback__heading h2 { margin: 0; font-size: 27px; }
 .feedback__icon { display: grid; width: 30px; height: 30px; place-items: center; color: var(--white); background: var(--black); border-radius: 50%; font-weight: 700; }
 .feedback p { max-width: 38em; line-height: 1.5; }
+.feedback-solution { max-width: 100%; overflow-x: auto; padding: 15px; color: #f5f5f5; background: #111817; border: 2px solid var(--black); font: 16px/1.5 "Courier New", Courier, monospace; white-space: pre-wrap; }
 
 .results-view { max-width: 760px; margin-left: max(15px, calc((100% - var(--content-width)) / 2)); }
 .result-card { text-align: left; }
@@ -194,6 +219,10 @@ h1 { max-width: 18ch; margin: 0; font-size: 48px; line-height: 1.0417; letter-sp
   .selection-actions { margin-left: 50px; }
   .section-heading h2, .feedback__heading h2, .topic-results h2 { font-size: 24px; }
   .question-card h1 { font-size: 32px; line-height: 1.09375; }
+  .terminal-output { min-height: 230px; padding-inline: 12px; font-size: 14px; }
+  .terminal-command-form { display: grid; grid-template-columns: 1fr; gap: 2px; padding-inline: 12px; font-size: 14px; }
+  .terminal-prompt { overflow: hidden; text-overflow: ellipsis; }
+  .terminal-actions { align-items: flex-start; flex-direction: column; gap: 15px; }
   .progress-copy { width: 100%; }
   .result-panel { padding: 25px 15px; }
   .result-panel h1 { font-size: 36px; }

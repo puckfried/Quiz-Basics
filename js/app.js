@@ -1,5 +1,6 @@
 import { translations, localize } from "./i18n.js";
 import { calculateTopicResults, isCorrectAnswer, selectBalancedQuestions, shuffle } from "./quiz.js";
+import { evaluateTerminalGoals, formatTerminalEvent, TerminalSession } from "./terminal-engine.js";
 
 const STORAGE_KEYS = {
   language: "ctf-quiz-language",
@@ -16,6 +17,10 @@ const state = {
   answers: [],
   currentIndex: 0,
   currentAnswer: null,
+  terminalSession: null,
+  terminalQuestionId: null,
+  terminalHintsShown: 0,
+  terminalHistoryIndex: 0,
 };
 
 const elements = Object.fromEntries(
@@ -26,6 +31,8 @@ const elements = Object.fromEntries(
     "answer-options", "answer-error", "submit-answer", "feedback", "feedback-icon", "feedback-title",
     "feedback-explanation", "next-question", "result-percentage", "result-total", "result-message",
     "topic-result-list", "retry-wrong", "new-round", "reset-history", "topic-template",
+    "terminal-panel", "terminal-output", "terminal-form", "terminal-prompt", "terminal-input",
+    "terminal-hint", "terminal-reset", "terminal-solution", "terminal-hints", "feedback-solution",
   ].map((id) => [id, document.getElementById(id)]),
 );
 
@@ -37,7 +44,7 @@ function t(key, params) {
 function setLanguage(language) {
   state.language = language;
   document.documentElement.lang = language;
-  document.title = language === "de" ? "CTF Lernquiz" : "CTF Learning Quiz";
+  document.title = language === "de" ? "Lernquiz – Computergrundlagen" : "Learning Quiz – Computer Fundamentals";
   localStorage.setItem(STORAGE_KEYS.language, language);
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
@@ -52,7 +59,7 @@ function setLanguage(language) {
 
   renderTopics();
   updateSelectionSummary();
-  if (!elements["quiz-view"].hidden) renderQuestion();
+  if (!elements["quiz-view"].hidden) renderQuestion({ preserveTerminalFocus: true });
   if (!elements["results-view"].hidden) renderResults();
 }
 
@@ -183,6 +190,7 @@ function beginQuestions() {
   state.answers = [];
   state.currentIndex = 0;
   state.currentAnswer = null;
+  clearTerminalState();
   const history = new Set(readStoredArray(STORAGE_KEYS.history));
   state.questions.forEach((question) => history.add(question.id));
   localStorage.setItem(STORAGE_KEYS.history, JSON.stringify([...history]));
@@ -193,20 +201,41 @@ function beginQuestions() {
 function currentQuestion() { return state.questions[state.currentIndex]; }
 function currentTopic() { return state.questionSets.find((set) => set.topic.id === currentQuestion().topicId)?.topic; }
 
-function renderQuestion() {
+function clearTerminalState() {
+  state.terminalSession = null;
+  state.terminalQuestionId = null;
+  state.terminalHintsShown = 0;
+  state.terminalHistoryIndex = 0;
+}
+
+function renderQuestion({ preserveTerminalFocus = false } = {}) {
   const question = currentQuestion();
   if (!question) return;
   const topic = currentTopic();
+  const terminalQuestion = question.type === "terminal";
   const correctCount = state.answers.filter((answer) => answer.isCorrect).length;
   elements["progress-label"].textContent = t("progress", { current: state.currentIndex + 1, total: state.questions.length });
   elements["score-label"].textContent = t("score", { correct: correctCount });
   elements["progress-bar"].style.width = `${((state.currentIndex + 1) / state.questions.length) * 100}%`;
   elements["question-topic"].textContent = localize(topic.title, state.language);
   elements["question-difficulty"].textContent = t("difficulty")[question.difficulty];
-  elements["question-heading"].textContent = localize(question.prompt, state.language);
-  elements["question-instruction"].textContent = t(question.type === "multiple" ? "instructionMultiple" : "instructionSingle");
+  elements["question-heading"].textContent = localize(terminalQuestion ? question.title : question.prompt, state.language);
+  const instructionKey = question.type === "multiple" ? "instructionMultiple" : "instructionSingle";
+  elements["question-instruction"].textContent = terminalQuestion
+    ? localize(question.prompt, state.language)
+    : t(instructionKey);
   elements["answer-error"].hidden = true;
   elements["answer-options"].replaceChildren();
+
+  elements["answer-form"].hidden = terminalQuestion;
+  elements["terminal-panel"].hidden = !terminalQuestion;
+  if (terminalQuestion) {
+    renderTerminalQuestion({ preserveFocus: preserveTerminalFocus });
+    elements["submit-answer"].hidden = true;
+    if (state.currentAnswer) renderFeedback();
+    else elements.feedback.hidden = true;
+    return;
+  }
 
   const options = question._optionOrder ?? shuffle(question.answers);
   question._optionOrder = options;
@@ -240,6 +269,118 @@ function renderQuestion() {
   else elements.feedback.hidden = true;
 }
 
+function renderTerminalQuestion({ preserveFocus = false } = {}) {
+  const question = currentQuestion();
+  const hadFocus = document.activeElement === elements["terminal-input"];
+  if (!state.terminalSession || state.terminalQuestionId !== question.id) {
+    state.terminalSession = new TerminalSession(question.terminal);
+    state.terminalQuestionId = question.id;
+    state.terminalHintsShown = 0;
+    state.terminalHistoryIndex = 0;
+  }
+
+  const session = state.terminalSession;
+  elements["terminal-output"].replaceChildren();
+  const welcome = document.createElement("p");
+  welcome.className = "terminal-message terminal-message--muted";
+  welcome.textContent = t("terminalWelcome");
+  elements["terminal-output"].append(welcome);
+
+  session.transcript.forEach((entry) => {
+    const commandLine = document.createElement("div");
+    commandLine.className = "terminal-transcript-command";
+    const prompt = document.createElement("span");
+    prompt.className = "terminal-transcript-prompt";
+    prompt.textContent = entry.prompt;
+    const command = document.createElement("span");
+    command.textContent = entry.command;
+    commandLine.append(prompt, document.createTextNode(" "), command);
+    elements["terminal-output"].append(commandLine);
+    entry.events.forEach((item) => {
+      const output = document.createElement("pre");
+      output.className = `terminal-message${item.tone === "error" ? " terminal-message--error" : ""}`;
+      output.textContent = formatTerminalEvent(item, state.language);
+      elements["terminal-output"].append(output);
+    });
+  });
+
+  elements["terminal-prompt"].textContent = session.prompt();
+  const locked = Boolean(state.currentAnswer);
+  elements["terminal-input"].disabled = locked;
+  elements["terminal-hint"].disabled = locked || state.terminalHintsShown >= question.terminal.hints.length;
+  elements["terminal-reset"].disabled = locked;
+  elements["terminal-solution"].disabled = locked;
+  elements["terminal-hint"].textContent = state.terminalHintsShown === 0
+    ? t("showHint")
+    : state.terminalHintsShown < question.terminal.hints.length ? t("nextHint") : t("noMoreHints");
+  renderTerminalHints();
+  elements["terminal-output"].scrollTop = elements["terminal-output"].scrollHeight;
+  if (!locked && (hadFocus || !preserveFocus)) elements["terminal-input"].focus({ preventScroll: true });
+}
+
+function renderTerminalHints() {
+  const hints = currentQuestion().terminal.hints.slice(0, state.terminalHintsShown);
+  elements["terminal-hints"].hidden = hints.length === 0;
+  elements["terminal-hints"].replaceChildren();
+  hints.forEach((hint, index) => {
+    const paragraph = document.createElement("p");
+    const label = document.createElement("strong");
+    label.textContent = `${t("hintLabel", index + 1)}: `;
+    paragraph.append(label, document.createTextNode(localize(hint, state.language)));
+    elements["terminal-hints"].append(paragraph);
+  });
+}
+
+function runTerminalCommand(event) {
+  event.preventDefault();
+  if (state.currentAnswer) return;
+  const command = elements["terminal-input"].value;
+  if (!command.trim()) return;
+  const execution = state.terminalSession.execute(command);
+  elements["terminal-input"].value = "";
+  state.terminalHistoryIndex = state.terminalSession.commandHistory.length;
+  renderTerminalQuestion({ preserveFocus: true });
+  if (execution.ok && evaluateTerminalGoals(state.terminalSession, currentQuestion().terminal.goals).complete) {
+    finishTerminalQuestion(true, false);
+  }
+}
+
+function finishTerminalQuestion(isCorrect, solutionRevealed) {
+  if (state.currentAnswer) return;
+  const question = currentQuestion();
+  state.currentAnswer = { selected: [], isCorrect, solutionRevealed };
+  state.answers.push({ question, ...state.currentAnswer });
+  renderQuestion({ preserveTerminalFocus: true });
+  elements.feedback.focus();
+}
+
+function showTerminalHint() {
+  const hints = currentQuestion().terminal.hints;
+  if (state.terminalHintsShown < hints.length) state.terminalHintsShown += 1;
+  renderTerminalQuestion({ preserveFocus: true });
+}
+
+function resetTerminal() {
+  state.terminalSession = new TerminalSession(currentQuestion().terminal);
+  state.terminalHistoryIndex = 0;
+  renderTerminalQuestion();
+}
+
+function revealTerminalSolution() {
+  finishTerminalQuestion(false, true);
+}
+
+function navigateTerminalHistory(event) {
+  if (!state.terminalSession || !["ArrowUp", "ArrowDown"].includes(event.key)) return;
+  const history = state.terminalSession.commandHistory;
+  if (!history.length) return;
+  event.preventDefault();
+  if (event.key === "ArrowUp") state.terminalHistoryIndex = Math.max(0, state.terminalHistoryIndex - 1);
+  else state.terminalHistoryIndex = Math.min(history.length, state.terminalHistoryIndex + 1);
+  elements["terminal-input"].value = state.terminalHistoryIndex === history.length ? "" : history[state.terminalHistoryIndex];
+  elements["terminal-input"].setSelectionRange(elements["terminal-input"].value.length, elements["terminal-input"].value.length);
+}
+
 function submitAnswer(event) {
   event.preventDefault();
   const selected = [...elements["answer-form"].querySelectorAll('input[name="answer"]:checked')].map((input) => input.value);
@@ -257,11 +398,14 @@ function submitAnswer(event) {
 
 function renderFeedback() {
   const { isCorrect } = state.currentAnswer;
+  const terminalSolution = currentQuestion().type === "terminal" && state.currentAnswer.solutionRevealed;
   elements.feedback.hidden = false;
   elements.feedback.className = `feedback ${isCorrect ? "is-correct" : "is-incorrect"}`;
-  elements["feedback-icon"].textContent = isCorrect ? "✓" : "×";
-  elements["feedback-title"].textContent = t(isCorrect ? "correctTitle" : "incorrectTitle");
+  elements["feedback-icon"].textContent = isCorrect ? "✓" : terminalSolution ? "i" : "×";
+  elements["feedback-title"].textContent = terminalSolution ? t("solutionTitle") : t(isCorrect ? "correctTitle" : "incorrectTitle");
   elements["feedback-explanation"].textContent = localize(currentQuestion().explanation, state.language);
+  elements["feedback-solution"].hidden = !terminalSolution;
+  elements["feedback-solution"].textContent = terminalSolution ? currentQuestion().terminal.solution.join("\n") : "";
   elements["next-question"].textContent = t(state.currentIndex === state.questions.length - 1 ? "showResults" : "nextQuestion");
 }
 
@@ -273,6 +417,7 @@ function nextQuestion() {
   }
   state.currentIndex += 1;
   state.currentAnswer = null;
+  clearTerminalState();
   renderQuestion();
   elements["question-heading"].focus?.();
 }
@@ -316,6 +461,7 @@ function resetToSetup() {
   state.questions = [];
   state.answers = [];
   state.currentAnswer = null;
+  clearTerminalState();
   showView("setup-view");
 }
 
@@ -326,6 +472,11 @@ function bindEvents() {
   elements["start-quiz"].addEventListener("click", startQuiz);
   elements["quit-quiz"].addEventListener("click", resetToSetup);
   elements["answer-form"].addEventListener("submit", submitAnswer);
+  elements["terminal-form"].addEventListener("submit", runTerminalCommand);
+  elements["terminal-input"].addEventListener("keydown", navigateTerminalHistory);
+  elements["terminal-hint"].addEventListener("click", showTerminalHint);
+  elements["terminal-reset"].addEventListener("click", resetTerminal);
+  elements["terminal-solution"].addEventListener("click", revealTerminalSolution);
   elements["next-question"].addEventListener("click", nextQuestion);
   elements["retry-wrong"].addEventListener("click", retryWrongAnswers);
   elements["new-round"].addEventListener("click", resetToSetup);
