@@ -1,5 +1,6 @@
 import { evaluateTerminalGoals, formatTerminalEvent, normalizePath, TerminalSession, tokenizeCommand } from "../js/terminal-engine.js";
 import { selectBalancedQuestions } from "../js/quiz.js";
+import { buildCodeSolution, isCorrectCodeAnswer, normalizeCodeAnswer } from "../js/code-engine.js";
 
 const messages = [];
 let failures = 0;
@@ -52,6 +53,17 @@ test("terminal messages localize", () => {
   assert(formatTerminalEvent(output.events[0], "en").includes("not found"), "English message missing");
 });
 
+test("code answers normalize line endings and outer whitespace", () => {
+  equal(normalizeCodeAnswer("  display: flex;  \r\n"), "display: flex;", "normalised code");
+});
+
+test("code answers accept only configured variants", () => {
+  const configuration = { prefix: "p { ", suffix: " }", acceptedAnswers: ["color: red;", "color: #ff0000;"] };
+  assert(isCorrectCodeAnswer(configuration, " color: red; "), "configured answer rejected");
+  assert(!isCorrectCodeAnswer(configuration, "colour: red;"), "invalid answer accepted");
+  equal(buildCodeSolution(configuration), "p { color: red; }", "built solution");
+});
+
 const questionSets = ["bash", "git"].map((topicId) => ({
   topic: { id: topicId },
   questions: [
@@ -68,6 +80,19 @@ for (const [amount, expected] of [[5, 1], [10, 3], [15, 5], [20, 6]]) {
   });
 }
 
+const mixedSets = [
+  { topic: { id: "bash" }, questions: Array.from({ length: 6 }, (_, index) => ({ id: `mixed-terminal-${index}`, type: "terminal" })) },
+  { topic: { id: "html" }, questions: Array.from({ length: 6 }, (_, index) => ({ id: `mixed-code-${index}`, type: "code" })) },
+  { topic: { id: "knowledge" }, questions: Array.from({ length: 12 }, (_, index) => ({ id: `mixed-mc-${index}`, type: "single" })) },
+];
+
+test("terminal and code tasks share the interactive quota", () => {
+  const selected = selectBalancedQuestions(mixedSets, 12, [], () => 0.42);
+  equal(selected.filter((question) => ["terminal", "code"].includes(question.type)).length, 4, "interactive count");
+  assert(selected.some((question) => question.type === "terminal"), "terminal task missing");
+  assert(selected.some((question) => question.type === "code"), "code task missing");
+});
+
 const dataFiles = ["../questions/06-linux-terminal.json", "../questions/08-git.json"];
 for (const file of dataFiles) {
   const data = await fetch(file).then((response) => response.json());
@@ -76,6 +101,21 @@ for (const file of dataFiles) {
       const session = new TerminalSession(question.terminal);
       for (const command of question.terminal.solution) assert(session.execute(command).ok, `${command} returned an error`);
       assert(evaluateTerminalGoals(session, question.terminal.goals).complete, "target state was not reached");
+    });
+  }
+}
+
+const codeDataFiles = ["../questions/09-html.json", "../questions/10-css.json"];
+for (const file of codeDataFiles) {
+  const data = await fetch(file).then((response) => response.json());
+  for (const question of data.questions.filter((item) => item.type === "code")) {
+    test(`${question.id} accepts its primary solution`, () => {
+      assert(isCorrectCodeAnswer(question.code, question.code.acceptedAnswers[0]), "primary solution was rejected");
+      equal(
+        buildCodeSolution(question.code),
+        `${question.code.prefix}${question.code.acceptedAnswers[0]}${question.code.suffix}`,
+        "completed snippet",
+      );
     });
   }
 }

@@ -1,0 +1,51 @@
+Release-Plan: Campus App
+
+Ziel
+
+Das Team bereitet Version 1.0 für die Veröffentlichung am Freitag vor.
+
+Aufgaben
+
+Vorbereitung abgeschlossen
+Repository klonen
+Lokalen main aktualisieren
+Umsetzung noch offen
+Navigation testen
+Profilseite prüfen
+README ergänzen
+
+Teamübersicht
+
+Bereich
+Verantwortlich
+Status
+Navigation
+Aylin
+fertig
+Profilseite
+Ben
+in Arbeit
+Tests
+Team
+offen
+
+Geplanter Ablauf
+
+Main aktualisieren
+git switch main
+git pull
+Arbeitsbranch erstellen
+git switch -c release-check
+Änderungen prüfen und speichern
+git status
+git add .
+git commit -m "Prepare release"
+
+Hinweis:
+
+Direkte Änderungen auf main vermeiden. Für jede Aufgabe wird ein eigener Branch verwendet.
+
+Dokumentation
+
+GitHub Flow
+https://docs.github.com/de/get-started/using-github/github-flow

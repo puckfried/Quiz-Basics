@@ -1,0 +1,21 @@
+Mein Lernjournal
+
+Woche 1: Git und GitHub
+
+In dieser Woche habe ich gelernt, wie Git meine Änderungen speichert und wie ich ein Projekt mit GitHub teile.
+
+Das kann ich schon
+
+Den aktuellen Zustand mit git status prüfen
+Änderungen mit git add auswählen
+Einen Stand mit git commit speichern
+Commits mit git push zu GitHub übertragen
+
+Mein wichtigster Merksatz
+
+Erst prüfen, dann hinzufügen, dann committen.
+
+Mehr Informationen
+
+GitHub Docs
+https://docs.github.com/de

@@ -39,23 +39,24 @@ function selectRoundRobin(questionSets, amount, seenIds, random, predicate = () 
 
 export function selectBalancedQuestions(questionSets, amount, seen = [], random = Math.random) {
   const seenIds = new Set(seen);
-  const availableTerminal = questionSets.reduce(
-    (count, set) => count + set.questions.filter((question) => question.type === "terminal").length,
+  const isInteractive = (question) => ["terminal", "code"].includes(question.type);
+  const availableInteractive = questionSets.reduce(
+    (count, set) => count + set.questions.filter(isInteractive).length,
     0,
   );
-  const terminalAmount = availableTerminal ? Math.min(availableTerminal, Math.max(1, Math.floor(amount / 3))) : 0;
-  const terminalQuestions = selectRoundRobin(
-    questionSets, terminalAmount, seenIds, random, (question) => question.type === "terminal",
+  const interactiveAmount = availableInteractive ? Math.min(availableInteractive, Math.max(1, Math.floor(amount / 3))) : 0;
+  const interactiveQuestions = selectRoundRobin(
+    questionSets, interactiveAmount, seenIds, random, isInteractive,
   );
   const regularQuestions = selectRoundRobin(
-    questionSets, amount - terminalQuestions.length, seenIds, random, (question) => question.type !== "terminal",
+    questionSets, amount - interactiveQuestions.length, seenIds, random, (question) => !isInteractive(question),
   );
-  const selectedIds = new Set([...terminalQuestions, ...regularQuestions].map((question) => question.id));
-  const missing = amount - terminalQuestions.length - regularQuestions.length;
+  const selectedIds = new Set([...interactiveQuestions, ...regularQuestions].map((question) => question.id));
+  const missing = amount - interactiveQuestions.length - regularQuestions.length;
   const fallback = missing > 0
     ? selectRoundRobin(questionSets, missing, seenIds, random, (question) => !selectedIds.has(question.id))
     : [];
-  return shuffle([...terminalQuestions, ...regularQuestions, ...fallback], random);
+  return shuffle([...interactiveQuestions, ...regularQuestions, ...fallback], random);
 }
 
 export function isCorrectAnswer(question, selectedAnswers) {

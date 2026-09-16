@@ -1,6 +1,7 @@
 import { translations, localize } from "./i18n.js";
 import { calculateTopicResults, isCorrectAnswer, selectBalancedQuestions, shuffle } from "./quiz.js";
 import { evaluateTerminalGoals, formatTerminalEvent, TerminalSession } from "./terminal-engine.js";
+import { buildCodeSolution, isCorrectCodeAnswer } from "./code-engine.js";
 
 const STORAGE_KEYS = {
   language: "ctf-quiz-language",
@@ -21,6 +22,10 @@ const state = {
   terminalQuestionId: null,
   terminalHintsShown: 0,
   terminalHistoryIndex: 0,
+  codeQuestionId: null,
+  codeValue: "",
+  codeHintsShown: 0,
+  codeAttemptIncorrect: false,
 };
 
 const elements = Object.fromEntries(
@@ -33,6 +38,8 @@ const elements = Object.fromEntries(
     "topic-result-list", "retry-wrong", "new-round", "reset-history", "topic-template",
     "terminal-panel", "terminal-output", "terminal-form", "terminal-prompt", "terminal-input",
     "terminal-hint", "terminal-reset", "terminal-solution", "terminal-hints", "feedback-solution",
+    "code-panel", "code-language", "code-prefix", "code-form", "code-input", "code-error", "code-submit",
+    "code-suffix", "code-hint", "code-reset", "code-solution", "code-hints",
   ].map((id) => [id, document.getElementById(id)]),
 );
 
@@ -59,7 +66,7 @@ function setLanguage(language) {
 
   renderTopics();
   updateSelectionSummary();
-  if (!elements["quiz-view"].hidden) renderQuestion({ preserveTerminalFocus: true });
+  if (!elements["quiz-view"].hidden) renderQuestion({ preserveTerminalFocus: true, preserveCodeFocus: true });
   if (!elements["results-view"].hidden) renderResults();
 }
 
@@ -190,7 +197,7 @@ function beginQuestions() {
   state.answers = [];
   state.currentIndex = 0;
   state.currentAnswer = null;
-  clearTerminalState();
+  clearInteractiveState();
   const history = new Set(readStoredArray(STORAGE_KEYS.history));
   state.questions.forEach((question) => history.add(question.id));
   localStorage.setItem(STORAGE_KEYS.history, JSON.stringify([...history]));
@@ -208,30 +215,51 @@ function clearTerminalState() {
   state.terminalHistoryIndex = 0;
 }
 
-function renderQuestion({ preserveTerminalFocus = false } = {}) {
+function clearCodeState() {
+  state.codeQuestionId = null;
+  state.codeValue = "";
+  state.codeHintsShown = 0;
+  state.codeAttemptIncorrect = false;
+}
+
+function clearInteractiveState() {
+  clearTerminalState();
+  clearCodeState();
+}
+
+function renderQuestion({ preserveTerminalFocus = false, preserveCodeFocus = false } = {}) {
   const question = currentQuestion();
   if (!question) return;
   const topic = currentTopic();
   const terminalQuestion = question.type === "terminal";
+  const codeQuestion = question.type === "code";
+  const interactiveQuestion = terminalQuestion || codeQuestion;
   const correctCount = state.answers.filter((answer) => answer.isCorrect).length;
   elements["progress-label"].textContent = t("progress", { current: state.currentIndex + 1, total: state.questions.length });
   elements["score-label"].textContent = t("score", { correct: correctCount });
   elements["progress-bar"].style.width = `${((state.currentIndex + 1) / state.questions.length) * 100}%`;
   elements["question-topic"].textContent = localize(topic.title, state.language);
   elements["question-difficulty"].textContent = t("difficulty")[question.difficulty];
-  elements["question-heading"].textContent = localize(terminalQuestion ? question.title : question.prompt, state.language);
+  elements["question-heading"].textContent = localize(interactiveQuestion ? question.title : question.prompt, state.language);
   const instructionKey = question.type === "multiple" ? "instructionMultiple" : "instructionSingle";
-  elements["question-instruction"].textContent = terminalQuestion
+  elements["question-instruction"].textContent = interactiveQuestion
     ? localize(question.prompt, state.language)
     : t(instructionKey);
   elements["answer-error"].hidden = true;
   elements["answer-options"].replaceChildren();
 
-  elements["answer-form"].hidden = terminalQuestion;
+  elements["answer-form"].hidden = interactiveQuestion;
   elements["terminal-panel"].hidden = !terminalQuestion;
+  elements["code-panel"].hidden = !codeQuestion;
   if (terminalQuestion) {
     renderTerminalQuestion({ preserveFocus: preserveTerminalFocus });
     elements["submit-answer"].hidden = true;
+    if (state.currentAnswer) renderFeedback();
+    else elements.feedback.hidden = true;
+    return;
+  }
+  if (codeQuestion) {
+    renderCodeQuestion({ preserveFocus: preserveCodeFocus });
     if (state.currentAnswer) renderFeedback();
     else elements.feedback.hidden = true;
     return;
@@ -267,6 +295,91 @@ function renderQuestion({ preserveTerminalFocus = false } = {}) {
   elements["submit-answer"].hidden = Boolean(state.currentAnswer);
   if (state.currentAnswer) renderFeedback();
   else elements.feedback.hidden = true;
+}
+
+function renderCodeQuestion({ preserveFocus = false } = {}) {
+  const question = currentQuestion();
+  const hadFocus = document.activeElement === elements["code-input"];
+  if (state.codeQuestionId !== question.id) {
+    state.codeQuestionId = question.id;
+    state.codeValue = "";
+    state.codeHintsShown = 0;
+    state.codeAttemptIncorrect = false;
+  }
+
+  const locked = Boolean(state.currentAnswer);
+  elements["code-language"].textContent = question.code.language;
+  elements["code-prefix"].textContent = question.code.prefix;
+  elements["code-suffix"].textContent = question.code.suffix;
+  elements["code-input"].value = state.codeValue;
+  elements["code-input"].disabled = locked;
+  elements["code-submit"].hidden = locked;
+  elements["code-hint"].disabled = locked || state.codeHintsShown >= question.code.hints.length;
+  elements["code-reset"].disabled = locked;
+  elements["code-solution"].disabled = locked;
+  elements["code-hint"].textContent = state.codeHintsShown === 0
+    ? t("showHint")
+    : state.codeHintsShown < question.code.hints.length ? t("nextHint") : t("noMoreHints");
+  elements["code-error"].hidden = !state.codeAttemptIncorrect;
+  elements["code-error"].textContent = state.codeAttemptIncorrect ? t("codeIncorrect") : "";
+  renderCodeHints();
+  if (!locked && (hadFocus || !preserveFocus)) elements["code-input"].focus({ preventScroll: true });
+}
+
+function renderCodeHints() {
+  const hints = currentQuestion().code.hints.slice(0, state.codeHintsShown);
+  elements["code-hints"].hidden = hints.length === 0;
+  elements["code-hints"].replaceChildren();
+  hints.forEach((hint, index) => {
+    const paragraph = document.createElement("p");
+    const label = document.createElement("strong");
+    label.textContent = `${t("hintLabel", index + 1)}: `;
+    paragraph.append(label, document.createTextNode(localize(hint, state.language)));
+    elements["code-hints"].append(paragraph);
+  });
+}
+
+function submitCodeAnswer(event) {
+  event.preventDefault();
+  if (state.currentAnswer) return;
+  state.codeValue = elements["code-input"].value;
+  if (!state.codeValue.trim()) {
+    state.codeAttemptIncorrect = true;
+    elements["code-error"].textContent = t("codeAnswerRequired");
+    elements["code-error"].hidden = false;
+    return;
+  }
+  if (isCorrectCodeAnswer(currentQuestion().code, state.codeValue)) {
+    finishCodeQuestion(true, false);
+    return;
+  }
+  state.codeAttemptIncorrect = true;
+  renderCodeQuestion({ preserveFocus: true });
+}
+
+function finishCodeQuestion(isCorrect, solutionRevealed) {
+  if (state.currentAnswer) return;
+  const question = currentQuestion();
+  state.currentAnswer = { selected: [state.codeValue], isCorrect, solutionRevealed };
+  state.answers.push({ question, ...state.currentAnswer });
+  renderQuestion({ preserveCodeFocus: true });
+  elements.feedback.focus();
+}
+
+function showCodeHint() {
+  const hints = currentQuestion().code.hints;
+  if (state.codeHintsShown < hints.length) state.codeHintsShown += 1;
+  renderCodeQuestion({ preserveFocus: true });
+}
+
+function resetCode() {
+  state.codeValue = "";
+  state.codeAttemptIncorrect = false;
+  renderCodeQuestion();
+}
+
+function revealCodeSolution() {
+  finishCodeQuestion(false, true);
 }
 
 function renderTerminalQuestion({ preserveFocus = false } = {}) {
@@ -398,14 +511,18 @@ function submitAnswer(event) {
 
 function renderFeedback() {
   const { isCorrect } = state.currentAnswer;
-  const terminalSolution = currentQuestion().type === "terminal" && state.currentAnswer.solutionRevealed;
+  const solutionRevealed = ["terminal", "code"].includes(currentQuestion().type) && state.currentAnswer.solutionRevealed;
   elements.feedback.hidden = false;
   elements.feedback.className = `feedback ${isCorrect ? "is-correct" : "is-incorrect"}`;
-  elements["feedback-icon"].textContent = isCorrect ? "✓" : terminalSolution ? "i" : "×";
-  elements["feedback-title"].textContent = terminalSolution ? t("solutionTitle") : t(isCorrect ? "correctTitle" : "incorrectTitle");
+  elements["feedback-icon"].textContent = isCorrect ? "✓" : solutionRevealed ? "i" : "×";
+  elements["feedback-title"].textContent = solutionRevealed ? t("solutionTitle") : t(isCorrect ? "correctTitle" : "incorrectTitle");
   elements["feedback-explanation"].textContent = localize(currentQuestion().explanation, state.language);
-  elements["feedback-solution"].hidden = !terminalSolution;
-  elements["feedback-solution"].textContent = terminalSolution ? currentQuestion().terminal.solution.join("\n") : "";
+  elements["feedback-solution"].hidden = !solutionRevealed;
+  elements["feedback-solution"].textContent = solutionRevealed
+    ? currentQuestion().type === "terminal"
+      ? currentQuestion().terminal.solution.join("\n")
+      : buildCodeSolution(currentQuestion().code)
+    : "";
   elements["next-question"].textContent = t(state.currentIndex === state.questions.length - 1 ? "showResults" : "nextQuestion");
 }
 
@@ -417,7 +534,7 @@ function nextQuestion() {
   }
   state.currentIndex += 1;
   state.currentAnswer = null;
-  clearTerminalState();
+  clearInteractiveState();
   renderQuestion();
   elements["question-heading"].focus?.();
 }
@@ -461,7 +578,7 @@ function resetToSetup() {
   state.questions = [];
   state.answers = [];
   state.currentAnswer = null;
-  clearTerminalState();
+  clearInteractiveState();
   showView("setup-view");
 }
 
@@ -477,6 +594,15 @@ function bindEvents() {
   elements["terminal-hint"].addEventListener("click", showTerminalHint);
   elements["terminal-reset"].addEventListener("click", resetTerminal);
   elements["terminal-solution"].addEventListener("click", revealTerminalSolution);
+  elements["code-form"].addEventListener("submit", submitCodeAnswer);
+  elements["code-input"].addEventListener("input", () => {
+    state.codeValue = elements["code-input"].value;
+    state.codeAttemptIncorrect = false;
+    elements["code-error"].hidden = true;
+  });
+  elements["code-hint"].addEventListener("click", showCodeHint);
+  elements["code-reset"].addEventListener("click", resetCode);
+  elements["code-solution"].addEventListener("click", revealCodeSolution);
   elements["next-question"].addEventListener("click", nextQuestion);
   elements["retry-wrong"].addEventListener("click", retryWrongAnswers);
   elements["new-round"].addEventListener("click", resetToSetup);

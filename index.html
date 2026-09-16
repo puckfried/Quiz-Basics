@@ -125,6 +125,32 @@
             <p class="terminal-solution-note" data-i18n="solutionNote">Wenn du die Lösung anzeigst, wird die Aufgabe als nicht gelöst gewertet.</p>
           </section>
 
+          <section id="code-panel" class="code-panel" hidden>
+            <div class="code-window">
+              <div class="code-window__bar" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <strong id="code-language"></strong>
+              </div>
+              <div class="code-editor">
+                <pre id="code-prefix" class="code-context"></pre>
+                <form id="code-form" autocomplete="off">
+                  <label class="visually-hidden" for="code-input" data-i18n="codeInputLabel">Fehlenden Code eingeben</label>
+                  <textarea id="code-input" class="code-input" rows="3" spellcheck="false" autocapitalize="none" maxlength="2000"></textarea>
+                  <p id="code-error" class="code-error" role="alert" hidden></p>
+                  <button id="code-submit" class="primary-button" type="submit" data-i18n="checkCode">Code prüfen</button>
+                </form>
+                <pre id="code-suffix" class="code-context"></pre>
+              </div>
+            </div>
+            <div class="code-actions">
+              <button id="code-hint" class="secondary-button" type="button" data-i18n="showHint">Hinweis anzeigen</button>
+              <button id="code-reset" class="text-button" type="button" data-i18n="resetCode">Code zurücksetzen</button>
+              <button id="code-solution" class="text-button code-solution-button" type="button" data-i18n="showSolution">Lösung anzeigen</button>
+            </div>
+            <div id="code-hints" class="terminal-hints" aria-live="polite" hidden></div>
+            <p class="terminal-solution-note" data-i18n="solutionNote">Wenn du die Lösung anzeigst, wird die Aufgabe als nicht gelöst gewertet.</p>
+          </section>
+
           <form id="answer-form">
             <fieldset id="answer-options" class="answer-options">
               <legend class="visually-hidden" data-i18n="answersLegend">Antwortmöglichkeiten</legend>

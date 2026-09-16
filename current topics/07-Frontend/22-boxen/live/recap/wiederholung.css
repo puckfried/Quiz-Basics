@@ -1,0 +1,12 @@
+
+/* Was passiert hier */
+
+/* Das a Tag wird grün gefärbt */
+a {
+    color: green;
+}
+
+/* Wie kann ich die div mit der Klasse hero selektieren */
+.hero {
+    background-color: green;
+}

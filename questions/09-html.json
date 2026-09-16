@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "html",
+    "title": { "de": "HTML-Grundlagen", "en": "HTML fundamentals" },
+    "group": { "de": "Frontend", "en": "Frontend" },
+    "description": { "de": "Dokumentstruktur, Elemente, Links, Bilder und Formulare", "en": "Document structure, elements, links, images and forms" },
+    "order": 9
+  },
+  "questions": [
+    {
+      "id": "html-001", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Welche Aufgabe hat <!DOCTYPE html> am Anfang eines Dokuments?", "en": "What is the purpose of <!DOCTYPE html> at the start of a document?" },
+      "answers": [
+        { "id": "a", "de": "Es teilt dem Browser mit, dass modernes HTML verwendet wird", "en": "It tells the browser that modern HTML is being used" },
+        { "id": "b", "de": "Es zeigt eine Überschrift auf der Webseite an", "en": "It displays a heading on the web page" },
+        { "id": "c", "de": "Es verbindet automatisch eine CSS-Datei", "en": "It automatically links a CSS file" },
+        { "id": "d", "de": "Es legt die Sprache aller sichtbaren Texte fest", "en": "It sets the language of all visible text" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Die Doctype-Deklaration aktiviert die moderne HTML-Verarbeitung des Browsers.", "en": "The doctype declaration activates the browser's modern HTML processing mode." },
+      "source": "html-css.md#Ein HTML-Grundgerüst"
+    },
+    {
+      "id": "html-002", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Angaben gehören normalerweise in den head-Bereich?", "en": "Which pieces of information normally belong in the head section?" },
+      "answers": [
+        { "id": "a", "de": "Der title für den Browser-Tab", "en": "The title for the browser tab" },
+        { "id": "b", "de": "Die Zeichencodierung mit meta charset", "en": "The character encoding using meta charset" },
+        { "id": "c", "de": "Die Verknüpfung zur CSS-Datei", "en": "The link to the CSS file" },
+        { "id": "d", "de": "Alle sichtbaren Absätze der Seite", "en": "All visible paragraphs on the page" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Der head enthält Informationen und Ressourcen für den Browser; sichtbare Seiteninhalte gehören in den body.", "en": "The head contains information and resources for the browser; visible page content belongs in the body." },
+      "source": "html-css.md#Ein HTML-Grundgerüst"
+    },
+    {
+      "id": "html-003", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "In welchem Element steht der sichtbare Inhalt einer HTML-Seite?", "en": "Which element contains the visible content of an HTML page?" },
+      "answers": [
+        { "id": "a", "de": "body", "en": "body" },
+        { "id": "b", "de": "head", "en": "head" },
+        { "id": "c", "de": "title", "en": "title" },
+        { "id": "d", "de": "meta", "en": "meta" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Überschriften, Absätze, Bilder und andere sichtbare Inhalte werden innerhalb von body notiert.", "en": "Headings, paragraphs, images and other visible content are written inside body." },
+      "source": "html-css.md#Ein HTML-Grundgerüst"
+    },
+    {
+      "id": "html-004", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Was ist href in <a href=\"kontakt.html\">Kontakt</a>?", "en": "What is href in <a href=\"contact.html\">Contact</a>?" },
+      "answers": [
+        { "id": "a", "de": "Ein Attribut", "en": "An attribute" },
+        { "id": "b", "de": "Ein schließendes Element", "en": "A closing element" },
+        { "id": "c", "de": "Ein CSS-Selektor", "en": "A CSS selector" },
+        { "id": "d", "de": "Ein Kommentar", "en": "A comment" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Attribute stehen im öffnenden Tag und liefern einem Element zusätzliche Informationen.", "en": "Attributes appear in the opening tag and provide an element with additional information." },
+      "source": "html-css.md#Elemente, Attribute und Kommentare"
+    },
+    {
+      "id": "html-005", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Elemente sind Void-Elemente und benötigen kein schließendes Tag?", "en": "Which elements are void elements and do not need a closing tag?" },
+      "answers": [
+        { "id": "a", "de": "br", "en": "br" },
+        { "id": "b", "de": "img", "en": "img" },
+        { "id": "c", "de": "input", "en": "input" },
+        { "id": "d", "de": "p", "en": "p" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "br, hr, img und input sind typische Void-Elemente. Ein Absatz braucht dagegen ein schließendes </p>.", "en": "br, hr, img and input are typical void elements. A paragraph, however, needs a closing </p>." },
+      "source": "html-css.md#Elemente, Attribute und Kommentare"
+    },
+    {
+      "id": "html-006", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Welche Aussage zur Überschriftenstruktur ist richtig?", "en": "Which statement about heading structure is correct?" },
+      "answers": [
+        { "id": "a", "de": "h1 ist die wichtigste Überschrift und sollte normalerweise nur einmal vorkommen", "en": "h1 is the most important heading and should normally appear only once" },
+        { "id": "b", "de": "h6 ist immer die größte Überschrift", "en": "h6 is always the largest heading" },
+        { "id": "c", "de": "Überschriften dürfen nur im head stehen", "en": "Headings may only appear in the head" },
+        { "id": "d", "de": "p und h1 haben dieselbe Bedeutung", "en": "p and h1 have the same meaning" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "h1 bezeichnet die Hauptüberschrift; h2 bis h6 bilden nachgeordnete Ebenen.", "en": "h1 identifies the main heading; h2 through h6 form subordinate levels." },
+      "source": "html-css.md#Texte strukturieren"
+    },
+    {
+      "id": "html-007", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Welche Kombination erzeugt eine nummerierte Liste?", "en": "Which combination creates a numbered list?" },
+      "answers": [
+        { "id": "a", "de": "ol mit li-Elementen", "en": "ol with li elements" },
+        { "id": "b", "de": "ul mit p-Elementen", "en": "ul with p elements" },
+        { "id": "c", "de": "div mit hr-Elementen", "en": "div with hr elements" },
+        { "id": "d", "de": "head mit a-Elementen", "en": "head with a elements" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "ol steht für eine geordnete Liste; jeder Eintrag wird mit li ausgezeichnet.", "en": "ol represents an ordered list; each entry is marked up with li." },
+      "source": "html-css.md#Listen erstellen"
+    },
+    {
+      "id": "html-008", "type": "single", "difficulty": "hard",
+      "prompt": { "de": "Eine Seite liegt unter seiten/kontakt.html. Welcher relative Pfad führt zur index.html im übergeordneten Ordner?", "en": "A page is located at pages/contact.html. Which relative path leads to index.html in the parent folder?" },
+      "answers": [
+        { "id": "a", "de": "../index.html", "en": "../index.html" },
+        { "id": "b", "de": "./seiten/index.html", "en": "./pages/index.html" },
+        { "id": "c", "de": "https://index.html", "en": "https://index.html" },
+        { "id": "d", "de": "#index.html", "en": "#index.html" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": ".. wechselt im relativen Pfad eine Ordnerebene nach oben.", "en": "In a relative path, .. moves up one folder level." },
+      "source": "html-css.md#Links und Pfade"
+    },
+    {
+      "id": "html-009", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Warum braucht ein inhaltlich wichtiges Bild einen sinnvollen alt-Text?", "en": "Why does an important content image need meaningful alt text?" },
+      "answers": [
+        { "id": "a", "de": "Er beschreibt Inhalt oder Zweck, wenn das Bild nicht gesehen oder geladen werden kann", "en": "It describes the content or purpose when the image cannot be seen or loaded" },
+        { "id": "b", "de": "Er bestimmt automatisch die Bildgröße", "en": "It automatically determines the image size" },
+        { "id": "c", "de": "Er ersetzt immer den src-Pfad", "en": "It always replaces the src path" },
+        { "id": "d", "de": "Er färbt das Bild im Browser ein", "en": "It colours the image in the browser" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "alt stellt eine textliche Alternative bereit und ist besonders für Barrierefreiheit wichtig.", "en": "alt provides a text alternative and is especially important for accessibility." },
+      "source": "html-css.md#Bilder einbinden"
+    },
+    {
+      "id": "html-010", "type": "single", "difficulty": "hard",
+      "prompt": { "de": "Wie werden label und input korrekt miteinander verbunden?", "en": "How are label and input connected correctly?" },
+      "answers": [
+        { "id": "a", "de": "Der for-Wert des labels entspricht der id des inputs", "en": "The label's for value matches the input's id" },
+        { "id": "b", "de": "Beide erhalten denselben type-Wert", "en": "Both receive the same type value" },
+        { "id": "c", "de": "Das input wird in den head verschoben", "en": "The input is moved into the head" },
+        { "id": "d", "de": "Das label erhält ein src-Attribut", "en": "The label receives a src attribute" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Zum Beispiel verbindet for=\"email\" ein label mit dem input id=\"email\".", "en": "For example, for=\"email\" connects a label to the input with id=\"email\"." },
+      "source": "html-css.md#Ein einfaches Formular"
+    },
+    {
+      "id": "html-011", "type": "multiple", "difficulty": "hard",
+      "prompt": { "de": "Welche Aussagen zu einfachen HTML-Formularen stimmen?", "en": "Which statements about simple HTML forms are true?" },
+      "answers": [
+        { "id": "a", "de": "name bestimmt den Namen, unter dem ein Eingabewert gesendet wird", "en": "name determines the name under which an input value is submitted" },
+        { "id": "b", "de": "type=\"email\" kennzeichnet ein E-Mail-Eingabefeld", "en": "type=\"email\" identifies an email input field" },
+        { "id": "c", "de": "method=\"get\" hängt Formulardaten an die Adresse an", "en": "method=\"get\" appends form data to the address" },
+        { "id": "d", "de": "Ein submit-Button darf nur außerhalb des form stehen", "en": "A submit button may only appear outside the form" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "name, type und method steuern unterschiedliche Teile der Formulareingabe und -übertragung; der Absende-Button gehört normalerweise in das form.", "en": "name, type and method control different parts of form input and submission; the submit button normally belongs inside the form." },
+      "source": "html-css.md#Ein einfaches Formular"
+    },
+    {
+      "id": "html-012", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Was erzeugt die Emmet-Abkürzung ! in einer HTML-Datei?", "en": "What does the Emmet abbreviation ! generate in an HTML file?" },
+      "answers": [
+        { "id": "a", "de": "Ein vollständiges HTML-Grundgerüst", "en": "A complete HTML document skeleton" },
+        { "id": "b", "de": "Nur einen HTML-Kommentar", "en": "Only an HTML comment" },
+        { "id": "c", "de": "Eine CSS-Klasse namens !", "en": "A CSS class named !" },
+        { "id": "d", "de": "Automatisch einen Webserver", "en": "A web server automatically" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Emmet erweitert ! nach Bestätigung mit Tab zu einem HTML-Grundgerüst. Die Abkürzung selbst ist kein HTML.", "en": "After Tab is pressed, Emmet expands ! into an HTML document skeleton. The abbreviation itself is not HTML." },
+      "source": "html-css.md#Emmet in Visual Studio Code"
+    },
+    {
+      "id": "html-013", "type": "code", "difficulty": "easy",
+      "title": { "de": "Zeichencodierung ergänzen", "en": "Add the character encoding" },
+      "prompt": { "de": "Ergänze im head das vollständige Meta-Element für UTF-8.", "en": "Complete the head with the full meta element for UTF-8." },
+      "code": {
+        "language": "html",
+        "prefix": "<!DOCTYPE html>\n<html lang=\"de\">\n<head>\n  ",
+        "suffix": "\n  <title>Lernseite</title>\n</head>\n<body></body>\n</html>",
+        "acceptedAnswers": ["<meta charset=\"UTF-8\">", "<meta charset='UTF-8'>", "<meta charset=\"utf-8\">", "<meta charset='utf-8'>"],
+        "hints": [
+          { "de": "Verwende ein meta-Element mit dem Attribut charset.", "en": "Use a meta element with the charset attribute." },
+          { "de": "Der Wert der Zeichencodierung lautet UTF-8.", "en": "The character encoding value is UTF-8." }
+        ]
+      },
+      "explanation": { "de": "meta charset=\"UTF-8\" sorgt dafür, dass der Browser Zeichen wie ä, ö, ü und € korrekt interpretiert.", "en": "meta charset=\"UTF-8\" ensures that the browser interprets characters such as accented letters and € correctly." },
+      "source": "html-css.md#Ein HTML-Grundgerüst"
+    },
+    {
+      "id": "html-014", "type": "code", "difficulty": "easy",
+      "title": { "de": "Wichtigen Text auszeichnen", "en": "Mark up important text" },
+      "prompt": { "de": "Ergänze ein vollständiges strong-Element mit dem Text wichtig.", "en": "Add a complete strong element containing the text important." },
+      "code": {
+        "language": "html",
+        "prefix": "<p>Dieser Hinweis ist ",
+        "suffix": ".</p>",
+        "acceptedAnswers": ["<strong>wichtig</strong>"],
+        "hints": [
+          { "de": "Der Elementname lautet strong.", "en": "The element name is strong." },
+          { "de": "Du brauchst ein öffnendes und ein schließendes Tag.", "en": "You need an opening and a closing tag." }
+        ]
+      },
+      "explanation": { "de": "strong kennzeichnet Text als besonders wichtig und wird von Browsern meist fett dargestellt.", "en": "strong marks text as especially important and is usually displayed in bold by browsers." },
+      "source": "html-css.md#Texte strukturieren"
+    },
+    {
+      "id": "html-015", "type": "code", "difficulty": "medium",
+      "title": { "de": "Ungeordnete Liste vervollständigen", "en": "Complete an unordered list" },
+      "prompt": { "de": "Ergänze zwei Listeneinträge für HTML und CSS einschließlich ihrer li-Tags.", "en": "Add two list items for HTML and CSS, including their li tags." },
+      "code": {
+        "language": "html",
+        "prefix": "<ul>\n  ",
+        "suffix": "\n</ul>",
+        "acceptedAnswers": ["<li>HTML</li>\n  <li>CSS</li>", "<li>HTML</li>\n<li>CSS</li>"],
+        "hints": [
+          { "de": "Jeder Eintrag einer Liste steht in einem li-Element.", "en": "Each list entry belongs in an li element." },
+          { "de": "Schreibe zwei vollständige li-Elemente untereinander.", "en": "Write two complete li elements on separate lines." }
+        ]
+      },
+      "explanation": { "de": "ul enthält die ungeordnete Liste, während jedes li genau einen Listeneintrag auszeichnet.", "en": "ul contains the unordered list, while each li marks up one list item." },
+      "source": "html-css.md#Listen erstellen"
+    },
+    {
+      "id": "html-016", "type": "code", "difficulty": "medium",
+      "title": { "de": "Relativen Rücklink ergänzen", "en": "Add a relative back link" },
+      "prompt": { "de": "Die Datei liegt in einem Unterordner. Ergänze das öffnende a-Tag, das eine Ebene höher zur index.html führt.", "en": "The file is in a subfolder. Add the opening a tag that links one level up to index.html." },
+      "code": {
+        "language": "html",
+        "prefix": "",
+        "suffix": "Startseite</a>",
+        "acceptedAnswers": ["<a href=\"../index.html\">", "<a href='../index.html'>"],
+        "hints": [
+          { "de": "Ein Link verwendet das Element a und das Attribut href.", "en": "A link uses the a element and the href attribute." },
+          { "de": "Zwei Punkte wechseln eine Ordnerebene nach oben.", "en": "Two dots move up one folder level." }
+        ]
+      },
+      "explanation": { "de": "Der relative Pfad ../index.html führt aus dem aktuellen Unterordner zur index.html im Elternordner.", "en": "The relative path ../index.html leads from the current subfolder to index.html in its parent folder." },
+      "source": "html-css.md#Links und Pfade"
+    },
+    {
+      "id": "html-017", "type": "code", "difficulty": "hard",
+      "title": { "de": "Bild barrierearm einbinden", "en": "Embed an accessible image" },
+      "prompt": { "de": "Ergänze ein vollständiges img-Element für images/katze.jpg mit dem alt-Text Schwarze Katze.", "en": "Add a complete img element for images/katze.jpg with the alt text Schwarze Katze." },
+      "code": {
+        "language": "html",
+        "prefix": "<figure>\n  ",
+        "suffix": "\n</figure>",
+        "acceptedAnswers": ["<img src=\"images/katze.jpg\" alt=\"Schwarze Katze\">", "<img alt=\"Schwarze Katze\" src=\"images/katze.jpg\">", "<img src='images/katze.jpg' alt='Schwarze Katze'>"],
+        "hints": [
+          { "de": "Der Dateipfad steht im Attribut src.", "en": "The file path belongs in the src attribute." },
+          { "de": "Die Bildbeschreibung steht im Attribut alt; img braucht kein schließendes Tag.", "en": "The image description belongs in the alt attribute; img does not need a closing tag." }
+        ]
+      },
+      "explanation": { "de": "src nennt die Bilddatei und alt liefert eine textliche Alternative zum Bild.", "en": "src identifies the image file and alt provides a text alternative to the image." },
+      "source": "html-css.md#Bilder einbinden"
+    },
+    {
+      "id": "html-018", "type": "code", "difficulty": "hard",
+      "title": { "de": "Formularfeld beschriften", "en": "Label a form field" },
+      "prompt": { "de": "Ergänze label und E-Mail-Eingabefeld so, dass for und id übereinstimmen.", "en": "Add the label and email input so that for and id match." },
+      "code": {
+        "language": "html",
+        "prefix": "<form action=\"#\" method=\"post\">\n  ",
+        "suffix": "\n  <button type=\"submit\">Absenden</button>\n</form>",
+        "acceptedAnswers": ["<label for=\"email\">E-Mail</label>\n  <input id=\"email\" name=\"email\" type=\"email\">", "<label for='email'>E-Mail</label>\n  <input id='email' name='email' type='email'>"],
+        "hints": [
+          { "de": "Setze beim label for=\"email\" und beim input id=\"email\".", "en": "Set for=\"email\" on the label and id=\"email\" on the input." },
+          { "de": "Das input benötigt außerdem name=\"email\" und type=\"email\".", "en": "The input also needs name=\"email\" and type=\"email\"." }
+        ]
+      },
+      "explanation": { "de": "Gleiche Werte für label-for und input-id schaffen die programmatische Verbindung; name legt den übertragenen Feldnamen fest.", "en": "Matching label-for and input-id values create the programmatic connection; name defines the submitted field name." },
+      "source": "html-css.md#Ein einfaches Formular"
+    }
+  ]
+}

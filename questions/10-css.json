@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "css",
+    "title": { "de": "CSS-Grundlagen", "en": "CSS fundamentals" },
+    "group": { "de": "Frontend", "en": "Frontend" },
+    "description": { "de": "Selektoren, Textgestaltung, Box-Modell und Flexbox", "en": "Selectors, text styling, the box model and Flexbox" },
+    "order": 10
+  },
+  "questions": [
+    {
+      "id": "css-001", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Welche Aufgabe übernimmt CSS in einer Webseite?", "en": "What role does CSS play on a web page?" },
+      "answers": [
+        { "id": "a", "de": "Es steuert die Darstellung der HTML-Inhalte", "en": "It controls the presentation of the HTML content" },
+        { "id": "b", "de": "Es ersetzt den Webbrowser", "en": "It replaces the web browser" },
+        { "id": "c", "de": "Es speichert Formulardaten in einer Datenbank", "en": "It stores form data in a database" },
+        { "id": "d", "de": "Es verschlüsselt automatisch jede Verbindung", "en": "It automatically encrypts every connection" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "HTML beschreibt Inhalt und Struktur; CSS legt die visuelle Präsentation fest.", "en": "HTML describes content and structure; CSS defines the visual presentation." },
+      "source": "html-css.md#CSS einbinden"
+    },
+    {
+      "id": "css-002", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Welche Variante bindet eine externe CSS-Datei korrekt ein?", "en": "Which option correctly links an external CSS file?" },
+      "answers": [
+        { "id": "a", "de": "<link rel=\"stylesheet\" href=\"style.css\">", "en": "<link rel=\"stylesheet\" href=\"style.css\">" },
+        { "id": "b", "de": "<style src=\"style.css\">", "en": "<style src=\"style.css\">" },
+        { "id": "c", "de": "<css href=\"style.css\">", "en": "<css href=\"style.css\">" },
+        { "id": "d", "de": "<script rel=\"css\">", "en": "<script rel=\"css\">" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Ein link-Element mit rel=\"stylesheet\" und dem Dateipfad in href gehört in den head.", "en": "A link element with rel=\"stylesheet\" and the file path in href belongs in the head." },
+      "source": "html-css.md#CSS einbinden"
+    },
+    {
+      "id": "css-003", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen zur CSS-Regel p { color: red; } stimmen?", "en": "Which statements about the CSS rule p { color: red; } are true?" },
+      "answers": [
+        { "id": "a", "de": "p ist der Selektor", "en": "p is the selector" },
+        { "id": "b", "de": "color ist die Eigenschaft", "en": "color is the property" },
+        { "id": "c", "de": "red ist der Wert", "en": "red is the value" },
+        { "id": "d", "de": "Das Semikolon beginnt den Selektor", "en": "The semicolon starts the selector" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Eine CSS-Regel besteht aus Selektor und Deklarationen. Doppelpunkt und Semikolon trennen deren Bestandteile.", "en": "A CSS rule consists of a selector and declarations. The colon and semicolon separate their parts." },
+      "source": "html-css.md#Eine CSS-Regel"
+    },
+    {
+      "id": "css-004", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Welcher Selektor wählt alle Elemente mit class=\"highlight\" aus?", "en": "Which selector selects all elements with class=\"highlight\"?" },
+      "answers": [
+        { "id": "a", "de": ".highlight", "en": ".highlight" },
+        { "id": "b", "de": "#highlight", "en": "#highlight" },
+        { "id": "c", "de": "highlight", "en": "highlight" },
+        { "id": "d", "de": "*highlight", "en": "*highlight" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Ein Punkt kennzeichnet einen Klassenselektor. Eine Raute würde eine ID auswählen.", "en": "A dot identifies a class selector. A hash would select an ID." },
+      "source": "html-css.md#Wichtige Selektoren"
+    },
+    {
+      "id": "css-005", "type": "single", "difficulty": "hard",
+      "prompt": { "de": "Welche Reihenfolge beschreibt die Spezifität der behandelten Selektoren von niedrig nach hoch?", "en": "Which order describes the specificity of the covered selectors from low to high?" },
+      "answers": [
+        { "id": "a", "de": "Element, Klasse, ID", "en": "Element, class, ID" },
+        { "id": "b", "de": "ID, Klasse, Element", "en": "ID, class, element" },
+        { "id": "c", "de": "Klasse, Element, ID", "en": "Class, element, ID" },
+        { "id": "d", "de": "Alle drei sind immer gleich spezifisch", "en": "All three always have equal specificity" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "ID-Selektoren sind spezifischer als Klassen, Klassen spezifischer als Elementselektoren.", "en": "ID selectors are more specific than classes, and classes are more specific than element selectors." },
+      "source": "html-css.md#Wichtige Selektoren"
+    },
+    {
+      "id": "css-006", "type": "single", "difficulty": "hard",
+      "prompt": { "de": "Zwei gleich spezifische Regeln setzen unterschiedliche Farben für dasselbe Element. Welche Regel gewinnt?", "en": "Two equally specific rules set different colours on the same element. Which rule wins?" },
+      "answers": [
+        { "id": "a", "de": "Die später geschriebene Regel", "en": "The rule written later" },
+        { "id": "b", "de": "Immer die erste Regel", "en": "Always the first rule" },
+        { "id": "c", "de": "Immer die Regel mit dem kürzeren Wert", "en": "Always the rule with the shorter value" },
+        { "id": "d", "de": "Keine der beiden Regeln", "en": "Neither rule" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Bei gleicher Spezifität entscheidet die Reihenfolge: Die spätere passende Deklaration setzt sich durch.", "en": "When specificity is equal, source order decides: the later matching declaration wins." },
+      "source": "html-css.md#Wichtige Selektoren"
+    },
+    {
+      "id": "css-007", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Werte sind gültige Möglichkeiten, eine rote Textfarbe anzugeben?", "en": "Which values are valid ways to specify red text?" },
+      "answers": [
+        { "id": "a", "de": "red", "en": "red" },
+        { "id": "b", "de": "#ff0000", "en": "#ff0000" },
+        { "id": "c", "de": "rgb(255, 0, 0)", "en": "rgb(255, 0, 0)" },
+        { "id": "d", "de": "font(red)", "en": "font(red)" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Farbnamen, Hex-Werte und RGB-Werte sind gültige CSS-Farbwerte.", "en": "Colour names, hex values and RGB values are valid CSS colour values." },
+      "source": "html-css.md#Farben und Text gestalten"
+    },
+    {
+      "id": "css-008", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Welche Eigenschaft richtet Text innerhalb seines Elements mittig aus?", "en": "Which property centres text within its element?" },
+      "answers": [
+        { "id": "a", "de": "text-align: center;", "en": "text-align: center;" },
+        { "id": "b", "de": "font-style: center;", "en": "font-style: center;" },
+        { "id": "c", "de": "line-height: middle;", "en": "line-height: middle;" },
+        { "id": "d", "de": "color: center;", "en": "color: center;" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "text-align steuert die horizontale Ausrichtung von Inline-Inhalten wie Text.", "en": "text-align controls the horizontal alignment of inline content such as text." },
+      "source": "html-css.md#Farben und Text gestalten"
+    },
+    {
+      "id": "css-009", "type": "single", "difficulty": "easy",
+      "prompt": { "de": "Worin unterscheiden sich padding und margin?", "en": "What is the difference between padding and margin?" },
+      "answers": [
+        { "id": "a", "de": "padding schafft Innenabstand, margin Außenabstand", "en": "padding creates inner spacing, margin creates outer spacing" },
+        { "id": "b", "de": "padding setzt die Textfarbe, margin die Schriftgröße", "en": "padding sets text colour, margin sets font size" },
+        { "id": "c", "de": "padding gilt nur für Bilder, margin nur für Text", "en": "padding only applies to images, margin only to text" },
+        { "id": "d", "de": "Beide Eigenschaften sind immer identisch", "en": "Both properties are always identical" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Padding liegt zwischen Inhalt und Rahmen; Margin liegt außerhalb des Rahmens.", "en": "Padding sits between the content and border; margin sits outside the border." },
+      "source": "html-css.md#Das Box-Modell"
+    },
+    {
+      "id": "css-010", "type": "single", "difficulty": "hard",
+      "prompt": { "de": "Eine Box hat width: 200px, links und rechts je 20px padding sowie je 5px border. Wie breit ist sie ohne border-box insgesamt?", "en": "A box has width: 200px, 20px padding on each side and a 5px border on each side. How wide is it in total without border-box?" },
+      "answers": [
+        { "id": "a", "de": "250px", "en": "250px" },
+        { "id": "b", "de": "225px", "en": "225px" },
+        { "id": "c", "de": "200px", "en": "200px" },
+        { "id": "d", "de": "450px", "en": "450px" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Zur Inhaltsbreite kommen 40px Padding und 10px Border hinzu: 200 + 40 + 10 = 250px.", "en": "Add 40px of padding and 10px of border to the content width: 200 + 40 + 10 = 250px." },
+      "source": "html-css.md#Das Box-Modell"
+    },
+    {
+      "id": "css-011", "type": "single", "difficulty": "medium",
+      "prompt": { "de": "Was bewirkt box-sizing: border-box?", "en": "What does box-sizing: border-box do?" },
+      "answers": [
+        { "id": "a", "de": "Padding und Border werden in die festgelegte Breite und Höhe eingerechnet", "en": "Padding and border are included in the specified width and height" },
+        { "id": "b", "de": "Jedes Element erhält automatisch einen sichtbaren Rahmen", "en": "Every element automatically receives a visible border" },
+        { "id": "c", "de": "Alle Boxen werden zu Flex-Containern", "en": "All boxes become flex containers" },
+        { "id": "d", "de": "Margin wird vollständig entfernt", "en": "Margin is removed completely" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Mit border-box bleibt die angegebene Gesamtbreite einschließlich Padding und Border erhalten.", "en": "With border-box, the specified total width includes padding and border." },
+      "source": "html-css.md#Das Box-Modell"
+    },
+    {
+      "id": "css-012", "type": "multiple", "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen zu einfacher Flexbox stimmen?", "en": "Which statements about basic Flexbox are true?" },
+      "answers": [
+        { "id": "a", "de": "display: flex macht das Elternelement zum Flex-Container", "en": "display: flex makes the parent element a flex container" },
+        { "id": "b", "de": "Die direkten Kinder werden zu Flex-Items", "en": "The direct children become flex items" },
+        { "id": "c", "de": "gap erzeugt gleichmäßige Abstände zwischen den Flex-Items", "en": "gap creates even spacing between flex items" },
+        { "id": "d", "de": "justify-content ändert immer die Textfarbe", "en": "justify-content always changes the text colour" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Flexbox wird am Elterncontainer aktiviert; dessen direkte Kinder werden angeordnet und gap setzt ihre Abstände.", "en": "Flexbox is activated on the parent container; its direct children are arranged and gap sets their spacing." },
+      "source": "html-css.md#Flexbox-Grundlagen"
+    },
+    {
+      "id": "css-013", "type": "code", "difficulty": "easy",
+      "title": { "de": "Klassenselektor ergänzen", "en": "Add a class selector" },
+      "prompt": { "de": "Ergänze den Selektor, der alle Elemente mit class=\"highlight\" auswählt.", "en": "Add the selector that selects all elements with class=\"highlight\"." },
+      "code": {
+        "language": "css",
+        "prefix": "",
+        "suffix": " {\n  color: white;\n  background-color: darkred;\n}",
+        "acceptedAnswers": [".highlight"],
+        "hints": [
+          { "de": "Klassenselektoren beginnen mit einem Punkt.", "en": "Class selectors start with a dot." },
+          { "de": "Schreibe den Punkt direkt vor den Klassennamen highlight.", "en": "Write the dot directly before the class name highlight." }
+        ]
+      },
+      "explanation": { "de": ".highlight wählt alle HTML-Elemente aus, deren class-Attribut diesen Namen enthält.", "en": ".highlight selects all HTML elements whose class attribute contains that name." },
+      "source": "html-css.md#Wichtige Selektoren"
+    },
+    {
+      "id": "css-014", "type": "code", "difficulty": "medium",
+      "title": { "de": "Text lesbar gestalten", "en": "Style readable text" },
+      "prompt": { "de": "Ergänze die beiden Deklarationen für 18px Schriftgröße und eine Zeilenhöhe von 1.5.", "en": "Add the two declarations for an 18px font size and a line height of 1.5." },
+      "code": {
+        "language": "css",
+        "prefix": "p {\n  ",
+        "suffix": "\n}",
+        "acceptedAnswers": ["font-size: 18px;\n  line-height: 1.5;", "font-size: 18px;\nline-height: 1.5;", "line-height: 1.5;\n  font-size: 18px;", "line-height: 1.5;\nfont-size: 18px;"],
+        "hints": [
+          { "de": "Die Eigenschaften heißen font-size und line-height.", "en": "The properties are named font-size and line-height." },
+          { "de": "Beende beide Deklarationen mit einem Semikolon.", "en": "End both declarations with a semicolon." }
+        ]
+      },
+      "explanation": { "de": "font-size setzt die Schriftgröße; eine einheitenlose line-height skaliert passend mit der Schrift.", "en": "font-size sets the text size; a unitless line-height scales with the font." },
+      "source": "html-css.md#Farben und Text gestalten"
+    },
+    {
+      "id": "css-015", "type": "code", "difficulty": "medium",
+      "title": { "de": "Innen- und Außenabstand ergänzen", "en": "Add inner and outer spacing" },
+      "prompt": { "de": "Ergänze 20px Innenabstand und 10px Außenabstand.", "en": "Add 20px of inner spacing and 10px of outer spacing." },
+      "code": {
+        "language": "css",
+        "prefix": ".card {\n  border: 1px solid black;\n  ",
+        "suffix": "\n}",
+        "acceptedAnswers": ["padding: 20px;\n  margin: 10px;", "padding: 20px;\nmargin: 10px;", "margin: 10px;\n  padding: 20px;", "margin: 10px;\npadding: 20px;"],
+        "hints": [
+          { "de": "Innenabstand wird mit padding gesetzt.", "en": "Inner spacing is set with padding." },
+          { "de": "Außenabstand wird mit margin gesetzt.", "en": "Outer spacing is set with margin." }
+        ]
+      },
+      "explanation": { "de": "Padding liegt innerhalb des Rahmens, Margin außerhalb des Rahmens.", "en": "Padding sits inside the border, while margin sits outside it." },
+      "source": "html-css.md#Das Box-Modell"
+    },
+    {
+      "id": "css-016", "type": "code", "difficulty": "hard",
+      "title": { "de": "Block horizontal zentrieren", "en": "Centre a block horizontally" },
+      "prompt": { "de": "Ergänze die Deklaration, die den begrenzten Block horizontal zentriert.", "en": "Add the declaration that centres the constrained block horizontally." },
+      "code": {
+        "language": "css",
+        "prefix": ".content {\n  max-width: 800px;\n  ",
+        "suffix": "\n}",
+        "acceptedAnswers": ["margin: 0 auto;"],
+        "hints": [
+          { "de": "Verwende die Kurzschreibweise der Eigenschaft margin.", "en": "Use the shorthand margin property." },
+          { "de": "Oben und unten soll 0 gelten, links und rechts auto.", "en": "Use 0 for top and bottom, and auto for left and right." }
+        ]
+      },
+      "explanation": { "de": "Bei begrenzter Breite verteilt margin: 0 auto den freien horizontalen Außenabstand gleichmäßig.", "en": "With a constrained width, margin: 0 auto distributes the free horizontal outer space evenly." },
+      "source": "html-css.md#Das Box-Modell"
+    },
+    {
+      "id": "css-017", "type": "code", "difficulty": "medium",
+      "title": { "de": "Flexbox aktivieren", "en": "Activate Flexbox" },
+      "prompt": { "de": "Ergänze die Deklaration, durch die die direkten Kinder zu Flex-Items werden.", "en": "Add the declaration that makes the direct children flex items." },
+      "code": {
+        "language": "css",
+        "prefix": ".container {\n  ",
+        "suffix": "\n  justify-content: center;\n  gap: 20px;\n}",
+        "acceptedAnswers": ["display: flex;"],
+        "hints": [
+          { "de": "Die benötigte Eigenschaft heißt display.", "en": "The required property is display." },
+          { "de": "Setze ihren Wert auf flex.", "en": "Set its value to flex." }
+        ]
+      },
+      "explanation": { "de": "display: flex aktiviert Flexbox am Elterncontainer und macht seine direkten Kinder zu Flex-Items.", "en": "display: flex activates Flexbox on the parent container and makes its direct children flex items." },
+      "source": "html-css.md#Flexbox-Grundlagen"
+    },
+    {
+      "id": "css-018", "type": "code", "difficulty": "hard",
+      "title": { "de": "Flex-Items verteilen", "en": "Distribute flex items" },
+      "prompt": { "de": "Ergänze gleichmäßige 16px Abstände und verteile den übrigen Platz zwischen den Elementen.", "en": "Add even 16px gaps and distribute the remaining space between the items." },
+      "code": {
+        "language": "css",
+        "prefix": ".navigation {\n  display: flex;\n  ",
+        "suffix": "\n}",
+        "acceptedAnswers": ["gap: 16px;\n  justify-content: space-between;", "gap: 16px;\njustify-content: space-between;", "justify-content: space-between;\n  gap: 16px;", "justify-content: space-between;\ngap: 16px;"],
+        "hints": [
+          { "de": "Gleichmäßige Abstände zwischen Items setzt du mit gap.", "en": "Use gap for even spacing between items." },
+          { "de": "Der passende Wert für justify-content lautet space-between.", "en": "The appropriate value for justify-content is space-between." }
+        ]
+      },
+      "explanation": { "de": "gap setzt feste Zwischenräume; justify-content: space-between verteilt zusätzlichen freien Platz zwischen den Items.", "en": "gap sets fixed spacing; justify-content: space-between distributes additional free space between the items." },
+      "source": "html-css.md#Flexbox-Grundlagen"
+    }
+  ]
+}

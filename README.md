@@ -4,7 +4,7 @@ A static, bilingual learning quiz for practising essential computer fundamentals
 
 The light-only interface takes inspiration from the GOV.UK Design System for its typography, 5-pixel spacing scale, form controls, buttons and status messages.
 
-The quiz includes conventional single- and multiple-choice questions as well as interactive Bash and Git exercises in a controlled virtual terminal. It has no runtime dependencies, build step or backend.
+The quiz includes conventional single- and multiple-choice questions, interactive HTML and CSS code-completion tasks, and Bash and Git exercises in a controlled virtual terminal. It has no runtime dependencies, build step or backend.
 
 ## Standalone deployment
 
@@ -76,11 +76,40 @@ The bilingual `title` is shown as the short heading, while `prompt` contains the
 
 Available goal types are `cwdEquals`, `pathExists`, `pathAbsent`, `fileContentEquals`, `gitInitializedAt`, `gitConfigEquals`, `gitStagedExactly` and `gitCommitExists`. Run the validation script after every edit; it also checks the terminal configuration.
 
-When Bash or Git is selected, a round contains at least one terminal exercise when one is available. Terminal exercises are capped at roughly one third of the round, leaving room for knowledge questions.
+When an interactive topic is selected, a round contains at least one practical task when one is available. Terminal and code exercises together are capped at roughly one third of the round, leaving room for knowledge questions.
+
+## Adding a code-completion exercise
+
+Code exercises use `"type": "code"`. The learner fills the single gap between the read-only `prefix` and `suffix`. Answers are compared after normalising line endings and surrounding whitespace; list every other valid spelling or ordering explicitly in `acceptedAnswers`.
+
+```json
+{
+  "id": "css-example",
+  "type": "code",
+  "difficulty": "easy",
+  "title": { "de": "Flexbox aktivieren", "en": "Activate Flexbox" },
+  "prompt": { "de": "Ergänze die Deklaration.", "en": "Add the declaration." },
+  "code": {
+    "language": "css",
+    "prefix": ".container {\n  ",
+    "suffix": "\n}",
+    "acceptedAnswers": ["display: flex;"],
+    "hints": [
+      { "de": "Verwende display.", "en": "Use display." }
+    ]
+  },
+  "explanation": {
+    "de": "display: flex aktiviert Flexbox.",
+    "en": "display: flex activates Flexbox."
+  }
+}
+```
+
+Learners may retry code tasks without a penalty. Revealing the example solution completes the task as incorrect. Terminal and code tasks share an interactive-task quota of roughly one third of each round.
 
 ## Browser tests
 
-Serve the repository locally and open `tests/` in a browser. The test page checks the simulator, command parser, question selection and every terminal exercise's example solution.
+Serve the repository locally and open `tests/` in a browser. The test page checks the simulator, command parser, code-answer evaluation, question selection and every interactive exercise's example solution.
 
 Question files may contain optional source references for editorial traceability. The standard validation and deployment do not resolve these references. If the original source files are available locally, they can be checked explicitly:
 

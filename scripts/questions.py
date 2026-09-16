@@ -27,7 +27,7 @@ for path in files:
         if q.get("id") in ids: errors.append(f"{prefix}: doppelte ID")
         ids.add(q.get("id"))
         question_type = q.get("type")
-        if question_type not in ("single", "multiple", "terminal") or q.get("difficulty") not in ("easy", "medium", "hard"): errors.append(f"{prefix}: Typ/Schwierigkeit ungültig")
+        if question_type not in ("single", "multiple", "terminal", "code") or q.get("difficulty") not in ("easy", "medium", "hard"): errors.append(f"{prefix}: Typ/Schwierigkeit ungültig")
         if any(lang not in q.get("prompt", {}) or lang not in q.get("explanation", {}) for lang in ("de", "en")): errors.append(f"{prefix}: Übersetzung fehlt")
         if question_type == "terminal":
             terminal = q.get("terminal", {})
@@ -46,6 +46,15 @@ for path in files:
                 if goal.get("type") == "gitStagedExactly" and not isinstance(goal.get("paths"), list): errors.append(f"{prefix}: Staging-Ziel ungültig")
                 if goal.get("type") == "gitConfigEquals" and goal.get("key") not in ("user.name", "user.email"): errors.append(f"{prefix}: Git-Konfigurationsziel ungültig")
                 if goal.get("type") == "gitCommitExists" and not isinstance(goal.get("message"), str): errors.append(f"{prefix}: Commit-Ziel ungültig")
+        elif question_type == "code":
+            code = q.get("code", {})
+            hints, accepted_answers = code.get("hints", []), code.get("acceptedAnswers", [])
+            if any(lang not in q.get("title", {}) for lang in ("de", "en")): errors.append(f"{prefix}: Code-Titel fehlt")
+            if code.get("language") not in ("html", "css"): errors.append(f"{prefix}: Code-Sprache ungültig")
+            if not isinstance(code.get("prefix"), str) or not isinstance(code.get("suffix"), str): errors.append(f"{prefix}: Code-Kontext ungültig")
+            if not code.get("prefix") and not code.get("suffix"): errors.append(f"{prefix}: Code-Kontext fehlt")
+            if not accepted_answers or any(not isinstance(answer, str) or not answer.strip() for answer in accepted_answers): errors.append(f"{prefix}: Code-Lösung ungültig")
+            if not hints or any(any(lang not in hint for lang in ("de", "en")) for hint in hints): errors.append(f"{prefix}: Code-Hinweise ungültig")
         else:
             answers = q.get("answers", []); answer_ids = {a.get("id") for a in answers}
             if len(answers) < 3 or any(lang not in a for a in answers for lang in ("de", "en")): errors.append(f"{prefix}: Antworten ungültig")
