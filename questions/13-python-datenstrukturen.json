@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "python-datenstrukturen",
+    "title": { "de": "Datenstrukturen und Module", "en": "Data structures and modules" },
+    "group": { "de": "Python", "en": "Python" },
+    "description": {
+      "de": "Listen, Tupel, Dictionaries, Datenverarbeitung und Module",
+      "en": "Lists, tuples, dictionaries, data processing and modules"
+    },
+    "order": 13
+  },
+  "questions": [
+    {
+      "id": "python-datenstrukturen-001",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Welche Eigenschaft beschreibt eine Python-Liste?", "en": "Which property describes a Python list?" },
+      "answers": [
+        { "id": "a", "de": "Sie speichert mehrere Werte in einer Reihenfolge.", "en": "It stores multiple values in an order." },
+        { "id": "b", "de": "Sie kann immer nur einen einzigen Boolean enthalten.", "en": "It can only ever contain one boolean." },
+        { "id": "c", "de": "Ihre Elemente besitzen keine Positionen.", "en": "Its elements have no positions." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Eine Liste ist eine geordnete, veränderbare Sammlung. Jedes Element besitzt eine Position, die über einen Index angesprochen werden kann.", "en": "A list is an ordered, mutable collection. Each element has a position that can be addressed by an index." },
+      "source": "28-func/README.md#erste Listen"
+    },
+    {
+      "id": "python-datenstrukturen-002",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Welcher Ausdruck greift auf das erste Element der Liste `products` zu?", "en": "Which expression accesses the first element of the list `products`?" },
+      "answers": [
+        { "id": "a", "de": "`products[1]`", "en": "`products[1]`" },
+        { "id": "b", "de": "`products[0]`", "en": "`products[0]`" },
+        { "id": "c", "de": "`products{0}`", "en": "`products{0}`" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Listenindizes beginnen bei `0`. Daher wählt `products[0]` das erste Element aus.", "en": "List indices start at `0`. Therefore, `products[0]` selects the first element." },
+      "source": "28-func/README.md#erste Listen"
+    },
+    {
+      "id": "python-datenstrukturen-003",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen zu Listen, Tupeln und Dictionaries stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about lists, tuples, and dictionaries are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "Listen sind geordnet und veränderbar.", "en": "Lists are ordered and mutable." },
+        { "id": "b", "de": "Tupel sind nach dem Erstellen unveränderbar.", "en": "Tuples are immutable after creation." },
+        { "id": "c", "de": "Dictionaries ordnen Werte benannten Schlüsseln zu.", "en": "Dictionaries map values to named keys." },
+        { "id": "d", "de": "Dictionaries werden ausschließlich über numerische Indizes gelesen.", "en": "Dictionaries are read exclusively through numeric indices." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Listen und Tupel speichern geordnete Werte, unterscheiden sich aber bei der Veränderbarkeit. Dictionaries verwenden Schlüssel-Wert-Paare statt reiner Positionszugriffe.", "en": "Lists and tuples store ordered values but differ in mutability. Dictionaries use key-value pairs rather than purely positional access." },
+      "source": "30-files/lesson-article-de.md#Der direkte Vergleich"
+    },
+    {
+      "id": "python-datenstrukturen-004",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Wie wird im Dictionary `product` der Wert zum Schlüssel `\"name\"` gelesen?", "en": "How is the value for the key `\"name\"` read from the dictionary `product`?" },
+      "answers": [
+        { "id": "a", "de": "`product[\"name\"]`", "en": "`product[\"name\"]`" },
+        { "id": "b", "de": "`product(\"name\")`", "en": "`product(\"name\")`" },
+        { "id": "c", "de": "`product[0].name`", "en": "`product[0].name`" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Bei einem Dictionary wird ein Wert über seinen Schlüssel gelesen. Der String `\"name\"` steht deshalb in eckigen Klammern.", "en": "A dictionary value is read through its key. The string `\"name\"` therefore appears in square brackets." },
+      "source": "29-dictionary/README.md#Dictionaries"
+    },
+    {
+      "id": "python-datenstrukturen-005",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Was wählt `products[0][\"name\"]` bei einer Liste mit Produkt-Dictionaries aus?", "en": "What does `products[0][\"name\"]` select from a list of product dictionaries?" },
+      "answers": [
+        { "id": "a", "de": "Die Namen aller Produkte", "en": "The names of all products" },
+        { "id": "b", "de": "Den Wert `name` im ersten Produkt-Dictionary", "en": "The `name` value in the first product dictionary" },
+        { "id": "c", "de": "Das letzte Dictionary ohne seinen Namen", "en": "The last dictionary without its name" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Der Listenindex `[0]` wählt zuerst das erste Produkt-Dictionary. Der anschließende Schlüsselzugriff `[\"name\"]` liest daraus die Eigenschaft `name`.", "en": "The list index `[0]` first selects the first product dictionary. The following key access `[\"name\"]` reads its `name` property." },
+      "source": "29-dictionary/README.md#Eine Liste mit Dictionaries"
+    },
+    {
+      "id": "python-datenstrukturen-006",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Was bewirkt `products[0][\"stock\"] = 9`?", "en": "What does `products[0][\"stock\"] = 9` do?" },
+      "answers": [
+        { "id": "a", "de": "Es fügt neun neue Dictionaries zur Liste hinzu.", "en": "It adds nine new dictionaries to the list." },
+        { "id": "b", "de": "Es entfernt das erste Produkt.", "en": "It removes the first product." },
+        { "id": "c", "de": "Es setzt den Bestand des ersten Produkt-Dictionaries auf 9.", "en": "It sets the stock of the first product dictionary to 9." }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Zuerst wird das erste Dictionary der Liste gewählt. Anschließend ersetzt die Zuweisung den Wert des Schlüssels `stock` in genau diesem Dictionary.", "en": "First, the list's first dictionary is selected. The assignment then replaces the value of the `stock` key in that dictionary." },
+      "source": "29-dictionary/README.md#Produkte durchlaufen und verändern"
+    },
+    {
+      "id": "python-datenstrukturen-007",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen beschreiben Filtern und Aggregieren richtig? Wähle alle richtigen Antworten aus.", "en": "Which statements correctly describe filtering and aggregation? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "Beim Filtern können passende Produkte in einer neuen Liste gesammelt werden.", "en": "When filtering, matching products can be collected in a new list." },
+        { "id": "b", "de": "Beim Aggregieren kann aus mehreren Datensätzen ein Gesamtwert entstehen.", "en": "Aggregation can produce one total from multiple records." },
+        { "id": "c", "de": "Eine neue Ergebnisliste kann aufgebaut werden, ohne die ursprüngliche Liste zu verändern.", "en": "A new result list can be built without changing the original list." },
+        { "id": "d", "de": "Filtern bedeutet immer, die Quelldaten vollständig zu löschen.", "en": "Filtering always means deleting all source data." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Filtern wählt passende Datensätze aus, häufig in eine neue Liste. Aggregieren fasst mehrere Werte zu einem Ergebnis wie dem gesamten Lagerwert zusammen.", "en": "Filtering selects matching records, often into a new list. Aggregation combines several values into one result such as total inventory value." },
+      "source": "29-dictionary/README.md#Daten filtern und auswerten"
+    },
+    {
+      "id": "python-datenstrukturen-008",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": {
+        "de": "Die Liste enthält `[{\"price\": 2.5, \"stock\": 4}, {\"price\": 3.0, \"stock\": 2}]`. Welcher Gesamtwert entsteht, wenn für jedes Produkt `price * stock` addiert wird?",
+        "en": "The list contains `[{\"price\": 2.5, \"stock\": 4}, {\"price\": 3.0, \"stock\": 2}]`. What total results when `price * stock` is added for each product?"
+      },
+      "answers": [
+        { "id": "a", "de": "`11.5`", "en": "`11.5`" },
+        { "id": "b", "de": "`16.0`", "en": "`16.0`" },
+        { "id": "c", "de": "`20.0`", "en": "`20.0`" },
+        { "id": "d", "de": "`24.0`", "en": "`24.0`" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Das erste Produkt hat den Wert `2.5 * 4 = 10`, das zweite `3.0 * 2 = 6`. Zusammen ergeben sie `16.0`.", "en": "The first product has a value of `2.5 * 4 = 10`, and the second `3.0 * 2 = 6`. Together they total `16.0`." },
+      "source": "29-dictionary/README.md#Daten filtern und auswerten"
+    },
+    {
+      "id": "python-datenstrukturen-009",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Was ist ein Python-Modul im grundlegenden Unterrichtsbeispiel?", "en": "What is a Python module in the basic classroom example?" },
+      "answers": [
+        { "id": "a", "de": "Eine Python-Datei, die zusammengehörigen Code wie Funktionen enthalten kann", "en": "A Python file that can contain related code such as functions" },
+        { "id": "b", "de": "Ein spezieller Datentyp nur für ganze Zahlen", "en": "A special data type only for whole numbers" },
+        { "id": "c", "de": "Eine Schleife ohne Abbruchbedingung", "en": "A loop without a stopping condition" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Ein Modul ist grundsätzlich eine Python-Datei. Funktionen können darin thematisch gebündelt und von einem anderen Programm importiert werden.", "en": "A module is fundamentally a Python file. Related functions can be grouped in it and imported by another program." },
+      "source": "29-dictionary/README.md#Ein eigenes Modul"
+    },
+    {
+      "id": "python-datenstrukturen-010",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Nach `import inventory_tools`: Wie wird die Funktion `calculate_inventory_value` aus diesem Modul aufgerufen?", "en": "After `import inventory_tools`, how is the function `calculate_inventory_value` from that module called?" },
+      "answers": [
+        { "id": "a", "de": "`inventory_tools[calculate_inventory_value](products)`", "en": "`inventory_tools[calculate_inventory_value](products)`" },
+        { "id": "b", "de": "`calculate_inventory_value.inventory_tools(products)`", "en": "`calculate_inventory_value.inventory_tools(products)`" },
+        { "id": "c", "de": "`inventory_tools.calculate_inventory_value(products)`", "en": "`inventory_tools.calculate_inventory_value(products)`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Beim vollständigen Modulimport steht zuerst der Modulname. Über den Punkt wird anschließend auf die gewünschte Funktion zugegriffen.", "en": "With a full module import, the module name comes first. A dot then accesses the required function." },
+      "source": "29-dictionary/README.md#Ein eigenes Modul"
+    },
+    {
+      "id": "python-datenstrukturen-011",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen zu Modulen und Imports stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about modules and imports are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "Die Standardbibliothek stellt fertige Module für typische Aufgaben bereit.", "en": "The standard library provides ready-made modules for common tasks." },
+        { "id": "b", "de": "Eigene Python-Dateien können als Module verwendet werden, wenn Python sie finden kann.", "en": "Your own Python files can be used as modules when Python can find them." },
+        { "id": "c", "de": "Zusammengehörige Funktionen in einem Modul können das Hauptprogramm übersichtlicher machen.", "en": "Grouping related functions in a module can make the main program clearer." },
+        { "id": "d", "de": "`import` wandelt jedes Dictionary automatisch in ein Tupel um.", "en": "`import` automatically converts every dictionary into a tuple." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Module bündeln wiederverwendbaren Code. Sie können aus der Standardbibliothek stammen oder als eigene auffindbare Python-Dateien angelegt werden.", "en": "Modules group reusable code. They can come from the standard library or be created as your own Python files that Python can locate." },
+      "source": "31-except-logs/lesson-article-de.md#Standardmodule importieren und nutzen"
+    },
+    {
+      "id": "python-datenstrukturen-012",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": { "de": "Was geschieht beim Zugriff auf eine Variable, die nur innerhalb einer Funktion angelegt wurde, von außerhalb dieser Funktion?", "en": "What happens when code outside a function accesses a variable that was created only inside that function?" },
+      "answers": [
+        { "id": "a", "de": "Python macht sie automatisch zu einer globalen Variablen.", "en": "Python automatically makes it a global variable." },
+        { "id": "b", "de": "Der Name ist dort normalerweise nicht verfügbar und der Zugriff führt zu einem Fehler.", "en": "The name is normally unavailable there, and access causes an error." },
+        { "id": "c", "de": "Die Funktion wird dadurch automatisch erneut aufgerufen.", "en": "The function is automatically called again." }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Eine innerhalb einer Funktion erzeugte lokale Variable gehört zu deren lokalem Gültigkeitsbereich. Außerhalb ist dieser Name normalerweise nicht definiert.", "en": "A local variable created inside a function belongs to that function's local scope. Outside it, that name is normally not defined." },
+      "source": "31-except-logs/lesson-article-de.md#Lokale Variablen"
+    },
+    {
+      "id": "python-datenstrukturen-013",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Liste anlegen", "en": "Create a list" },
+      "prompt": { "de": "Ergänze die Liste mit den drei Strings Wasser, Kaffee und Tee in dieser Reihenfolge.", "en": "Complete the list with the three strings Wasser, Kaffee, and Tee in that order." },
+      "code": {
+        "language": "python",
+        "prefix": "product_names = ",
+        "suffix": "\nprint(product_names)",
+        "acceptedAnswers": ["[\"Wasser\", \"Kaffee\", \"Tee\"]", "['Wasser', 'Kaffee', 'Tee']"],
+        "hints": [
+          { "de": "Listen werden mit eckigen Klammern geschrieben.", "en": "Lists are written with square brackets." },
+          { "de": "Trenne die drei Strings mit Kommas.", "en": "Separate the three strings with commas." }
+        ]
+      },
+      "explanation": { "de": "Die eckigen Klammern erzeugen eine Liste; die drei Strings werden als geordnete Elemente gespeichert.", "en": "The square brackets create a list, and the three strings are stored as ordered elements." },
+      "source": "28-func/README.md#erste Listen"
+    },
+    {
+      "id": "python-datenstrukturen-014",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Listenelement ergänzen", "en": "Add a list item" },
+      "prompt": { "de": "Ergänze die vollständige Zeile, die den String Saft am Ende der Liste einfügt.", "en": "Add the complete line that appends the string Saft to the end of the list." },
+      "code": {
+        "language": "python",
+        "prefix": "product_names = [\"Wasser\", \"Kaffee\"]\n",
+        "suffix": "\nprint(product_names)",
+        "acceptedAnswers": ["product_names.append(\"Saft\")", "product_names.append('Saft')"],
+        "hints": [
+          { "de": "Die Listenmethode heißt append().", "en": "The list method is called append()." },
+          { "de": "Rufe die Methode über product_names auf und übergib den String Saft.", "en": "Call the method on product_names and pass the string Saft." }
+        ]
+      },
+      "explanation": { "de": "`append()` fügt genau ein neues Element am Ende der vorhandenen Liste hinzu.", "en": "`append()` adds one new element to the end of the existing list." },
+      "source": "28-func/README.md#erste Listen"
+    },
+    {
+      "id": "python-datenstrukturen-015",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Dictionary-Wert lesen", "en": "Read a dictionary value" },
+      "prompt": { "de": "Lies den Wert des Schlüssels stock aus dem Dictionary product.", "en": "Read the value of the stock key from the product dictionary." },
+      "code": {
+        "language": "python",
+        "prefix": "product = {\"name\": \"Wasser\", \"stock\": 9}\nstock = ",
+        "suffix": "\nprint(stock)",
+        "acceptedAnswers": ["product[\"stock\"]", "product['stock']"],
+        "hints": [
+          { "de": "Dictionary-Werte werden über Schlüssel gelesen.", "en": "Dictionary values are read through keys." },
+          { "de": "Schreibe den String stock in eckige Klammern hinter product.", "en": "Put the string stock in square brackets after product." }
+        ]
+      },
+      "explanation": { "de": "`product[\"stock\"]` greift über den Schlüssel `stock` auf den zugehörigen Wert 9 zu.", "en": "`product[\"stock\"]` uses the `stock` key to access its associated value, 9." },
+      "source": "29-dictionary/README.md#Dictionaries"
+    },
+    {
+      "id": "python-datenstrukturen-016",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Verschachtelte Daten lesen", "en": "Read nested data" },
+      "prompt": { "de": "Lies den Namen aus dem ersten Produkt-Dictionary der Liste.", "en": "Read the name from the first product dictionary in the list." },
+      "code": {
+        "language": "python",
+        "prefix": "products = [{\"name\": \"Wasser\"}, {\"name\": \"Kaffee\"}]\nfirst_name = ",
+        "suffix": "\nprint(first_name)",
+        "acceptedAnswers": ["products[0][\"name\"]", "products[0]['name']"],
+        "hints": [
+          { "de": "Wähle zuerst mit Index 0 das erste Listenelement.", "en": "First select the first list element with index 0." },
+          { "de": "Greife danach mit dem Schlüssel name auf den Dictionary-Wert zu.", "en": "Then access the dictionary value with the name key." }
+        ]
+      },
+      "explanation": { "de": "`products[0]` liefert das erste Dictionary; `[\"name\"]` liest daraus die gewünschte Eigenschaft.", "en": "`products[0]` returns the first dictionary, and `[\"name\"]` reads the required property from it." },
+      "source": "29-dictionary/README.md#Eine Liste mit Dictionaries"
+    },
+    {
+      "id": "python-datenstrukturen-017",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Produkte filtern", "en": "Filter products" },
+      "prompt": { "de": "Ergänze die Bedingung, die Produkte mit einem Bestand von höchstens 5 auswählt.", "en": "Complete the condition that selects products with stock of at most 5." },
+      "code": {
+        "language": "python",
+        "prefix": "low_stock_products = []\n\nfor product in products:\n    if ",
+        "suffix": ":\n        low_stock_products.append(product)",
+        "acceptedAnswers": ["product[\"stock\"] <= 5", "product['stock'] <= 5"],
+        "hints": [
+          { "de": "Lies den Bestand über den Schlüssel stock.", "en": "Read the stock through the stock key." },
+          { "de": "Höchstens 5 bedeutet kleiner oder gleich 5.", "en": "At most 5 means less than or equal to 5." }
+        ]
+      },
+      "explanation": { "de": "Die Bedingung liest den Bestand jedes aktuellen Produkt-Dictionaries und wählt Werte bis einschließlich 5 aus.", "en": "The condition reads the stock of each current product dictionary and selects values up to and including 5." },
+      "source": "29-dictionary/README.md#Daten filtern und auswerten"
+    },
+    {
+      "id": "python-datenstrukturen-018",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Modulfunktion aufrufen", "en": "Call a module function" },
+      "prompt": { "de": "Rufe calculate_inventory_value aus dem importierten Modul inventory_tools auf und übergib products.", "en": "Call calculate_inventory_value from the imported inventory_tools module and pass products." },
+      "code": {
+        "language": "python",
+        "prefix": "import inventory_tools\n\nproducts = [{\"price\": 1.5, \"stock\": 4}]\ntotal_value = ",
+        "suffix": "\nprint(total_value)",
+        "acceptedAnswers": ["inventory_tools.calculate_inventory_value(products)"],
+        "hints": [
+          { "de": "Nach einem vollständigen Import beginnt der Zugriff mit dem Modulnamen.", "en": "After a full import, access starts with the module name." },
+          { "de": "Verbinde Modul- und Funktionsnamen mit einem Punkt und setze products in die Klammern.", "en": "Join the module and function names with a dot and put products in the parentheses." }
+        ]
+      },
+      "explanation": { "de": "Über den Punkt wird die Funktion im importierten Modul ausgewählt; `products` wird als Argument übergeben.", "en": "The dot selects the function in the imported module, and `products` is passed as its argument." },
+      "source": "29-dictionary/README.md#Ein eigenes Modul"
+    }
+  ]
+}

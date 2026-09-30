@@ -200,6 +200,86 @@
         "order": 10
       },
       "questionCount": 18
+    },
+    {
+      "file": "11-python-grundlagen.json",
+      "topic": {
+        "id": "python-grundlagen",
+        "title": {
+          "de": "Python-Grundlagen",
+          "en": "Python fundamentals"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Sprache, Interpreter, virtuelle Umgebungen, Variablen und Datentypen",
+          "en": "Language, interpreter, virtual environments, variables and data types"
+        },
+        "order": 11
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "12-python-kontrollfluss.json",
+      "topic": {
+        "id": "python-kontrollfluss",
+        "title": {
+          "de": "Kontrollfluss und Funktionen",
+          "en": "Control flow and functions"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Bedingungen, Schleifen, Eingabeprüfung und wiederverwendbare Funktionen",
+          "en": "Conditions, loops, input validation and reusable functions"
+        },
+        "order": 12
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "13-python-datenstrukturen.json",
+      "topic": {
+        "id": "python-datenstrukturen",
+        "title": {
+          "de": "Datenstrukturen und Module",
+          "en": "Data structures and modules"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Listen, Tupel, Dictionaries, Datenverarbeitung und Module",
+          "en": "Lists, tuples, dictionaries, data processing and modules"
+        },
+        "order": 13
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "14-python-dateien-fehler.json",
+      "topic": {
+        "id": "python-dateien-fehler",
+        "title": {
+          "de": "Dateien, Fehler und JSON",
+          "en": "Files, errors and JSON"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Pfade, CSV, Exceptions, Logging, JSON und Type Hints",
+          "en": "Paths, CSV, exceptions, logging, JSON and type hints"
+        },
+        "order": 14
+      },
+      "questionCount": 18
     }
   ]
 }

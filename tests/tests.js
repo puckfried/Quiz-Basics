@@ -105,7 +105,14 @@ for (const file of dataFiles) {
   }
 }
 
-const codeDataFiles = ["../questions/09-html.json", "../questions/10-css.json"];
+const codeDataFiles = [
+  "../questions/09-html.json",
+  "../questions/10-css.json",
+  "../questions/11-python-grundlagen.json",
+  "../questions/12-python-kontrollfluss.json",
+  "../questions/13-python-datenstrukturen.json",
+  "../questions/14-python-dateien-fehler.json",
+];
 for (const file of codeDataFiles) {
   const data = await fetch(file).then((response) => response.json());
   for (const question of data.questions.filter((item) => item.type === "code")) {

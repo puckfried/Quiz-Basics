@@ -50,7 +50,7 @@ for path in files:
             code = q.get("code", {})
             hints, accepted_answers = code.get("hints", []), code.get("acceptedAnswers", [])
             if any(lang not in q.get("title", {}) for lang in ("de", "en")): errors.append(f"{prefix}: Code-Titel fehlt")
-            if code.get("language") not in ("html", "css"): errors.append(f"{prefix}: Code-Sprache ungültig")
+            if code.get("language") not in ("html", "css", "python"): errors.append(f"{prefix}: Code-Sprache ungültig")
             if not isinstance(code.get("prefix"), str) or not isinstance(code.get("suffix"), str): errors.append(f"{prefix}: Code-Kontext ungültig")
             if not code.get("prefix") and not code.get("suffix"): errors.append(f"{prefix}: Code-Kontext fehlt")
             if not accepted_answers or any(not isinstance(answer, str) or not answer.strip() for answer in accepted_answers): errors.append(f"{prefix}: Code-Lösung ungültig")

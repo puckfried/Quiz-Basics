@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "python-kontrollfluss",
+    "title": { "de": "Kontrollfluss und Funktionen", "en": "Control flow and functions" },
+    "group": { "de": "Python", "en": "Python" },
+    "description": {
+      "de": "Bedingungen, Schleifen, Eingabeprüfung und wiederverwendbare Funktionen",
+      "en": "Conditions, loops, input validation and reusable functions"
+    },
+    "order": 12
+  },
+  "questions": [
+    {
+      "id": "python-kontrollfluss-001",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Welchen Datentyp liefert ein Vergleich wie `cpu_usage > 80`?", "en": "Which data type does a comparison such as `cpu_usage > 80` return?" },
+      "answers": [
+        { "id": "a", "de": "`str`", "en": "`str`" },
+        { "id": "b", "de": "`float`", "en": "`float`" },
+        { "id": "c", "de": "`bool`", "en": "`bool`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Ein Vergleich ist entweder wahr oder falsch und ergibt deshalb `True` oder `False`, also einen Boolean.", "en": "A comparison is either true or false and therefore produces `True` or `False`, a boolean." },
+      "source": "26-kontrollstruktur/README.md#Werte vergleichen"
+    },
+    {
+      "id": "python-kontrollfluss-002",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Welche Aussage beschreibt `=` und `==` richtig?", "en": "Which statement correctly describes `=` and `==`?" },
+      "answers": [
+        { "id": "a", "de": "`=` weist einen Wert zu, `==` vergleicht zwei Werte.", "en": "`=` assigns a value, while `==` compares two values." },
+        { "id": "b", "de": "Beide Zeichenfolgen beenden eine Schleife.", "en": "Both character sequences end a loop." },
+        { "id": "c", "de": "`==` weist einen Wert zu, `=` vergleicht zwei Werte.", "en": "`==` assigns a value, while `=` compares two values." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Mit `=` wird ein Name an einen Wert gebunden. `==` prüft dagegen, ob zwei Werte gleich sind.", "en": "`=` binds a name to a value. `==`, in contrast, checks whether two values are equal." },
+      "source": "26-kontrollstruktur/README.md#Werte vergleichen"
+    },
+    {
+      "id": "python-kontrollfluss-003",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": {
+        "de": "Warum muss in einer `if`-/`elif`-Kette die kritischere Bedingung `cpu_usage > 90` vor `cpu_usage > 75` stehen?",
+        "en": "Why must the more critical condition `cpu_usage > 90` come before `cpu_usage > 75` in an `if`/`elif` chain?"
+      },
+      "answers": [
+        { "id": "a", "de": "Weil Python Bedingungen alphabetisch sortiert.", "en": "Because Python sorts conditions alphabetically." },
+        { "id": "b", "de": "Weil Python von oben nach unten prüft und nach dem ersten passenden Zweig die übrigen Zweige überspringt.", "en": "Because Python checks from top to bottom and skips the remaining branches after the first match." },
+        { "id": "c", "de": "Weil `elif` nur mit kleineren Zahlen funktioniert.", "en": "Because `elif` only works with smaller numbers." }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Ein Wert über 90 erfüllt auch die Bedingung über 75. Stünde die allgemeinere Bedingung zuerst, würde der kritischere Zweig nie erreicht.", "en": "A value above 90 also satisfies the condition above 75. If the more general condition came first, the critical branch would never be reached." },
+      "source": "26-kontrollstruktur/README.md#Zwischen mehreren Wegen entscheiden"
+    },
+    {
+      "id": "python-kontrollfluss-004",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen zu logischen Operatoren stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about logical operators are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "Bei `and` müssen beide Bedingungen wahr sein.", "en": "With `and`, both conditions must be true." },
+        { "id": "b", "de": "Bei `or` muss mindestens eine Bedingung wahr sein.", "en": "With `or`, at least one condition must be true." },
+        { "id": "c", "de": "`not` kehrt einen Wahrheitswert um.", "en": "`not` reverses a truth value." },
+        { "id": "d", "de": "`or` weist automatisch einen neuen Variablenwert zu.", "en": "`or` automatically assigns a new variable value." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "`and`, `or` und `not` verbinden oder verändern boolesche Ausdrücke. Sie führen nicht automatisch eine Zuweisung aus.", "en": "`and`, `or`, and `not` combine or change boolean expressions. They do not automatically perform an assignment." },
+      "source": "26-kontrollstruktur/README.md#Bedingungen verbinden"
+    },
+    {
+      "id": "python-kontrollfluss-005",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Werte durchläuft `for number in range(1, 4)`?", "en": "Which values does `for number in range(1, 4)` iterate over?" },
+      "answers": [
+        { "id": "a", "de": "`0`, `1`, `2`, `3`", "en": "`0`, `1`, `2`, `3`" },
+        { "id": "b", "de": "`1`, `2`, `3`", "en": "`1`, `2`, `3`" },
+        { "id": "c", "de": "`1`, `2`, `3`, `4`", "en": "`1`, `2`, `3`, `4`" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Der Startwert ist enthalten, die obere Grenze jedoch nicht. Deshalb liefert `range(1, 4)` die Werte 1 bis 3.", "en": "The start value is included, but the upper bound is not. Therefore, `range(1, 4)` provides the values 1 through 3." },
+      "source": "26-kontrollstruktur/README.md#Einen Ablauf wiederholen"
+    },
+    {
+      "id": "python-kontrollfluss-006",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Wann passen `for`- beziehungsweise `while`-Schleifen? Wähle alle richtigen Antworten aus.", "en": "When are `for` and `while` loops suitable? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`for` passt gut zu einer bekannten Anzahl von Durchläufen oder zu den Elementen einer Sammlung.", "en": "`for` works well for a known number of iterations or the elements of a collection." },
+        { "id": "b", "de": "`while` passt gut, wenn bis zu einer Bedingung wiederholt werden soll.", "en": "`while` works well when repetition should continue until a condition is met." },
+        { "id": "c", "de": "Eine `while`-Schleife kann ohne erreichbaren Abbruch unbegrenzt laufen.", "en": "A `while` loop can run indefinitely without a reachable stopping point." },
+        { "id": "d", "de": "`for` kann grundsätzlich keine Strings durchlaufen.", "en": "`for` can never iterate over strings." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "`for` verarbeitet eine bekannte Folge von Werten, auch Zeichen eines Strings. `while` orientiert sich an einer Bedingung und benötigt einen erreichbaren Abbruch.", "en": "`for` processes a known sequence of values, including characters in a string. `while` follows a condition and needs a reachable stopping point." },
+      "source": "27-loops/README.md#Zusammenfassung"
+    },
+    {
+      "id": "python-kontrollfluss-007",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": { "de": "Welche Bedingung prüft, ob `number` ohne Rest durch 3 teilbar ist?", "en": "Which condition checks whether `number` is divisible by 3 without a remainder?" },
+      "answers": [
+        { "id": "a", "de": "`number / 3 == 0`", "en": "`number / 3 == 0`" },
+        { "id": "b", "de": "`number // 3 == 3`", "en": "`number // 3 == 3`" },
+        { "id": "c", "de": "`number % 3 == 0`", "en": "`number % 3 == 0`" },
+        { "id": "d", "de": "`number * 3 == 0`", "en": "`number * 3 == 0`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Der Modulo-Operator `%` liefert den Divisionsrest. Ist dieser Rest null, ist die Zahl ohne Rest teilbar.", "en": "The modulo operator `%` returns the division remainder. If that remainder is zero, the number is evenly divisible." },
+      "source": "27-loops/README.md#Zahlen miteinander addieren"
+    },
+    {
+      "id": "python-kontrollfluss-008",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Warum wird ein Zähler normalerweise vor einer Schleife mit `counter = 0` angelegt?", "en": "Why is a counter usually created before a loop with `counter = 0`?" },
+      "answers": [
+        { "id": "a", "de": "Damit sein bisheriger Wert über alle Durchläufe hinweg erhöht und danach verwendet werden kann.", "en": "So its accumulated value can be increased across all iterations and used afterwards." },
+        { "id": "b", "de": "Damit die Schleife nach dem ersten Durchlauf automatisch endet.", "en": "So the loop automatically ends after its first iteration." },
+        { "id": "c", "de": "Damit jeder Durchlauf den Zähler wieder auf null setzt.", "en": "So every iteration resets the counter to zero." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Der Startwert wird einmal gesetzt. Innerhalb der Schleife wird er bei jedem passenden Fall erhöht, sodass am Ende die Gesamtsumme erhalten bleibt.", "en": "The initial value is set once. Inside the loop it is increased for each matching case, leaving the total available at the end." },
+      "source": "27-loops/README.md#Zählen von Buchstaben eines Strings"
+    },
+    {
+      "id": "python-kontrollfluss-009",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen zu `break` und `continue` stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about `break` and `continue` are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`break` beendet die gesamte Schleife.", "en": "`break` ends the entire loop." },
+        { "id": "b", "de": "`continue` springt direkt zum nächsten Schleifendurchlauf.", "en": "`continue` jumps directly to the next loop iteration." },
+        { "id": "c", "de": "Beide Anweisungen definieren automatisch eine neue Funktion.", "en": "Both statements automatically define a new function." },
+        { "id": "d", "de": "Ein erreichbares `break` kann eine `while True`-Schleife kontrolliert beenden.", "en": "A reachable `break` can stop a `while True` loop in a controlled way." }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": { "de": "`break` verlässt die Schleife vollständig. `continue` überspringt nur den Rest des aktuellen Durchlaufs und beginnt den nächsten.", "en": "`break` leaves the loop completely. `continue` only skips the rest of the current iteration and begins the next one." },
+      "source": "28-func/README.md#Rückblick"
+    },
+    {
+      "id": "python-kontrollfluss-010",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Wann wird der eingerückte Code einer mit `def show_menu():` definierten Funktion ausgeführt?", "en": "When is the indented code of a function defined with `def show_menu():` executed?" },
+      "answers": [
+        { "id": "a", "de": "Sofort beim Lesen des Schlüsselworts `def`", "en": "Immediately when the `def` keyword is read" },
+        { "id": "b", "de": "Erst wenn die Funktion zum Beispiel mit `show_menu()` aufgerufen wird", "en": "Only when the function is called, for example with `show_menu()`" },
+        { "id": "c", "de": "Nur nach einem `break`", "en": "Only after a `break`" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "`def` legt die Funktion und ihren Codeblock fest. Erst ein Funktionsaufruf führt diesen Block aus.", "en": "`def` defines the function and its code block. Only a function call executes that block." },
+      "source": "28-func/README.md#Eine erste Funktion"
+    },
+    {
+      "id": "python-kontrollfluss-011",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aufgabe haben die Parameter `quantity` und `price` in `calculate_item_total(quantity, price)`?", "en": "What is the purpose of the parameters `quantity` and `price` in `calculate_item_total(quantity, price)`?" },
+      "answers": [
+        { "id": "a", "de": "Sie beenden die Funktion ohne Ergebnis.", "en": "They end the function without a result." },
+        { "id": "b", "de": "Sie schreiben die Ausgabe automatisch in eine Datei.", "en": "They automatically write the output to a file." },
+        { "id": "c", "de": "Sie nehmen beim Aufruf konkrete Eingabewerte für die Berechnung entgegen.", "en": "They receive concrete input values for the calculation when the function is called." }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Parameter machen eine Funktion wiederverwendbar: Verschiedene Aufrufe können unterschiedliche Werte einsetzen, ohne den Funktionscode zu ändern.", "en": "Parameters make a function reusable: different calls can supply different values without changing the function code." },
+      "source": "28-func/README.md#Werte mit Parametern übergeben"
+    },
+    {
+      "id": "python-kontrollfluss-012",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Was unterscheidet `return total_cost` von `print(total_cost)`?", "en": "What distinguishes `return total_cost` from `print(total_cost)`?" },
+      "answers": [
+        { "id": "a", "de": "`return` gibt den Wert an die Aufrufstelle zurück, sodass er gespeichert und weiterverarbeitet werden kann.", "en": "`return` gives the value back to the call site so it can be stored and processed further." },
+        { "id": "b", "de": "`return` zeigt den Wert nur im Terminal an.", "en": "`return` only displays the value in the terminal." },
+        { "id": "c", "de": "`print` und `return` sind in Funktionen immer austauschbar.", "en": "`print` and `return` are always interchangeable in functions." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "`print()` erzeugt eine sichtbare Ausgabe. `return` liefert ein Ergebnis aus der Funktion heraus, das der aufrufende Code weiterverwenden kann.", "en": "`print()` creates visible output. `return` sends a result out of the function for the calling code to continue using." },
+      "source": "28-func/README.md#print()-und-return"
+    },
+    {
+      "id": "python-kontrollfluss-013",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Volljährigkeit prüfen", "en": "Check adulthood" },
+      "prompt": { "de": "Ergänze die Bedingung, die prüft, ob age mindestens 18 ist.", "en": "Complete the condition that checks whether age is at least 18." },
+      "code": {
+        "language": "python",
+        "prefix": "age = 20\nif ",
+        "suffix": ":\n    print(\"volljährig\")",
+        "acceptedAnswers": ["age >= 18"],
+        "hints": [
+          { "de": "Die Variable heißt age.", "en": "The variable is named age." },
+          { "de": "Mindestens wird mit größer-gleich geprüft.", "en": "At least is checked with greater-than-or-equal." }
+        ]
+      },
+      "explanation": { "de": "`age >= 18` ist wahr, wenn age gleich 18 oder größer ist.", "en": "`age >= 18` is true when age is equal to or greater than 18." },
+      "source": "26-kontrollstruktur/README.md#Werte vergleichen"
+    },
+    {
+      "id": "python-kontrollfluss-014",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Drei Werte durchlaufen", "en": "Iterate over three values" },
+      "prompt": { "de": "Ergänze den range-Aufruf, sodass check_number nacheinander 1, 2 und 3 erhält.", "en": "Complete the range call so check_number receives 1, 2, and 3 in order." },
+      "code": {
+        "language": "python",
+        "prefix": "for check_number in ",
+        "suffix": ":\n    print(check_number)",
+        "acceptedAnswers": ["range(1, 4)"],
+        "hints": [
+          { "de": "Der Startwert von range() ist enthalten.", "en": "The start value of range() is included." },
+          { "de": "Die obere Grenze ist nicht enthalten und muss deshalb 4 sein.", "en": "The upper bound is excluded and therefore needs to be 4." }
+        ]
+      },
+      "explanation": { "de": "`range(1, 4)` liefert die Werte 1, 2 und 3; die obere Grenze 4 gehört nicht mehr dazu.", "en": "`range(1, 4)` produces 1, 2, and 3; the upper bound 4 is excluded." },
+      "source": "26-kontrollstruktur/README.md#Einen Ablauf wiederholen"
+    },
+    {
+      "id": "python-kontrollfluss-015",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Kritische Auslastung erkennen", "en": "Detect critical usage" },
+      "prompt": { "de": "Ergänze die Bedingung: Der Status soll kritisch sein, wenn CPU oder Arbeitsspeicher über 90 liegen.", "en": "Complete the condition: the status should be critical when CPU or memory is above 90." },
+      "code": {
+        "language": "python",
+        "prefix": "cpu_usage = 95\nmemory_usage = 70\nif ",
+        "suffix": ":\n    status = \"KRITISCH\"",
+        "acceptedAnswers": ["cpu_usage > 90 or memory_usage > 90", "memory_usage > 90 or cpu_usage > 90"],
+        "hints": [
+          { "de": "Beide Einzelvergleiche verwenden > 90.", "en": "Both individual comparisons use > 90." },
+          { "de": "Mindestens eine Bedingung soll reichen; verbinde sie mit or.", "en": "At least one condition should be enough; join them with or." }
+        ]
+      },
+      "explanation": { "de": "`or` ergibt wahr, sobald mindestens einer der beiden Auslastungswerte über 90 liegt.", "en": "`or` becomes true as soon as at least one of the two usage values is above 90." },
+      "source": "26-kontrollstruktur/README.md#Bedingungen verbinden"
+    },
+    {
+      "id": "python-kontrollfluss-016",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Schleife beenden", "en": "Stop a loop" },
+      "prompt": { "de": "Ergänze die Anweisung, die die while-Schleife beendet, sobald x eingegeben wurde.", "en": "Add the statement that stops the while loop when x is entered." },
+      "code": {
+        "language": "python",
+        "prefix": "while True:\n    user_input = input(\"x zum Beenden: \")\n    if user_input == \"x\":\n        ",
+        "suffix": "",
+        "acceptedAnswers": ["break"],
+        "hints": [
+          { "de": "Gesucht ist nicht continue, denn die Schleife soll vollständig enden.", "en": "The answer is not continue because the loop should end completely." },
+          { "de": "Das Schlüsselwort beginnt mit b.", "en": "The keyword starts with b." }
+        ]
+      },
+      "explanation": { "de": "`break` beendet die komplette Schleife und setzt den Programmablauf danach fort.", "en": "`break` ends the entire loop and program flow continues afterwards." },
+      "source": "27-loops/README.md#Erster While-Loop"
+    },
+    {
+      "id": "python-kontrollfluss-017",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Funktion definieren", "en": "Define a function" },
+      "prompt": { "de": "Ergänze die vollständige Funktionskopfzeile für calculate_item_total mit den Parametern quantity und price.", "en": "Add the complete function header for calculate_item_total with the parameters quantity and price." },
+      "code": {
+        "language": "python",
+        "prefix": "",
+        "suffix": "\n    total_cost = quantity * price\n    return total_cost",
+        "acceptedAnswers": ["def calculate_item_total(quantity, price):"],
+        "hints": [
+          { "de": "Eine Funktionsdefinition beginnt mit def.", "en": "A function definition starts with def." },
+          { "de": "Die Parameter stehen in runden Klammern; die Zeile endet mit einem Doppelpunkt.", "en": "The parameters go in parentheses, and the line ends with a colon." }
+        ]
+      },
+      "explanation": { "de": "`def` leitet die Definition ein, die Parameter stehen in Klammern und der Doppelpunkt eröffnet den eingerückten Funktionsblock.", "en": "`def` starts the definition, the parameters appear in parentheses, and the colon opens the indented function block." },
+      "source": "28-func/README.md#Werte mit Parametern übergeben"
+    },
+    {
+      "id": "python-kontrollfluss-018",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Ergebnis zurückgeben", "en": "Return a result" },
+      "prompt": { "de": "Ergänze die eingerückte Zeile, die das Produkt von quantity und price an die Aufrufstelle zurückgibt.", "en": "Add the indented line that returns the product of quantity and price to the call site." },
+      "code": {
+        "language": "python",
+        "prefix": "def calculate_item_total(quantity, price):\n    ",
+        "suffix": "\n\ntotal = calculate_item_total(3, 2.5)\nprint(total)",
+        "acceptedAnswers": ["return quantity * price"],
+        "hints": [
+          { "de": "Verwende das Schlüsselwort return statt print.", "en": "Use the return keyword instead of print." },
+          { "de": "Der zurückgegebene Ausdruck multipliziert quantity mit price.", "en": "The returned expression multiplies quantity by price." }
+        ]
+      },
+      "explanation": { "de": "`return` liefert das berechnete Produkt aus der Funktion heraus, sodass es in `total` gespeichert werden kann.", "en": "`return` sends the calculated product out of the function so it can be stored in `total`." },
+      "source": "28-func/README.md#print()-und-return"
+    }
+  ]
+}

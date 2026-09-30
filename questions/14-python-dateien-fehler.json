@@ -1,0 +1,300 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "python-dateien-fehler",
+    "title": { "de": "Dateien, Fehler und JSON", "en": "Files, errors and JSON" },
+    "group": { "de": "Python", "en": "Python" },
+    "description": {
+      "de": "Pfade, CSV, Exceptions, Logging, JSON und Type Hints",
+      "en": "Paths, CSV, exceptions, logging, JSON and type hints"
+    },
+    "order": 14
+  },
+  "questions": [
+    {
+      "id": "python-dateien-fehler-001",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Was beschreibt ein Objekt der Klasse `Path` aus `pathlib`?", "en": "What does an object of the `Path` class from `pathlib` describe?" },
+      "answers": [
+        { "id": "a", "de": "Einen Dateipfad", "en": "A file path" },
+        { "id": "b", "de": "Eine HTTP-Antwort", "en": "An HTTP response" },
+        { "id": "c", "de": "Eine Endlosschleife", "en": "An infinite loop" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "`Path` stellt einen Pfad als Objekt dar. Pfadteile lassen sich damit lesbar verbinden und weiter untersuchen.", "en": "`Path` represents a path as an object. It makes path parts readable to combine and inspect." },
+      "source": "30-files/README.md#Pfade mit pathlib"
+    },
+    {
+      "id": "python-dateien-fehler-002",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Was prüft `data_path.exists()`?", "en": "What does `data_path.exists()` check?" },
+      "answers": [
+        { "id": "a", "de": "Ob die Datei gültiges JSON enthält", "en": "Whether the file contains valid JSON" },
+        { "id": "b", "de": "Ob der beschriebene Datei- oder Ordnerpfad existiert", "en": "Whether the described file or directory path exists" },
+        { "id": "c", "de": "Ob alle CSV-Werte Zahlen sind", "en": "Whether all CSV values are numbers" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Die Methode `.exists()` prüft die Existenz des Pfads. Sie bewertet nicht automatisch den Inhalt einer vorhandenen Datei.", "en": "The `.exists()` method checks whether the path exists. It does not automatically evaluate the contents of an existing file." },
+      "source": "30-files/README.md#Pfade mit pathlib"
+    },
+    {
+      "id": "python-dateien-fehler-003",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen über CSV-Dateien stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about CSV files are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "CSV speichert tabellarische Daten als Text.", "en": "CSV stores tabular data as text." },
+        { "id": "b", "de": "Die erste Zeile kann Feldnamen enthalten.", "en": "The first row can contain field names." },
+        { "id": "c", "de": "Weitere Zeilen können jeweils einen Datensatz beschreiben.", "en": "Further rows can each describe one record." },
+        { "id": "d", "de": "CSV-Werte werden beim Lesen immer automatisch zu passenden Zahlen konvertiert.", "en": "CSV values are always automatically converted to suitable numbers when read." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "CSV ist ein textbasiertes Tabellenformat. Feldnamen können in der Kopfzeile stehen; eingelesene Werte bleiben zunächst Strings und müssen bei Bedarf umgewandelt werden.", "en": "CSV is a text-based tabular format. Field names can be in the header row; read values initially remain strings and must be converted when needed." },
+      "source": "30-files/README.md#CSV"
+    },
+    {
+      "id": "python-dateien-fehler-004",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": { "de": "`csv.DictReader` liest in einer Zeile den Wert `\"3\"` aus der Spalte `stock`. Was ist nötig, bevor damit sicher wie mit einer ganzen Zahl gerechnet wird?", "en": "`csv.DictReader` reads the value `\"3\"` from the `stock` column in a row. What is needed before safely calculating with it as a whole number?" },
+      "answers": [
+        { "id": "a", "de": "Den Schlüssel mit `append()` verdoppeln", "en": "Duplicate the key with `append()`" },
+        { "id": "b", "de": "Das Dictionary in eine Endlosschleife setzen", "en": "Put the dictionary into an infinite loop" },
+        { "id": "c", "de": "Den Wert mit `int()` umwandeln", "en": "Convert the value with `int()`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "`DictReader` verwendet die Kopfzeile als Schlüssel, liefert die eingelesenen Werte aber zunächst als Strings. Passender Zahlentext kann mit `int()` umgewandelt werden.", "en": "`DictReader` uses the header row as keys but initially returns read values as strings. Suitable numeric text can be converted with `int()`." },
+      "source": "30-files/README.md#CSV als Dictionaries lesen"
+    },
+    {
+      "id": "python-dateien-fehler-005",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen zu den Dateimodi stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about file modes are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`\"r\"` öffnet eine Datei zum Lesen.", "en": "`\"r\"` opens a file for reading." },
+        { "id": "b", "de": "`\"w\"` öffnet zum Schreiben und kann vorhandenen Inhalt ersetzen.", "en": "`\"w\"` opens for writing and can replace existing content." },
+        { "id": "c", "de": "`\"a\"` hängt neue Daten am Ende an.", "en": "`\"a\"` appends new data at the end." },
+        { "id": "d", "de": "`\"r\"` löscht die Datei nach dem Lesen.", "en": "`\"r\"` deletes the file after reading." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "`r`, `w` und `a` stehen für Lesen, Schreiben und Anhängen. Besonders bei `w` muss beachtet werden, dass vorhandener Inhalt überschrieben werden kann.", "en": "`r`, `w`, and `a` stand for reading, writing, and appending. With `w` in particular, existing content can be overwritten." },
+      "source": "31-except-logs/lesson-article-de.md#Wichtige Modi bei open()"
+    },
+    {
+      "id": "python-dateien-fehler-006",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Warum wird für Dateizugriffe häufig `with` verwendet?", "en": "Why is `with` often used for file access?" },
+      "answers": [
+        { "id": "a", "de": "Weil dadurch jede Datei automatisch zu JSON wird", "en": "Because it automatically turns every file into JSON" },
+        { "id": "b", "de": "Weil die Datei nach dem Block zuverlässig geschlossen wird, auch wenn ein Fehler auftritt", "en": "Because the file is reliably closed after the block, even if an error occurs" },
+        { "id": "c", "de": "Weil dann keine Einrückung nötig ist", "en": "Because indentation is then unnecessary" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Der Kontextmanager des `with`-Blocks kümmert sich um das Schließen der Datei. Dadurch kann ein vergessenes manuelles `close()` vermieden werden.", "en": "The `with` block's context manager takes care of closing the file. This avoids forgetting a manual `close()`." },
+      "source": "31-except-logs/lesson-article-de.md#Das with-Statement für Dateizugriffe nutzen"
+    },
+    {
+      "id": "python-dateien-fehler-007",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Warum ist `except ValueError:` meist besser als ein leeres `except:` bei einer Zahlenumwandlung?", "en": "Why is `except ValueError:` usually better than a bare `except:` for a numeric conversion?" },
+      "answers": [
+        { "id": "a", "de": "Es behandelt gezielt den erwarteten Umwandlungsfehler, ohne beliebige andere Fehler zu verstecken.", "en": "It specifically handles the expected conversion error without hiding arbitrary other errors." },
+        { "id": "b", "de": "Es verhindert grundsätzlich jeden Fehler im gesamten Programm.", "en": "It prevents every error in the entire program." },
+        { "id": "c", "de": "Es wandelt ungültigen Text automatisch in die Zahl null um.", "en": "It automatically converts invalid text to the number zero." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Eine konkrete Exception-Klasse zeigt, welcher erwartbare Fehler behandelt wird. Ein zu allgemeines `except` kann dagegen auch Programmierfehler verdecken.", "en": "A specific exception class shows which expected error is handled. An overly broad `except` can also hide programming errors." },
+      "source": "31-except-logs/README.md#Kurzer Einstieg: try und except"
+    },
+    {
+      "id": "python-dateien-fehler-008",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": { "de": "Was geschieht, wenn der Code im `try`-Block keinen Fehler auslöst?", "en": "What happens when the code in a `try` block raises no error?" },
+      "answers": [
+        { "id": "a", "de": "Der passende `except`-Block wird trotzdem immer ausgeführt.", "en": "The matching `except` block is still always executed." },
+        { "id": "b", "de": "Der `try`-Block läuft normal zu Ende, der `except`-Block wird übersprungen und das Programm läuft weiter.", "en": "The `try` block finishes normally, the `except` block is skipped, and the program continues." },
+        { "id": "c", "de": "Python wiederholt den `try`-Block automatisch endlos.", "en": "Python automatically repeats the `try` block forever." }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Ein `except`-Block ist nur für eine passende Exception zuständig. Ohne diese Exception wird er nicht ausgeführt; danach geht der normale Programmablauf weiter.", "en": "An `except` block only handles a matching exception. Without that exception, it does not run, and normal program flow continues." },
+      "source": "31-except-logs/lesson-article-de.md#Ablauf von try und except"
+    },
+    {
+      "id": "python-dateien-fehler-009",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussagen unterscheiden Logging und Benutzerausgaben sinnvoll? Wähle alle richtigen Antworten aus.", "en": "Which statements usefully distinguish logging and user output? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`logging.info()` kann Informationen über den Programmablauf festhalten.", "en": "`logging.info()` can record information about program flow." },
+        { "id": "b", "de": "`logging.error()` kann Fehlerereignisse dokumentieren.", "en": "`logging.error()` can document error events." },
+        { "id": "c", "de": "`print()` bleibt für direkte Ausgaben an Benutzer:innen geeignet.", "en": "`print()` remains suitable for direct output to users." },
+        { "id": "d", "de": "Logging macht jede Fehlerbehandlung mit `try` und `except` überflüssig.", "en": "Logging makes all error handling with `try` and `except` unnecessary." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Logging hält technische Abläufe und Fehler fest, während `print()` sichtbare Programmausgaben liefern kann. Logging behandelt eine Exception nicht automatisch.", "en": "Logging records technical flow and errors, while `print()` can provide visible program output. Logging does not automatically handle an exception." },
+      "source": "31-except-logs/README.md#Zusammenfassung"
+    },
+    {
+      "id": "python-dateien-fehler-010",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": { "de": "Welche Python-Strukturen entstehen typischerweise beim Einlesen eines JSON-Objekts beziehungsweise JSON-Arrays?", "en": "Which Python structures typically result when reading a JSON object and a JSON array?" },
+      "answers": [
+        { "id": "a", "de": "Objekt → Schleife, Array → Funktion", "en": "Object → loop, array → function" },
+        { "id": "b", "de": "Objekt → Float, Array → Boolean", "en": "Object → float, array → boolean" },
+        { "id": "c", "de": "Objekt → Dictionary, Array → Liste", "en": "Object → dictionary, array → list" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "JSON-Objekte entsprechen in Python Dictionaries, JSON-Arrays entsprechen Listen. Der JSON-Wert `null` wird zu `None`.", "en": "JSON objects correspond to Python dictionaries, and JSON arrays correspond to lists. The JSON value `null` becomes `None`." },
+      "source": "32-types-json/README.md#JSON"
+    },
+    {
+      "id": "python-dateien-fehler-011",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Zuordnung für `json.load()` und `json.dump()` ist richtig?", "en": "Which mapping for `json.load()` and `json.dump()` is correct?" },
+      "answers": [
+        { "id": "a", "de": "`load()` schreibt Python-Daten, `dump()` liest JSON.", "en": "`load()` writes Python data, while `dump()` reads JSON." },
+        { "id": "b", "de": "Beide Funktionen prüfen nur, ob ein Pfad existiert.", "en": "Both functions only check whether a path exists." },
+        { "id": "c", "de": "`load()` liest JSON in Python-Daten ein, `dump()` schreibt Python-Daten als JSON.", "en": "`load()` reads JSON into Python data, while `dump()` writes Python data as JSON." }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "`json.load()` liest aus einer geöffneten Datei und erzeugt passende Python-Daten. `json.dump()` serialisiert Python-Daten in eine geöffnete JSON-Datei.", "en": "`json.load()` reads from an open file and creates corresponding Python data. `json.dump()` serialises Python data to an open JSON file." },
+      "source": "32-types-json/README.md#JSON lesen"
+    },
+    {
+      "id": "python-dateien-fehler-012",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": { "de": "Welche Aussage zu Type Hints wie `def total(price: float) -> float:` stimmt?", "en": "Which statement about type hints such as `def total(price: float) -> float:` is correct?" },
+      "answers": [
+        { "id": "a", "de": "Sie beschreiben erwartete Parameter- und Rückgabetypen und helfen beim Lesen, werden aber von Python nicht automatisch erzwungen.", "en": "They describe expected parameter and return types and aid readability, but Python does not automatically enforce them." },
+        { "id": "b", "de": "Sie wandeln jeden übergebenen Wert automatisch in `float` um.", "en": "They automatically convert every supplied value into a `float`." },
+        { "id": "c", "de": "Sie ersetzen den Funktionskörper und berechnen den Rückgabewert.", "en": "They replace the function body and calculate the return value." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Type Hints dokumentieren die erwarteten Typen und unterstützen unter anderem den Editor. Das Laufzeitverhalten der Funktion wird dadurch nicht automatisch geändert.", "en": "Type hints document expected types and support tools such as the editor. They do not automatically change the function's runtime behaviour." },
+      "source": "32-types-json/README.md#Type Hints"
+    },
+    {
+      "id": "python-dateien-fehler-013",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Basisordner bestimmen", "en": "Determine the base directory" },
+      "prompt": { "de": "Erzeuge aus der aktuellen Python-Datei ein Path-Objekt und wähle dessen Elternordner.", "en": "Create a Path object from the current Python file and select its parent directory." },
+      "code": {
+        "language": "python",
+        "prefix": "from pathlib import Path\n\nbase_dir = ",
+        "suffix": "\nprint(base_dir)",
+        "acceptedAnswers": ["Path(__file__).parent"],
+        "hints": [
+          { "de": "Übergib __file__ an Path().", "en": "Pass __file__ to Path()." },
+          { "de": "Die Eigenschaft für den Elternordner heißt parent.", "en": "The property for the parent directory is called parent." }
+        ]
+      },
+      "explanation": { "de": "`Path(__file__)` beschreibt die aktuelle Datei; `.parent` liefert den Ordner, in dem sie liegt.", "en": "`Path(__file__)` describes the current file, and `.parent` returns the directory containing it." },
+      "source": "30-files/README.md#Pfade mit pathlib"
+    },
+    {
+      "id": "python-dateien-fehler-014",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Pfad prüfen", "en": "Check a path" },
+      "prompt": { "de": "Ergänze den Methodenaufruf, der prüft, ob data_path existiert.", "en": "Complete the method call that checks whether data_path exists." },
+      "code": {
+        "language": "python",
+        "prefix": "from pathlib import Path\ndata_path = Path(__file__).parent / \"data\" / \"products.csv\"\npath_exists = data_path.",
+        "suffix": "\nprint(path_exists)",
+        "acceptedAnswers": ["exists()"],
+        "hints": [
+          { "de": "Die gesuchte Methode heißt exists.", "en": "The required method is called exists." },
+          { "de": "Methoden werden mit runden Klammern aufgerufen.", "en": "Methods are called with parentheses." }
+        ]
+      },
+      "explanation": { "de": "`data_path.exists()` liefert einen Boolean, der angibt, ob der Pfad vorhanden ist.", "en": "`data_path.exists()` returns a boolean indicating whether the path exists." },
+      "source": "30-files/README.md#Pfade mit pathlib"
+    },
+    {
+      "id": "python-dateien-fehler-015",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "CSV-Zeilen als Dictionaries lesen", "en": "Read CSV rows as dictionaries" },
+      "prompt": { "de": "Erzeuge aus csv_file einen DictReader, damit jede Datenzeile als Dictionary gelesen wird.", "en": "Create a DictReader from csv_file so each data row is read as a dictionary." },
+      "code": {
+        "language": "python",
+        "prefix": "import csv\n\nwith data_path.open(encoding=\"utf-8\", newline=\"\") as csv_file:\n    reader = ",
+        "suffix": "\n\n    for row in reader:\n        print(row)",
+        "acceptedAnswers": ["csv.DictReader(csv_file)"],
+        "hints": [
+          { "de": "Die Klasse heißt DictReader und gehört zum Modul csv.", "en": "The class is called DictReader and belongs to the csv module." },
+          { "de": "Übergib die geöffnete Datei csv_file in den runden Klammern.", "en": "Pass the open file csv_file inside the parentheses." }
+        ]
+      },
+      "explanation": { "de": "`csv.DictReader` verwendet die Kopfzeile als Schlüssel und liefert für jede weitere Zeile ein Dictionary.", "en": "`csv.DictReader` uses the header row as keys and returns a dictionary for each following row." },
+      "source": "30-files/README.md#CSV als Dictionaries lesen"
+    },
+    {
+      "id": "python-dateien-fehler-016",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Umwandlungsfehler behandeln", "en": "Handle a conversion error" },
+      "prompt": { "de": "Ergänze den vollständigen except-Kopf, der eine ungültige Umwandlung mit float() gezielt behandelt.", "en": "Add the complete except header that specifically handles an invalid conversion with float()." },
+      "code": {
+        "language": "python",
+        "prefix": "try:\n    magnitude = float(input(\"Stärke: \"))\n",
+        "suffix": "\n    print(\"Keine gültige Zahl\")",
+        "acceptedAnswers": ["except ValueError:"],
+        "hints": [
+          { "de": "Eine ungültige Zahlenumwandlung löst ValueError aus.", "en": "An invalid numeric conversion raises ValueError." },
+          { "de": "Der except-Kopf endet mit einem Doppelpunkt.", "en": "The except header ends with a colon." }
+        ]
+      },
+      "explanation": { "de": "`except ValueError:` behandelt genau den erwartbaren Fehler einer ungültigen Zahlenumwandlung.", "en": "`except ValueError:` handles the specific expected error from an invalid numeric conversion." },
+      "source": "31-except-logs/README.md#Kurzer Einstieg: try und except"
+    },
+    {
+      "id": "python-dateien-fehler-017",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "JSON-Datei laden", "en": "Load a JSON file" },
+      "prompt": { "de": "Lies die geöffnete JSON-Datei mit dem json-Modul ein und gib die erzeugten Python-Daten zurück.", "en": "Read the open JSON file with the json module and return the resulting Python data." },
+      "code": {
+        "language": "python",
+        "prefix": "import json\n\ndef load_products(file_path):\n    with file_path.open(encoding=\"utf-8\") as json_file:\n        ",
+        "suffix": "",
+        "acceptedAnswers": ["return json.load(json_file)"],
+        "hints": [
+          { "de": "Verwende json.load() für eine bereits geöffnete Datei.", "en": "Use json.load() for an already open file." },
+          { "de": "Gib das Ergebnis direkt mit return zurück.", "en": "Return the result directly with return." }
+        ]
+      },
+      "explanation": { "de": "`json.load(json_file)` liest den JSON-Text und erzeugt passende Python-Daten; `return` gibt sie aus der Funktion zurück.", "en": "`json.load(json_file)` reads the JSON text and creates corresponding Python data; `return` sends it out of the function." },
+      "source": "32-types-json/README.md#JSON lesen"
+    },
+    {
+      "id": "python-dateien-fehler-018",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Funktion mit Type Hints", "en": "Function with type hints" },
+      "prompt": { "de": "Ergänze die vollständige Funktionskopfzeile: products ist eine Liste von Dictionaries, file_path ein Path und die Funktion gibt nichts zurück.", "en": "Add the complete function header: products is a list of dictionaries, file_path is a Path, and the function returns nothing." },
+      "code": {
+        "language": "python",
+        "prefix": "import json\nfrom pathlib import Path\n\n",
+        "suffix": "\n    with file_path.open(\"w\", encoding=\"utf-8\") as json_file:\n        json.dump(products, json_file, ensure_ascii=False)",
+        "acceptedAnswers": ["def save_products(products: list[dict], file_path: Path) -> None:"],
+        "hints": [
+          { "de": "Schreibe die Typen jeweils nach einem Doppelpunkt hinter den Parameter.", "en": "Write each type after a colon following its parameter." },
+          { "de": "Der Rückgabetyp steht nach -> und lautet None; der Funktionskopf endet mit einem Doppelpunkt.", "en": "The return type follows -> and is None; the function header ends with a colon." }
+        ]
+      },
+      "explanation": { "de": "Die Type Hints dokumentieren eine Liste von Dictionaries und einen Path als Eingaben sowie `None` als Rückgabetyp.", "en": "The type hints document a list of dictionaries and a Path as inputs, and `None` as the return type." },
+      "source": "32-types-json/README.md#Type Hints"
+    }
+  ]
+}

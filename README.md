@@ -4,7 +4,7 @@ A static, bilingual learning quiz for practising essential computer fundamentals
 
 The light-only interface takes inspiration from the GOV.UK Design System for its typography, 5-pixel spacing scale, form controls, buttons and status messages.
 
-The quiz includes conventional single- and multiple-choice questions, interactive HTML and CSS code-completion tasks, and Bash and Git exercises in a controlled virtual terminal. It has no runtime dependencies, build step or backend.
+The quiz includes conventional single- and multiple-choice questions, interactive HTML, CSS and Python code-completion tasks, and Bash and Git exercises in a controlled virtual terminal. It has no runtime dependencies, build step or backend.
 
 ## Standalone deployment
 
@@ -106,6 +106,8 @@ Code exercises use `"type": "code"`. The learner fills the single gap between th
 ```
 
 Learners may retry code tasks without a penalty. Revealing the example solution completes the task as incorrect. Terminal and code tasks share an interactive-task quota of roughly one third of each round.
+
+Code-completion tasks support `html`, `css` and `python`. Python snippets are compared with the configured accepted answers just like HTML and CSS; they are never executed in the browser or on the visitor's computer.
 
 ## Browser tests
 

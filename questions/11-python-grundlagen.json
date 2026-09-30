@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "python-grundlagen",
+    "title": { "de": "Python-Grundlagen", "en": "Python fundamentals" },
+    "group": { "de": "Python", "en": "Python" },
+    "description": {
+      "de": "Sprache, Interpreter, virtuelle Umgebungen, Variablen und Datentypen",
+      "en": "Language, interpreter, virtual environments, variables and data types"
+    },
+    "order": 11
+  },
+  "questions": [
+    {
+      "id": "python-grundlagen-001",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": {
+        "de": "Was ist eine Programmiersprache?",
+        "en": "What is a programming language?"
+      },
+      "answers": [
+        { "id": "a", "de": "Ein Dateiformat nur für Bilder", "en": "A file format only for images" },
+        { "id": "b", "de": "Eine erlernbare Sprache, mit der Menschen Computern Anweisungen geben", "en": "A learnable language people use to give instructions to computers" },
+        { "id": "c", "de": "Ein Bauteil, das Programme speichert", "en": "A component that stores programs" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "de": "Mit einer Programmiersprache formulieren Menschen Anweisungen, die anschließend in einer für den Computer ausführbaren Form verarbeitet werden.",
+        "en": "People use a programming language to express instructions that are then processed in a form the computer can execute."
+      },
+      "source": "24-intro/README.md#Was ist eine Programmiersprache?"
+    },
+    {
+      "id": "python-grundlagen-002",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": {
+        "de": "Welche Aussagen unterscheiden Datenstrukturen und Algorithmen richtig? Wähle alle richtigen Antworten aus.",
+        "en": "Which statements correctly distinguish data structures and algorithms? Select all correct answers."
+      },
+      "answers": [
+        { "id": "a", "de": "Eine Datenstruktur organisiert und speichert Daten.", "en": "A data structure organises and stores data." },
+        { "id": "b", "de": "Ein Algorithmus ist immer eine unsortierte Liste.", "en": "An algorithm is always an unsorted list." },
+        { "id": "c", "de": "Ein Algorithmus beschreibt nachvollziehbare Schritte zu einem Ergebnis.", "en": "An algorithm describes understandable steps leading to a result." },
+        { "id": "d", "de": "Die Wahl der Datenstruktur kann beeinflussen, welcher Algorithmus sinnvoll ist.", "en": "The choice of data structure can influence which algorithm is useful." }
+      ],
+      "correctAnswers": ["a", "c", "d"],
+      "explanation": {
+        "de": "Datenstrukturen legen die Organisation der Daten fest. Algorithmen verarbeiten diese Daten in eindeutigen Schritten; bei der binären Suche wird zum Beispiel eine sortierte Liste benötigt.",
+        "en": "Data structures define how data is organised. Algorithms process that data in clear steps; binary search, for example, requires a sorted list."
+      },
+      "source": "24-intro/README.md#Zusammenspiel von Algorithmus und Datenstruktur: binäre Suche"
+    },
+    {
+      "id": "python-grundlagen-003",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": {
+        "de": "Welche Rolle hat der Python-Interpreter beim Ausführen von `main.py`?",
+        "en": "What role does the Python interpreter have when running `main.py`?"
+      },
+      "answers": [
+        { "id": "a", "de": "Er ersetzt die Python-Datei durch eine HTML-Datei.", "en": "It replaces the Python file with an HTML file." },
+        { "id": "b", "de": "Er speichert ausschließlich die Terminalausgabe.", "en": "It only stores the terminal output." },
+        { "id": "c", "de": "Er liest und verarbeitet den Python-Code und startet dessen Ausführung.", "en": "It reads and processes the Python code and starts its execution." }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "de": "VS Code ist der Editor, während der Interpreter den gespeicherten Python-Code verarbeitet und die Ausgabe oder Fehler im Terminal sichtbar werden.",
+        "en": "VS Code is the editor, while the interpreter processes the saved Python code and makes output or errors visible in the terminal."
+      },
+      "source": "24-intro/README.md#Wie wird unser Code ausgeführt?"
+    },
+    {
+      "id": "python-grundlagen-004",
+      "type": "multiple",
+      "difficulty": "medium",
+      "prompt": {
+        "de": "Welche Vorteile bietet eine virtuelle Python-Umgebung? Wähle alle richtigen Antworten aus.",
+        "en": "Which benefits does a Python virtual environment provide? Select all correct answers."
+      },
+      "answers": [
+        { "id": "a", "de": "Sie macht den Python-Interpreter dauerhaft überflüssig.", "en": "It permanently removes the need for a Python interpreter." },
+        { "id": "b", "de": "Zusätzliche Pakete eines Projekts bleiben von anderen Projekten getrennt.", "en": "Additional packages for one project stay separate from other projects." },
+        { "id": "c", "de": "Unterschiedliche Projekte können unterschiedliche Paketversionen verwenden.", "en": "Different projects can use different package versions." },
+        { "id": "d", "de": "Sie wandelt Python automatisch in HTML um.", "en": "It automatically converts Python into HTML." }
+      ],
+      "correctAnswers": ["b", "c"],
+      "explanation": {
+        "de": "Eine virtuelle Umgebung kapselt die Python-Pakete eines Projekts. So beeinflussen Installationen und Versionen andere Projekte nicht.",
+        "en": "A virtual environment isolates a project's Python packages so installations and versions do not affect other projects."
+      },
+      "source": "24-intro/README.md#Virtuelle Umgebung"
+    },
+    {
+      "id": "python-grundlagen-005",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": {
+        "de": "Wozu dient eine Variable in Python?",
+        "en": "What is a variable used for in Python?"
+      },
+      "answers": [
+        { "id": "a", "de": "Sie verbindet einen Namen mit einem Wert, der später wieder verwendet werden kann.", "en": "It connects a name with a value that can be used again later." },
+        { "id": "b", "de": "Sie beendet das Programm nach jeder Zuweisung.", "en": "It ends the program after every assignment." },
+        { "id": "c", "de": "Sie darf ausschließlich Text enthalten.", "en": "It may only contain text." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "de": "Variablen geben gespeicherten Werten verständliche Namen. Der Wert kann später gelesen, verarbeitet oder durch einen anderen Wert ersetzt werden.",
+        "en": "Variables give stored values meaningful names. The value can later be read, processed, or replaced with another value."
+      },
+      "source": "25-variables/README.md#Variablen"
+    },
+    {
+      "id": "python-grundlagen-006",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": {
+        "de": "Welcher Datentyp passt zum Wert `3.75`?",
+        "en": "Which data type matches the value `3.75`?"
+      },
+      "answers": [
+        { "id": "a", "de": "`bool`", "en": "`bool`" },
+        { "id": "b", "de": "`str`", "en": "`str`" },
+        { "id": "c", "de": "`float`", "en": "`float`" },
+        { "id": "d", "de": "`int`", "en": "`int`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "de": "Ein `float` speichert eine Kommazahl. `int` steht für ganze Zahlen, `str` für Text und `bool` für Wahrheitswerte.",
+        "en": "A `float` stores a decimal number. `int` represents whole numbers, `str` text, and `bool` truth values."
+      },
+      "source": "25-variables/README.md#einfache Datentypen"
+    },
+    {
+      "id": "python-grundlagen-007",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": {
+        "de": "Was bedeutet es, dass Python dynamisch typisiert ist?",
+        "en": "What does it mean that Python is dynamically typed?"
+      },
+      "answers": [
+        { "id": "a", "de": "Variablen dürfen ihren Wert niemals ändern.", "en": "Variables may never change their value." },
+        { "id": "b", "de": "Der Typ einer Variablen ergibt sich aus ihrem aktuellen Wert und muss nicht vorher angegeben werden.", "en": "A variable's type follows from its current value and does not have to be declared beforehand." },
+        { "id": "c", "de": "Jeder Wert wird automatisch in Text umgewandelt.", "en": "Every value is automatically converted to text." }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "de": "Bei einer Zuweisung erkennt Python den Datentyp anhand des Werts. Derselbe Variablenname kann später auch mit einem Wert eines anderen Typs verbunden werden.",
+        "en": "On assignment, Python determines the data type from the value. The same variable name can later be connected to a value of another type."
+      },
+      "source": "25-variables/README.md#einfache Datentypen"
+    },
+    {
+      "id": "python-grundlagen-008",
+      "type": "single",
+      "difficulty": "easy",
+      "prompt": {
+        "de": "Welchen Datentyp liefert `input()` zunächst zurück, wenn eine Person `42` eingibt?",
+        "en": "Which data type does `input()` initially return when a person enters `42`?"
+      },
+      "answers": [
+        { "id": "a", "de": "`str`", "en": "`str`" },
+        { "id": "b", "de": "`int`", "en": "`int`" },
+        { "id": "c", "de": "`float`", "en": "`float`" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "de": "`input()` liefert immer Text. Soll mit der Eingabe gerechnet werden, muss ein passender Text zum Beispiel mit `int()` oder `float()` umgewandelt werden.",
+        "en": "`input()` always returns text. To calculate with the input, suitable text must be converted with `int()` or `float()`, for example."
+      },
+      "source": "25-variables/README.md#Eingaben entegegennehmen und umwandeln"
+    },
+    {
+      "id": "python-grundlagen-009",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": {
+        "de": "Welche Zeile liest eine Eingabe und speichert sie direkt als Kommazahl?",
+        "en": "Which line reads input and stores it directly as a decimal number?"
+      },
+      "answers": [
+        { "id": "a", "de": "`price = input(float(\"Preis: \"))`", "en": "`price = input(float(\"Price: \"))`" },
+        { "id": "b", "de": "`price = str(input(\"Preis: \"))`", "en": "`price = str(input(\"Price: \"))`" },
+        { "id": "c", "de": "`price = float(input(\"Preis: \"))`", "en": "`price = float(input(\"Price: \"))`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "de": "Zuerst liefert `input()` einen String. Der äußere Aufruf von `float()` wandelt diesen anschließend in eine Kommazahl um.",
+        "en": "First, `input()` returns a string. The outer call to `float()` then converts it into a decimal number."
+      },
+      "source": "25-variables/README.md#Eingaben entegegennehmen und umwandeln"
+    },
+    {
+      "id": "python-grundlagen-010",
+      "type": "single",
+      "difficulty": "hard",
+      "prompt": {
+        "de": "Welche Ausgabe erzeugt `print(17 // 5, 17 % 5)`?",
+        "en": "What output does `print(17 // 5, 17 % 5)` produce?"
+      },
+      "answers": [
+        { "id": "a", "de": "`3.4 0`", "en": "`3.4 0`" },
+        { "id": "b", "de": "`3 2`", "en": "`3 2`" },
+        { "id": "c", "de": "`2 3`", "en": "`2 3`" },
+        { "id": "d", "de": "`3 0.4`", "en": "`3 0.4`" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "de": "`//` liefert bei positiven ganzen Zahlen den ganzzahligen Anteil der Division. `%` liefert den Rest: 17 ist dreimal 5 plus Rest 2.",
+        "en": "For positive whole numbers, `//` returns the integer part of the division. `%` returns the remainder: 17 is three times 5 with 2 left over."
+      },
+      "source": "25-variables/types-operations-overview.md#Rechenoperationen"
+    },
+    {
+      "id": "python-grundlagen-011",
+      "type": "multiple",
+      "difficulty": "hard",
+      "prompt": {
+        "de": "Welche Aussagen über Strings stimmen? Wähle alle richtigen Antworten aus.",
+        "en": "Which statements about strings are correct? Select all correct answers."
+      },
+      "answers": [
+        { "id": "a", "de": "`\"Py\" + \"thon\"` ergibt `\"Python\"`.", "en": "`\"Py\" + \"thon\"` results in `\"Python\"`." },
+        { "id": "b", "de": "Der erste Index eines Strings ist `1`.", "en": "The first index of a string is `1`." },
+        { "id": "c", "de": "`\"ha\" * 3` ergibt `\"hahaha\"`.", "en": "`\"ha\" * 3` results in `\"hahaha\"`." },
+        { "id": "d", "de": "`len(\"Python\")` ergibt `6`.", "en": "`len(\"Python\")` results in `6`." }
+      ],
+      "correctAnswers": ["a", "c", "d"],
+      "explanation": {
+        "de": "Strings lassen sich mit `+` verbinden und mit `*` wiederholen. `len()` zählt ihre Zeichen; wie bei anderen Sequenzen beginnt der erste Index bei `0`.",
+        "en": "Strings can be joined with `+` and repeated with `*`. `len()` counts their characters; as with other sequences, the first index is `0`."
+      },
+      "source": "25-variables/types-operations-overview.md#str-–-Zeichenketten--Text"
+    },
+    {
+      "id": "python-grundlagen-012",
+      "type": "single",
+      "difficulty": "medium",
+      "prompt": {
+        "de": "Was bewirkt `.2f` in `f\"Preis: {total:.2f} Euro\"`?",
+        "en": "What does `.2f` do in `f\"Price: {total:.2f} euros\"`?"
+      },
+      "answers": [
+        { "id": "a", "de": "Es multipliziert `total` mit zwei.", "en": "It multiplies `total` by two." },
+        { "id": "b", "de": "Es formatiert den Zahlenwert mit zwei Nachkommastellen.", "en": "It formats the numeric value with two decimal places." },
+        { "id": "c", "de": "Es wandelt den gesamten String in einen Boolean um.", "en": "It converts the entire string into a boolean." }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "de": "Das `f` aktiviert den formatierten String. Der Ausdruck in geschweiften Klammern wird eingesetzt und `.2f` stellt einen Zahlenwert mit zwei Nachkommastellen dar.",
+        "en": "The `f` activates the formatted string. The expression in braces is inserted, and `.2f` displays a numeric value with two decimal places."
+      },
+      "source": "25-variables/README.md#Werte in Texte einsetzen (f-Srings)"
+    },
+    {
+      "id": "python-grundlagen-013",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Text ausgeben", "en": "Print text" },
+      "prompt": { "de": "Schreibe den vollständigen Funktionsaufruf, der Python läuft ausgibt.", "en": "Write the complete function call that prints Python läuft." },
+      "code": {
+        "language": "python",
+        "prefix": "",
+        "suffix": "\n",
+        "acceptedAnswers": ["print(\"Python läuft\")", "print('Python läuft')"],
+        "hints": [
+          { "de": "Die Ausgabefunktion heißt print.", "en": "The output function is called print." },
+          { "de": "Setze den Text in Anführungszeichen und runde Klammern.", "en": "Put the text inside quotation marks and parentheses." }
+        ]
+      },
+      "explanation": { "de": "`print()` gibt den String in seinen runden Klammern im Terminal aus.", "en": "`print()` displays the string inside its parentheses in the terminal." },
+      "source": "24-intro/README.md#Erste Befehle"
+    },
+    {
+      "id": "python-grundlagen-014",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Variable anlegen", "en": "Create a variable" },
+      "prompt": { "de": "Ergänze die Zuweisung, sodass service_name den String Server UK enthält.", "en": "Complete the assignment so that service_name contains the string Server UK." },
+      "code": {
+        "language": "python",
+        "prefix": "service_name ",
+        "suffix": "\nprint(service_name)",
+        "acceptedAnswers": ["= \"Server UK\"", "= 'Server UK'"],
+        "hints": [
+          { "de": "Eine Zuweisung verwendet ein einzelnes Gleichheitszeichen.", "en": "An assignment uses one equals sign." },
+          { "de": "Text muss in Anführungszeichen stehen.", "en": "Text must be inside quotation marks." }
+        ]
+      },
+      "explanation": { "de": "Mit `=` wird der Variablen `service_name` der String `Server UK` zugewiesen.", "en": "`=` assigns the string `Server UK` to the variable `service_name`." },
+      "source": "25-variables/README.md#Variablen"
+    },
+    {
+      "id": "python-grundlagen-015",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Eingabe umwandeln", "en": "Convert input" },
+      "prompt": { "de": "Wandle hours_text in eine ganze Zahl um, damit anschließend damit gerechnet werden kann.", "en": "Convert hours_text into a whole number so it can be used in the calculation." },
+      "code": {
+        "language": "python",
+        "prefix": "hours_text = input(\"Stunden: \")\nhours = ",
+        "suffix": "\nprint(hours * 2)",
+        "acceptedAnswers": ["int(hours_text)"],
+        "hints": [
+          { "de": "input() liefert einen String.", "en": "input() returns a string." },
+          { "de": "Die Umwandlungsfunktion für ganze Zahlen heißt int().", "en": "The conversion function for whole numbers is int()." }
+        ]
+      },
+      "explanation": { "de": "`int(hours_text)` wandelt passenden Zahlentext in eine ganze Zahl um.", "en": "`int(hours_text)` converts suitable numeric text into a whole number." },
+      "source": "25-variables/README.md#Eingaben entegegennehmen und umwandeln"
+    },
+    {
+      "id": "python-grundlagen-016",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Kosten berechnen", "en": "Calculate a cost" },
+      "prompt": { "de": "Ergänze den Ausdruck, der Anzahl, Stunden und Stundenpreis multipliziert.", "en": "Complete the expression that multiplies quantity, hours, and hourly price." },
+      "code": {
+        "language": "python",
+        "prefix": "instance_count = 3\nhours = 4\nhourly_price = 0.5\ntotal_cost = ",
+        "suffix": "\nprint(total_cost)",
+        "acceptedAnswers": ["instance_count * hours * hourly_price"],
+        "hints": [
+          { "de": "Der Multiplikationsoperator ist ein Sternchen.", "en": "The multiplication operator is an asterisk." },
+          { "de": "Verbinde alle drei Variablennamen mit diesem Operator.", "en": "Join all three variable names with this operator." }
+        ]
+      },
+      "explanation": { "de": "Die Multiplikation der drei Zahlenwerte liefert die gesamten Kosten.", "en": "Multiplying the three numeric values produces the total cost." },
+      "source": "25-variables/README.md#Berechnungen"
+    },
+    {
+      "id": "python-grundlagen-017",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Zahl formatiert ausgeben", "en": "Print a formatted number" },
+      "prompt": { "de": "Ergänze die vollständige print-Zeile als F-String, sodass total_cost mit zwei Nachkommastellen ausgegeben wird.", "en": "Add the complete print line as an f-string so total_cost is displayed with two decimal places." },
+      "code": {
+        "language": "python",
+        "prefix": "total_cost = 12.5\n",
+        "suffix": "",
+        "acceptedAnswers": ["print(f\"Total: {total_cost:.2f}\")", "print(f'Total: {total_cost:.2f}')"],
+        "hints": [
+          { "de": "Setze ein f direkt vor den String.", "en": "Put an f directly before the string." },
+          { "de": "In den geschweiften Klammern folgt auf total_cost die Formatierung :.2f.", "en": "Inside the braces, follow total_cost with the format specifier :.2f." }
+        ]
+      },
+      "explanation": { "de": "Der F-String setzt den Wert ein; `.2f` formatiert ihn mit genau zwei Nachkommastellen.", "en": "The f-string inserts the value, and `.2f` formats it with exactly two decimal places." },
+      "source": "25-variables/README.md#Werte in Texte einsetzen (f-Srings)"
+    },
+    {
+      "id": "python-grundlagen-018",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Ausdruck im F-String", "en": "Expression in an f-string" },
+      "prompt": { "de": "Gib Name und berechnete Kosten in einer Zeile aus. Berechne hours mal hourly_price direkt im F-String und formatiere das Ergebnis mit zwei Nachkommastellen.", "en": "Print the name and calculated cost on one line. Calculate hours times hourly_price inside the f-string and format the result with two decimal places." },
+      "code": {
+        "language": "python",
+        "prefix": "user_name = \"Ada\"\nhours = 3\nhourly_price = 2.5\n",
+        "suffix": "",
+        "acceptedAnswers": ["print(f\"{user_name}: {hours * hourly_price:.2f} Euro\")", "print(f'{user_name}: {hours * hourly_price:.2f} Euro')"],
+        "hints": [
+          { "de": "Ein F-String kann mehrere Ausdrücke in geschweiften Klammern enthalten.", "en": "An f-string can contain multiple expressions in braces." },
+          { "de": "Formatiere das Produkt mit `{hours * hourly_price:.2f}`.", "en": "Format the product with `{hours * hourly_price:.2f}`." }
+        ]
+      },
+      "explanation": { "de": "Ausdrücke in geschweiften Klammern werden zuerst berechnet und danach entsprechend der Formatangabe in den String eingesetzt.", "en": "Expressions in braces are evaluated first and then inserted into the string according to the format specifier." },
+      "source": "25-variables/README.md#Werte in Texte einsetzen (f-Srings)"
+    }
+  ]
+}
