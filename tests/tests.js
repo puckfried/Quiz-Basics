@@ -1,7 +1,7 @@
 import { evaluateTerminalGoals, formatTerminalEvent, normalizePath, TerminalSession, tokenizeCommand } from "../js/terminal-engine.js";
 import { selectBalancedQuestions } from "../js/quiz.js";
 import { buildCodeSolution, isCorrectCodeAnswer, normalizeCodeAnswer } from "../js/code-engine.js";
-import { renderInlineCode } from "../js/inline-code.js";
+import { renderCodeBlock, renderInlineCode } from "../js/inline-code.js";
 
 const messages = [];
 let failures = 0;
@@ -87,6 +87,14 @@ test("inline code never interprets source text as HTML", () => {
   equal(element.querySelector("code")?.textContent, "<img src=x onerror=alert(1)>", "escaped code text");
 });
 
+test("code blocks never interpret source text as HTML", () => {
+  const element = document.createElement("code");
+  const source = '<img src=x onerror="alert(1)">';
+  renderCodeBlock(element, source);
+  equal(element.querySelectorAll("img").length, 0, "HTML element was created");
+  equal(element.textContent, source, "escaped code block text");
+});
+
 const questionSets = ["bash", "git"].map((topicId) => ({
   topic: { id: topicId },
   questions: [
@@ -128,14 +136,13 @@ for (const file of dataFiles) {
   }
 }
 
-const codeDataFiles = [
-  "../questions/09-html.json",
-  "../questions/10-css.json",
+const pythonDataFiles = [
   "../questions/11-python-grundlagen.json",
   "../questions/12-python-kontrollfluss.json",
   "../questions/13-python-datenstrukturen.json",
   "../questions/14-python-dateien-fehler.json",
 ];
+const codeDataFiles = ["../questions/09-html.json", "../questions/10-css.json", ...pythonDataFiles];
 for (const file of codeDataFiles) {
   const data = await fetch(file).then((response) => response.json());
   for (const question of data.questions.filter((item) => item.type === "code")) {
@@ -149,6 +156,45 @@ for (const file of codeDataFiles) {
     });
   }
 }
+
+const pythonKnowledgeQuestions = [];
+for (const file of pythonDataFiles) {
+  const data = await fetch(file).then((response) => response.json());
+  pythonKnowledgeQuestions.push(...data.questions.filter((question) => ["single", "multiple"].includes(question.type)));
+}
+
+test("all Python knowledge questions have short bilingual titles", () => {
+  equal(pythonKnowledgeQuestions.length, 48, "Python knowledge question count");
+  for (const question of pythonKnowledgeQuestions) {
+    for (const language of ["de", "en"]) {
+      const title = question.title?.[language];
+      assert(typeof title === "string" && title.trim(), `${question.id} has no ${language} title`);
+      assert(title.length <= 45, `${question.id} ${language} title is too long`);
+      assert(!title.includes("`"), `${question.id} ${language} title contains code markup`);
+    }
+  }
+});
+
+test("only the curated Python questions use code blocks", () => {
+  const expectedIds = [
+    "python-grundlagen-010",
+    "python-grundlagen-012",
+    "python-kontrollfluss-005",
+    "python-kontrollfluss-010",
+    "python-datenstrukturen-008",
+    "python-dateien-fehler-012",
+  ];
+  const questions = pythonKnowledgeQuestions.filter((question) => question.codeBlock);
+  equal(questions.map((question) => question.id), expectedIds, "code block question IDs");
+  for (const question of questions) {
+    assert(question.codeBlock.language === "python", `${question.id} has the wrong code block language`);
+    for (const field of ["lead", "content"]) {
+      for (const language of ["de", "en"]) {
+        assert(question.codeBlock[field]?.[language]?.trim(), `${question.id} has no ${language} code block ${field}`);
+      }
+    }
+  }
+});
 
 document.getElementById("results").textContent = `${messages.join("\n")}\n\n${failures ? `${failures} TESTS FAILED` : "ALL TESTS PASSED"}`;
 document.title = failures ? `FAIL ${failures}` : "PASS";

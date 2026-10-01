@@ -29,6 +29,24 @@ for path in files:
         question_type = q.get("type")
         if question_type not in ("single", "multiple", "terminal", "code") or q.get("difficulty") not in ("easy", "medium", "hard"): errors.append(f"{prefix}: Typ/Schwierigkeit ungültig")
         if any(lang not in q.get("prompt", {}) or lang not in q.get("explanation", {}) for lang in ("de", "en")): errors.append(f"{prefix}: Übersetzung fehlt")
+        title = q.get("title")
+        if title is not None and (
+            not isinstance(title, dict)
+            or any(not isinstance(title.get(lang), str) or not title[lang].strip() or len(title[lang]) > 45 or "`" in title[lang] for lang in ("de", "en"))
+        ):
+            errors.append(f"{prefix}: Kurztitel ungültig")
+        code_block = q.get("codeBlock")
+        if code_block is not None:
+            if question_type not in ("single", "multiple") or title is None:
+                errors.append(f"{prefix}: Codeblock benötigt eine Wissensfrage mit Kurztitel")
+            if not isinstance(code_block, dict) or code_block.get("language") not in ("html", "css", "python"):
+                errors.append(f"{prefix}: Codeblock-Sprache ungültig")
+            elif any(
+                not isinstance(code_block.get(field), dict)
+                or any(not isinstance(code_block[field].get(lang), str) or not code_block[field][lang].strip() for lang in ("de", "en"))
+                for field in ("lead", "content")
+            ):
+                errors.append(f"{prefix}: Codeblock-Inhalt ungültig")
         if question_type == "terminal":
             terminal = q.get("terminal", {})
             goals, hints, solution = terminal.get("goals", []), terminal.get("hints", []), terminal.get("solution", [])

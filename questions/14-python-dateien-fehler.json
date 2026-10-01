@@ -15,6 +15,7 @@
       "id": "python-dateien-fehler-001",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Pfade beschreiben", "en": "Describing paths" },
       "prompt": { "de": "Was beschreibt ein Objekt der Klasse `Path` aus `pathlib`?", "en": "What does an object of the `Path` class from `pathlib` describe?" },
       "answers": [
         { "id": "a", "de": "Einen Dateipfad", "en": "A file path" },
@@ -29,6 +30,7 @@
       "id": "python-dateien-fehler-002",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Vorhandene Pfade prüfen", "en": "Checking path existence" },
       "prompt": { "de": "Was prüft `data_path.exists()`?", "en": "What does `data_path.exists()` check?" },
       "answers": [
         { "id": "a", "de": "Ob die Datei gültiges JSON enthält", "en": "Whether the file contains valid JSON" },
@@ -43,7 +45,8 @@
       "id": "python-dateien-fehler-003",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen über CSV-Dateien stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about CSV files are correct? Select all correct answers." },
+      "title": { "de": "CSV-Dateien verstehen", "en": "Understanding CSV files" },
+      "prompt": { "de": "Welche Aussagen über CSV-Dateien stimmen?", "en": "Which statements about CSV files are correct?" },
       "answers": [
         { "id": "a", "de": "CSV speichert tabellarische Daten als Text.", "en": "CSV stores tabular data as text." },
         { "id": "b", "de": "Die erste Zeile kann Feldnamen enthalten.", "en": "The first row can contain field names." },
@@ -58,6 +61,7 @@
       "id": "python-dateien-fehler-004",
       "type": "single",
       "difficulty": "hard",
+      "title": { "de": "CSV-Werte umwandeln", "en": "Converting CSV values" },
       "prompt": { "de": "`csv.DictReader` liest in einer Zeile den Wert `\"3\"` aus der Spalte `stock`. Was ist nötig, bevor damit sicher wie mit einer ganzen Zahl gerechnet wird?", "en": "`csv.DictReader` reads the value `\"3\"` from the `stock` column in a row. What is needed before safely calculating with it as a whole number?" },
       "answers": [
         { "id": "a", "de": "Den Schlüssel mit `append()` verdoppeln", "en": "Duplicate the key with `append()`" },
@@ -72,7 +76,8 @@
       "id": "python-dateien-fehler-005",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen zu den Dateimodi stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about file modes are correct? Select all correct answers." },
+      "title": { "de": "Dateimodi verstehen", "en": "Understanding file modes" },
+      "prompt": { "de": "Welche Aussagen zu den Dateimodi stimmen?", "en": "Which statements about file modes are correct?" },
       "answers": [
         { "id": "a", "de": "`\"r\"` öffnet eine Datei zum Lesen.", "en": "`\"r\"` opens a file for reading." },
         { "id": "b", "de": "`\"w\"` öffnet zum Schreiben und kann vorhandenen Inhalt ersetzen.", "en": "`\"w\"` opens for writing and can replace existing content." },
@@ -87,6 +92,7 @@
       "id": "python-dateien-fehler-006",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Dateien sicher schließen", "en": "Closing files safely" },
       "prompt": { "de": "Warum wird für Dateizugriffe häufig `with` verwendet?", "en": "Why is `with` often used for file access?" },
       "answers": [
         { "id": "a", "de": "Weil dadurch jede Datei automatisch zu JSON wird", "en": "Because it automatically turns every file into JSON" },
@@ -101,6 +107,7 @@
       "id": "python-dateien-fehler-007",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Fehler gezielt behandeln", "en": "Handling specific errors" },
       "prompt": { "de": "Warum ist `except ValueError:` meist besser als ein leeres `except:` bei einer Zahlenumwandlung?", "en": "Why is `except ValueError:` usually better than a bare `except:` for a numeric conversion?" },
       "answers": [
         { "id": "a", "de": "Es behandelt gezielt den erwarteten Umwandlungsfehler, ohne beliebige andere Fehler zu verstecken.", "en": "It specifically handles the expected conversion error without hiding arbitrary other errors." },
@@ -115,6 +122,7 @@
       "id": "python-dateien-fehler-008",
       "type": "single",
       "difficulty": "hard",
+      "title": { "de": "Fehlerfreier Try-Block", "en": "Successful try block" },
       "prompt": { "de": "Was geschieht, wenn der Code im `try`-Block keinen Fehler auslöst?", "en": "What happens when the code in a `try` block raises no error?" },
       "answers": [
         { "id": "a", "de": "Der passende `except`-Block wird trotzdem immer ausgeführt.", "en": "The matching `except` block is still always executed." },
@@ -129,7 +137,8 @@
       "id": "python-dateien-fehler-009",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen unterscheiden Logging und Benutzerausgaben sinnvoll? Wähle alle richtigen Antworten aus.", "en": "Which statements usefully distinguish logging and user output? Select all correct answers." },
+      "title": { "de": "Logging und Ausgaben", "en": "Logging and output" },
+      "prompt": { "de": "Welche Aussagen unterscheiden Logging und Benutzerausgaben sinnvoll?", "en": "Which statements usefully distinguish logging and user output?" },
       "answers": [
         { "id": "a", "de": "`logging.info()` kann Informationen über den Programmablauf festhalten.", "en": "`logging.info()` can record information about program flow." },
         { "id": "b", "de": "`logging.error()` kann Fehlerereignisse dokumentieren.", "en": "`logging.error()` can document error events." },
@@ -144,6 +153,7 @@
       "id": "python-dateien-fehler-010",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "JSON-Daten einlesen", "en": "Reading JSON data" },
       "prompt": { "de": "Welche Python-Strukturen entstehen typischerweise beim Einlesen eines JSON-Objekts beziehungsweise JSON-Arrays?", "en": "Which Python structures typically result when reading a JSON object and a JSON array?" },
       "answers": [
         { "id": "a", "de": "Objekt → Schleife, Array → Funktion", "en": "Object → loop, array → function" },
@@ -158,6 +168,7 @@
       "id": "python-dateien-fehler-011",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "JSON laden und speichern", "en": "Loading and saving JSON" },
       "prompt": { "de": "Welche Zuordnung für `json.load()` und `json.dump()` ist richtig?", "en": "Which mapping for `json.load()` and `json.dump()` is correct?" },
       "answers": [
         { "id": "a", "de": "`load()` schreibt Python-Daten, `dump()` liest JSON.", "en": "`load()` writes Python data, while `dump()` reads JSON." },
@@ -172,7 +183,13 @@
       "id": "python-dateien-fehler-012",
       "type": "single",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussage zu Type Hints wie `def total(price: float) -> float:` stimmt?", "en": "Which statement about type hints such as `def total(price: float) -> float:` is correct?" },
+      "title": { "de": "Type Hints verstehen", "en": "Understanding type hints" },
+      "prompt": { "de": "Welche Aussage zu den Type Hints stimmt?", "en": "Which statement about the type hints is correct?" },
+      "codeBlock": {
+        "language": "python",
+        "lead": { "de": "Betrachte diese Funktionsdefinition:", "en": "Consider this function definition:" },
+        "content": { "de": "def total(price: float) -> float:", "en": "def total(price: float) -> float:" }
+      },
       "answers": [
         { "id": "a", "de": "Sie beschreiben erwartete Parameter- und Rückgabetypen und helfen beim Lesen, werden aber von Python nicht automatisch erzwungen.", "en": "They describe expected parameter and return types and aid readability, but Python does not automatically enforce them." },
         { "id": "b", "de": "Sie wandeln jeden übergebenen Wert automatisch in `float` um.", "en": "They automatically convert every supplied value into a `float`." },

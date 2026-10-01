@@ -111,6 +111,8 @@ Code-completion tasks support `html`, `css` and `python`. Python snippets are co
 
 Short inline code in localised question text can be enclosed in paired backticks. The quiz renders these spans as semantic inline code. This is deliberately not a general Markdown or HTML feature, and source text is always inserted safely as text.
 
+Single- and multiple-choice questions may define a bilingual `title`. When present, it is used as the short heading and `prompt` is displayed as the question below it. A larger example can additionally be placed in a bilingual `codeBlock` with `language`, `lead` and `content`; it is rendered between the heading and prompt without executing or interpreting its contents.
+
 ## Browser tests
 
 Serve the repository locally and open `tests/` in a browser. The test page checks the simulator, command parser, code-answer evaluation, question selection and every interactive exercise's example solution.

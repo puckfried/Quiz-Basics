@@ -15,6 +15,7 @@
       "id": "python-kontrollfluss-001",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Vergleichsergebnis", "en": "Comparison result" },
       "prompt": { "de": "Welchen Datentyp liefert ein Vergleich wie `cpu_usage > 80`?", "en": "Which data type does a comparison such as `cpu_usage > 80` return?" },
       "answers": [
         { "id": "a", "de": "`str`", "en": "`str`" },
@@ -29,6 +30,7 @@
       "id": "python-kontrollfluss-002",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Zuweisen und vergleichen", "en": "Assignment and comparison" },
       "prompt": { "de": "Welche Aussage beschreibt `=` und `==` richtig?", "en": "Which statement correctly describes `=` and `==`?" },
       "answers": [
         { "id": "a", "de": "`=` weist einen Wert zu, `==` vergleicht zwei Werte.", "en": "`=` assigns a value, while `==` compares two values." },
@@ -43,6 +45,7 @@
       "id": "python-kontrollfluss-003",
       "type": "single",
       "difficulty": "hard",
+      "title": { "de": "Bedingungen richtig anordnen", "en": "Ordering conditions correctly" },
       "prompt": {
         "de": "Warum muss in einer `if`-/`elif`-Kette die kritischere Bedingung `cpu_usage > 90` vor `cpu_usage > 75` stehen?",
         "en": "Why must the more critical condition `cpu_usage > 90` come before `cpu_usage > 75` in an `if`/`elif` chain?"
@@ -60,7 +63,8 @@
       "id": "python-kontrollfluss-004",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen zu logischen Operatoren stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about logical operators are correct? Select all correct answers." },
+      "title": { "de": "Logische Operatoren", "en": "Logical operators" },
+      "prompt": { "de": "Welche Aussagen zu logischen Operatoren stimmen?", "en": "Which statements about logical operators are correct?" },
       "answers": [
         { "id": "a", "de": "Bei `and` müssen beide Bedingungen wahr sein.", "en": "With `and`, both conditions must be true." },
         { "id": "b", "de": "Bei `or` muss mindestens eine Bedingung wahr sein.", "en": "With `or`, at least one condition must be true." },
@@ -75,7 +79,13 @@
       "id": "python-kontrollfluss-005",
       "type": "single",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Werte durchläuft `for number in range(1, 4)`?", "en": "Which values does `for number in range(1, 4)` iterate over?" },
+      "title": { "de": "Schleifendurchläufe bestimmen", "en": "Determine loop iterations" },
+      "prompt": { "de": "Welche Werte durchläuft `number`?", "en": "Which values does `number` iterate over?" },
+      "codeBlock": {
+        "language": "python",
+        "lead": { "de": "Betrachte diese Schleife:", "en": "Consider this loop:" },
+        "content": { "de": "for number in range(1, 4):", "en": "for number in range(1, 4):" }
+      },
       "answers": [
         { "id": "a", "de": "`0`, `1`, `2`, `3`", "en": "`0`, `1`, `2`, `3`" },
         { "id": "b", "de": "`1`, `2`, `3`", "en": "`1`, `2`, `3`" },
@@ -89,7 +99,8 @@
       "id": "python-kontrollfluss-006",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Wann passen `for`- beziehungsweise `while`-Schleifen? Wähle alle richtigen Antworten aus.", "en": "When are `for` and `while` loops suitable? Select all correct answers." },
+      "title": { "de": "Schleifentyp auswählen", "en": "Choosing a loop type" },
+      "prompt": { "de": "Wann passen `for`- beziehungsweise `while`-Schleifen?", "en": "When are `for` and `while` loops suitable?" },
       "answers": [
         { "id": "a", "de": "`for` passt gut zu einer bekannten Anzahl von Durchläufen oder zu den Elementen einer Sammlung.", "en": "`for` works well for a known number of iterations or the elements of a collection." },
         { "id": "b", "de": "`while` passt gut, wenn bis zu einer Bedingung wiederholt werden soll.", "en": "`while` works well when repetition should continue until a condition is met." },
@@ -104,6 +115,7 @@
       "id": "python-kontrollfluss-007",
       "type": "single",
       "difficulty": "hard",
+      "title": { "de": "Teilbarkeit prüfen", "en": "Checking divisibility" },
       "prompt": { "de": "Welche Bedingung prüft, ob `number` ohne Rest durch 3 teilbar ist?", "en": "Which condition checks whether `number` is divisible by 3 without a remainder?" },
       "answers": [
         { "id": "a", "de": "`number / 3 == 0`", "en": "`number / 3 == 0`" },
@@ -119,6 +131,7 @@
       "id": "python-kontrollfluss-008",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Zähler initialisieren", "en": "Initialising a counter" },
       "prompt": { "de": "Warum wird ein Zähler normalerweise vor einer Schleife mit `counter = 0` angelegt?", "en": "Why is a counter usually created before a loop with `counter = 0`?" },
       "answers": [
         { "id": "a", "de": "Damit sein bisheriger Wert über alle Durchläufe hinweg erhöht und danach verwendet werden kann.", "en": "So its accumulated value can be increased across all iterations and used afterwards." },
@@ -133,7 +146,8 @@
       "id": "python-kontrollfluss-009",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen zu `break` und `continue` stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about `break` and `continue` are correct? Select all correct answers." },
+      "title": { "de": "Schleifen steuern", "en": "Controlling loops" },
+      "prompt": { "de": "Welche Aussagen zu `break` und `continue` stimmen?", "en": "Which statements about `break` and `continue` are correct?" },
       "answers": [
         { "id": "a", "de": "`break` beendet die gesamte Schleife.", "en": "`break` ends the entire loop." },
         { "id": "b", "de": "`continue` springt direkt zum nächsten Schleifendurchlauf.", "en": "`continue` jumps directly to the next loop iteration." },
@@ -148,7 +162,13 @@
       "id": "python-kontrollfluss-010",
       "type": "single",
       "difficulty": "easy",
-      "prompt": { "de": "Wann wird der eingerückte Code einer mit `def show_menu():` definierten Funktion ausgeführt?", "en": "When is the indented code of a function defined with `def show_menu():` executed?" },
+      "title": { "de": "Funktionsausführung verstehen", "en": "Understanding function execution" },
+      "prompt": { "de": "Wann wird der eingerückte Funktionscode ausgeführt?", "en": "When is the indented function code executed?" },
+      "codeBlock": {
+        "language": "python",
+        "lead": { "de": "Diese Funktion wurde definiert:", "en": "This function has been defined:" },
+        "content": { "de": "def show_menu():", "en": "def show_menu():" }
+      },
       "answers": [
         { "id": "a", "de": "Sofort beim Lesen des Schlüsselworts `def`", "en": "Immediately when the `def` keyword is read" },
         { "id": "b", "de": "Erst wenn die Funktion zum Beispiel mit `show_menu()` aufgerufen wird", "en": "Only when the function is called, for example with `show_menu()`" },
@@ -162,6 +182,7 @@
       "id": "python-kontrollfluss-011",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Parameter verwenden", "en": "Using parameters" },
       "prompt": { "de": "Welche Aufgabe haben die Parameter `quantity` und `price` in `calculate_item_total(quantity, price)`?", "en": "What is the purpose of the parameters `quantity` and `price` in `calculate_item_total(quantity, price)`?" },
       "answers": [
         { "id": "a", "de": "Sie beenden die Funktion ohne Ergebnis.", "en": "They end the function without a result." },
@@ -176,6 +197,7 @@
       "id": "python-kontrollfluss-012",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Rückgabe und Ausgabe", "en": "Returning and printing" },
       "prompt": { "de": "Was unterscheidet `return total_cost` von `print(total_cost)`?", "en": "What distinguishes `return total_cost` from `print(total_cost)`?" },
       "answers": [
         { "id": "a", "de": "`return` gibt den Wert an die Aufrufstelle zurück, sodass er gespeichert und weiterverarbeitet werden kann.", "en": "`return` gives the value back to the call site so it can be stored and processed further." },

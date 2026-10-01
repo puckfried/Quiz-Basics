@@ -2,7 +2,7 @@ import { translations, localize } from "./i18n.js";
 import { calculateTopicResults, isCorrectAnswer, selectBalancedQuestions, shuffle } from "./quiz.js";
 import { evaluateTerminalGoals, formatTerminalEvent, TerminalSession } from "./terminal-engine.js";
 import { buildCodeSolution, isCorrectCodeAnswer } from "./code-engine.js";
-import { renderInlineCode } from "./inline-code.js";
+import { renderCodeBlock, renderInlineCode } from "./inline-code.js";
 
 const STORAGE_KEYS = {
   language: "ctf-quiz-language",
@@ -33,7 +33,8 @@ const elements = Object.fromEntries(
   [
     "setup-view", "quiz-view", "results-view", "topic-groups", "load-error", "select-all", "select-none",
     "selection-summary", "start-quiz", "quit-quiz", "progress-label", "score-label", "progress-bar",
-    "question-topic", "question-difficulty", "question-heading", "question-instruction", "answer-form",
+    "question-topic", "question-difficulty", "question-heading", "question-detail", "question-prompt",
+    "question-code-lead", "question-code-block", "question-code-language", "question-code-content", "question-instruction", "answer-form",
     "answer-options", "answer-error", "submit-answer", "feedback", "feedback-icon", "feedback-title",
     "feedback-explanation", "next-question", "result-percentage", "result-total", "result-message",
     "topic-result-list", "retry-wrong", "new-round", "reset-history", "topic-template",
@@ -235,13 +236,30 @@ function renderQuestion({ preserveTerminalFocus = false, preserveCodeFocus = fal
   const terminalQuestion = question.type === "terminal";
   const codeQuestion = question.type === "code";
   const interactiveQuestion = terminalQuestion || codeQuestion;
+  const titledKnowledgeQuestion = !interactiveQuestion && Boolean(question.title);
   const correctCount = state.answers.filter((answer) => answer.isCorrect).length;
   elements["progress-label"].textContent = t("progress", { current: state.currentIndex + 1, total: state.questions.length });
   elements["score-label"].textContent = t("score", { correct: correctCount });
   elements["progress-bar"].style.width = `${((state.currentIndex + 1) / state.questions.length) * 100}%`;
   elements["question-topic"].textContent = localize(topic.title, state.language);
   elements["question-difficulty"].textContent = t("difficulty")[question.difficulty];
-  renderInlineCode(elements["question-heading"], localize(interactiveQuestion ? question.title : question.prompt, state.language));
+  renderInlineCode(elements["question-heading"], localize(interactiveQuestion || titledKnowledgeQuestion ? question.title : question.prompt, state.language));
+  elements["question-detail"].hidden = !titledKnowledgeQuestion;
+  if (titledKnowledgeQuestion) {
+    const codeBlock = question.codeBlock;
+    elements["question-code-lead"].hidden = !codeBlock;
+    elements["question-code-block"].hidden = !codeBlock;
+    renderInlineCode(elements["question-prompt"], localize(question.prompt, state.language));
+    if (codeBlock) {
+      renderInlineCode(elements["question-code-lead"], localize(codeBlock.lead, state.language));
+      elements["question-code-language"].textContent = codeBlock.language;
+      renderCodeBlock(elements["question-code-content"], localize(codeBlock.content, state.language));
+    }
+  } else {
+    elements["question-prompt"].replaceChildren();
+    elements["question-code-lead"].replaceChildren();
+    elements["question-code-content"].textContent = "";
+  }
   const instructionKey = question.type === "multiple" ? "instructionMultiple" : "instructionSingle";
   renderInlineCode(elements["question-instruction"], interactiveQuestion
     ? localize(question.prompt, state.language)

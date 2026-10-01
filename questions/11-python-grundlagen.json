@@ -15,6 +15,7 @@
       "id": "python-grundlagen-001",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Programmiersprachen verstehen", "en": "Understanding programming languages" },
       "prompt": {
         "de": "Was ist eine Programmiersprache?",
         "en": "What is a programming language?"
@@ -35,9 +36,10 @@
       "id": "python-grundlagen-002",
       "type": "multiple",
       "difficulty": "medium",
+      "title": { "de": "Datenstrukturen und Algorithmen", "en": "Data structures and algorithms" },
       "prompt": {
-        "de": "Welche Aussagen unterscheiden Datenstrukturen und Algorithmen richtig? Wähle alle richtigen Antworten aus.",
-        "en": "Which statements correctly distinguish data structures and algorithms? Select all correct answers."
+        "de": "Welche Aussagen unterscheiden Datenstrukturen und Algorithmen richtig?",
+        "en": "Which statements correctly distinguish data structures and algorithms?"
       },
       "answers": [
         { "id": "a", "de": "Eine Datenstruktur organisiert und speichert Daten.", "en": "A data structure organises and stores data." },
@@ -56,6 +58,7 @@
       "id": "python-grundlagen-003",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Rolle des Interpreters", "en": "Role of the interpreter" },
       "prompt": {
         "de": "Welche Rolle hat der Python-Interpreter beim Ausführen von `main.py`?",
         "en": "What role does the Python interpreter have when running `main.py`?"
@@ -76,9 +79,10 @@
       "id": "python-grundlagen-004",
       "type": "multiple",
       "difficulty": "medium",
+      "title": { "de": "Virtuelle Umgebungen", "en": "Virtual environments" },
       "prompt": {
-        "de": "Welche Vorteile bietet eine virtuelle Python-Umgebung? Wähle alle richtigen Antworten aus.",
-        "en": "Which benefits does a Python virtual environment provide? Select all correct answers."
+        "de": "Welche Vorteile bietet eine virtuelle Python-Umgebung?",
+        "en": "Which benefits does a Python virtual environment provide?"
       },
       "answers": [
         { "id": "a", "de": "Sie macht den Python-Interpreter dauerhaft überflüssig.", "en": "It permanently removes the need for a Python interpreter." },
@@ -97,6 +101,7 @@
       "id": "python-grundlagen-005",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Variablen verwenden", "en": "Using variables" },
       "prompt": {
         "de": "Wozu dient eine Variable in Python?",
         "en": "What is a variable used for in Python?"
@@ -117,6 +122,7 @@
       "id": "python-grundlagen-006",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Datentypen erkennen", "en": "Identifying data types" },
       "prompt": {
         "de": "Welcher Datentyp passt zum Wert `3.75`?",
         "en": "Which data type matches the value `3.75`?"
@@ -138,6 +144,7 @@
       "id": "python-grundlagen-007",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Dynamische Typisierung", "en": "Dynamic typing" },
       "prompt": {
         "de": "Was bedeutet es, dass Python dynamisch typisiert ist?",
         "en": "What does it mean that Python is dynamically typed?"
@@ -158,6 +165,7 @@
       "id": "python-grundlagen-008",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Eingaben und Datentypen", "en": "Input and data types" },
       "prompt": {
         "de": "Welchen Datentyp liefert `input()` zunächst zurück, wenn eine Person `42` eingibt?",
         "en": "Which data type does `input()` initially return when a person enters `42`?"
@@ -178,6 +186,7 @@
       "id": "python-grundlagen-009",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Eingaben umwandeln", "en": "Converting input" },
       "prompt": {
         "de": "Welche Zeile liest eine Eingabe und speichert sie direkt als Kommazahl?",
         "en": "Which line reads input and stores it directly as a decimal number?"
@@ -198,9 +207,15 @@
       "id": "python-grundlagen-010",
       "type": "single",
       "difficulty": "hard",
+      "title": { "de": "Rechenergebnis bestimmen", "en": "Determine a calculation result" },
       "prompt": {
-        "de": "Welche Ausgabe erzeugt `print(17 // 5, 17 % 5)`?",
-        "en": "What output does `print(17 // 5, 17 % 5)` produce?"
+        "de": "Welche Ausgabe erzeugt diese Zeile?",
+        "en": "What output does this line produce?"
+      },
+      "codeBlock": {
+        "language": "python",
+        "lead": { "de": "Betrachte diese Python-Zeile:", "en": "Consider this Python line:" },
+        "content": { "de": "print(17 // 5, 17 % 5)", "en": "print(17 // 5, 17 % 5)" }
       },
       "answers": [
         { "id": "a", "de": "`3.4 0`", "en": "`3.4 0`" },
@@ -219,9 +234,10 @@
       "id": "python-grundlagen-011",
       "type": "multiple",
       "difficulty": "hard",
+      "title": { "de": "Strings verstehen", "en": "Understanding strings" },
       "prompt": {
-        "de": "Welche Aussagen über Strings stimmen? Wähle alle richtigen Antworten aus.",
-        "en": "Which statements about strings are correct? Select all correct answers."
+        "de": "Welche Aussagen über Strings stimmen?",
+        "en": "Which statements about strings are correct?"
       },
       "answers": [
         { "id": "a", "de": "`\"Py\" + \"thon\"` ergibt `\"Python\"`.", "en": "`\"Py\" + \"thon\"` results in `\"Python\"`." },
@@ -240,9 +256,15 @@
       "id": "python-grundlagen-012",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Zahlen im F-String formatieren", "en": "Format numbers in an f-string" },
       "prompt": {
-        "de": "Was bewirkt `.2f` in `f\"Preis: {total:.2f} Euro\"`?",
-        "en": "What does `.2f` do in `f\"Price: {total:.2f} euros\"`?"
+        "de": "Was bewirkt `.2f` in diesem F-String?",
+        "en": "What does `.2f` do in this f-string?"
+      },
+      "codeBlock": {
+        "language": "python",
+        "lead": { "de": "Betrachte diesen F-String:", "en": "Consider this f-string:" },
+        "content": { "de": "f\"Preis: {total:.2f} Euro\"", "en": "f\"Price: {total:.2f} euros\"" }
       },
       "answers": [
         { "id": "a", "de": "Es multipliziert `total` mit zwei.", "en": "It multiplies `total` by two." },

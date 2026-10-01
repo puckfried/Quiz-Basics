@@ -15,6 +15,7 @@
       "id": "python-datenstrukturen-001",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Eigenschaften von Listen", "en": "List properties" },
       "prompt": { "de": "Welche Eigenschaft beschreibt eine Python-Liste?", "en": "Which property describes a Python list?" },
       "answers": [
         { "id": "a", "de": "Sie speichert mehrere Werte in einer Reihenfolge.", "en": "It stores multiple values in an order." },
@@ -29,6 +30,7 @@
       "id": "python-datenstrukturen-002",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Erstes Listenelement", "en": "First list item" },
       "prompt": { "de": "Welcher Ausdruck greift auf das erste Element der Liste `products` zu?", "en": "Which expression accesses the first element of the list `products`?" },
       "answers": [
         { "id": "a", "de": "`products[1]`", "en": "`products[1]`" },
@@ -43,7 +45,8 @@
       "id": "python-datenstrukturen-003",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen zu Listen, Tupeln und Dictionaries stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about lists, tuples, and dictionaries are correct? Select all correct answers." },
+      "title": { "de": "Datenstrukturen vergleichen", "en": "Comparing data structures" },
+      "prompt": { "de": "Welche Aussagen zu Listen, Tupeln und Dictionaries stimmen?", "en": "Which statements about lists, tuples, and dictionaries are correct?" },
       "answers": [
         { "id": "a", "de": "Listen sind geordnet und veränderbar.", "en": "Lists are ordered and mutable." },
         { "id": "b", "de": "Tupel sind nach dem Erstellen unveränderbar.", "en": "Tuples are immutable after creation." },
@@ -58,6 +61,7 @@
       "id": "python-datenstrukturen-004",
       "type": "single",
       "difficulty": "easy",
+      "title": { "de": "Dictionary-Wert lesen", "en": "Reading a dictionary value" },
       "prompt": { "de": "Wie wird im Dictionary `product` der Wert zum Schlüssel `\"name\"` gelesen?", "en": "How is the value for the key `\"name\"` read from the dictionary `product`?" },
       "answers": [
         { "id": "a", "de": "`product[\"name\"]`", "en": "`product[\"name\"]`" },
@@ -72,6 +76,7 @@
       "id": "python-datenstrukturen-005",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Verschachtelte Daten lesen", "en": "Reading nested data" },
       "prompt": { "de": "Was wählt `products[0][\"name\"]` bei einer Liste mit Produkt-Dictionaries aus?", "en": "What does `products[0][\"name\"]` select from a list of product dictionaries?" },
       "answers": [
         { "id": "a", "de": "Die Namen aller Produkte", "en": "The names of all products" },
@@ -86,6 +91,7 @@
       "id": "python-datenstrukturen-006",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Dictionary-Wert ändern", "en": "Changing a dictionary value" },
       "prompt": { "de": "Was bewirkt `products[0][\"stock\"] = 9`?", "en": "What does `products[0][\"stock\"] = 9` do?" },
       "answers": [
         { "id": "a", "de": "Es fügt neun neue Dictionaries zur Liste hinzu.", "en": "It adds nine new dictionaries to the list." },
@@ -100,7 +106,8 @@
       "id": "python-datenstrukturen-007",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen beschreiben Filtern und Aggregieren richtig? Wähle alle richtigen Antworten aus.", "en": "Which statements correctly describe filtering and aggregation? Select all correct answers." },
+      "title": { "de": "Filtern und aggregieren", "en": "Filtering and aggregation" },
+      "prompt": { "de": "Welche Aussagen beschreiben Filtern und Aggregieren richtig?", "en": "Which statements correctly describe filtering and aggregation?" },
       "answers": [
         { "id": "a", "de": "Beim Filtern können passende Produkte in einer neuen Liste gesammelt werden.", "en": "When filtering, matching products can be collected in a new list." },
         { "id": "b", "de": "Beim Aggregieren kann aus mehreren Datensätzen ein Gesamtwert entstehen.", "en": "Aggregation can produce one total from multiple records." },
@@ -115,9 +122,18 @@
       "id": "python-datenstrukturen-008",
       "type": "single",
       "difficulty": "hard",
+      "title": { "de": "Gesamtwert berechnen", "en": "Calculate total value" },
       "prompt": {
-        "de": "Die Liste enthält `[{\"price\": 2.5, \"stock\": 4}, {\"price\": 3.0, \"stock\": 2}]`. Welcher Gesamtwert entsteht, wenn für jedes Produkt `price * stock` addiert wird?",
-        "en": "The list contains `[{\"price\": 2.5, \"stock\": 4}, {\"price\": 3.0, \"stock\": 2}]`. What total results when `price * stock` is added for each product?"
+        "de": "Welcher Gesamtwert entsteht, wenn für jedes Produkt `price * stock` addiert wird?",
+        "en": "What total results when `price * stock` is added for each product?"
+      },
+      "codeBlock": {
+        "language": "python",
+        "lead": { "de": "Gegeben ist diese Produktliste:", "en": "Given this product list:" },
+        "content": {
+          "de": "[\n  {\"price\": 2.5, \"stock\": 4},\n  {\"price\": 3.0, \"stock\": 2}\n]",
+          "en": "[\n  {\"price\": 2.5, \"stock\": 4},\n  {\"price\": 3.0, \"stock\": 2}\n]"
+        }
       },
       "answers": [
         { "id": "a", "de": "`11.5`", "en": "`11.5`" },
@@ -133,6 +149,7 @@
       "id": "python-datenstrukturen-009",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Module verstehen", "en": "Understanding modules" },
       "prompt": { "de": "Was ist ein Python-Modul im grundlegenden Unterrichtsbeispiel?", "en": "What is a Python module in the basic classroom example?" },
       "answers": [
         { "id": "a", "de": "Eine Python-Datei, die zusammengehörigen Code wie Funktionen enthalten kann", "en": "A Python file that can contain related code such as functions" },
@@ -147,6 +164,7 @@
       "id": "python-datenstrukturen-010",
       "type": "single",
       "difficulty": "medium",
+      "title": { "de": "Modulfunktion aufrufen", "en": "Calling a module function" },
       "prompt": { "de": "Nach `import inventory_tools`: Wie wird die Funktion `calculate_inventory_value` aus diesem Modul aufgerufen?", "en": "After `import inventory_tools`, how is the function `calculate_inventory_value` from that module called?" },
       "answers": [
         { "id": "a", "de": "`inventory_tools[calculate_inventory_value](products)`", "en": "`inventory_tools[calculate_inventory_value](products)`" },
@@ -161,7 +179,8 @@
       "id": "python-datenstrukturen-011",
       "type": "multiple",
       "difficulty": "medium",
-      "prompt": { "de": "Welche Aussagen zu Modulen und Imports stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about modules and imports are correct? Select all correct answers." },
+      "title": { "de": "Module und Imports", "en": "Modules and imports" },
+      "prompt": { "de": "Welche Aussagen zu Modulen und Imports stimmen?", "en": "Which statements about modules and imports are correct?" },
       "answers": [
         { "id": "a", "de": "Die Standardbibliothek stellt fertige Module für typische Aufgaben bereit.", "en": "The standard library provides ready-made modules for common tasks." },
         { "id": "b", "de": "Eigene Python-Dateien können als Module verwendet werden, wenn Python sie finden kann.", "en": "Your own Python files can be used as modules when Python can find them." },
@@ -176,6 +195,7 @@
       "id": "python-datenstrukturen-012",
       "type": "single",
       "difficulty": "hard",
+      "title": { "de": "Gültigkeitsbereich von Variablen", "en": "Variable scope" },
       "prompt": { "de": "Was geschieht beim Zugriff auf eine Variable, die nur innerhalb einer Funktion angelegt wurde, von außerhalb dieser Funktion?", "en": "What happens when code outside a function accesses a variable that was created only inside that function?" },
       "answers": [
         { "id": "a", "de": "Python macht sie automatisch zu einer globalen Variablen.", "en": "Python automatically makes it a global variable." },

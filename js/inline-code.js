@@ -23,3 +23,8 @@ export function renderInlineCode(element, value) {
   element.replaceChildren(content);
   return element;
 }
+
+export function renderCodeBlock(element, value) {
+  element.textContent = String(value ?? "");
+  return element;
+}
