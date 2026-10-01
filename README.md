@@ -109,6 +109,8 @@ Learners may retry code tasks without a penalty. Revealing the example solution 
 
 Code-completion tasks support `html`, `css` and `python`. Python snippets are compared with the configured accepted answers just like HTML and CSS; they are never executed in the browser or on the visitor's computer.
 
+Short inline code in localised question text can be enclosed in paired backticks. The quiz renders these spans as semantic inline code. This is deliberately not a general Markdown or HTML feature, and source text is always inserted safely as text.
+
 ## Browser tests
 
 Serve the repository locally and open `tests/` in a browser. The test page checks the simulator, command parser, code-answer evaluation, question selection and every interactive exercise's example solution.

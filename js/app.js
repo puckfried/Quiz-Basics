@@ -2,6 +2,7 @@ import { translations, localize } from "./i18n.js";
 import { calculateTopicResults, isCorrectAnswer, selectBalancedQuestions, shuffle } from "./quiz.js";
 import { evaluateTerminalGoals, formatTerminalEvent, TerminalSession } from "./terminal-engine.js";
 import { buildCodeSolution, isCorrectCodeAnswer } from "./code-engine.js";
+import { renderInlineCode } from "./inline-code.js";
 
 const STORAGE_KEYS = {
   language: "ctf-quiz-language",
@@ -240,11 +241,11 @@ function renderQuestion({ preserveTerminalFocus = false, preserveCodeFocus = fal
   elements["progress-bar"].style.width = `${((state.currentIndex + 1) / state.questions.length) * 100}%`;
   elements["question-topic"].textContent = localize(topic.title, state.language);
   elements["question-difficulty"].textContent = t("difficulty")[question.difficulty];
-  elements["question-heading"].textContent = localize(interactiveQuestion ? question.title : question.prompt, state.language);
+  renderInlineCode(elements["question-heading"], localize(interactiveQuestion ? question.title : question.prompt, state.language));
   const instructionKey = question.type === "multiple" ? "instructionMultiple" : "instructionSingle";
-  elements["question-instruction"].textContent = interactiveQuestion
+  renderInlineCode(elements["question-instruction"], interactiveQuestion
     ? localize(question.prompt, state.language)
-    : t(instructionKey);
+    : t(instructionKey));
   elements["answer-error"].hidden = true;
   elements["answer-options"].replaceChildren();
 
@@ -282,7 +283,7 @@ function renderQuestion({ preserveTerminalFocus = false, preserveCodeFocus = fal
     letter.className = "answer-option__letter";
     letter.textContent = String.fromCharCode(65 + index);
     const copy = document.createElement("span");
-    copy.textContent = localize(answer.text ?? answer, state.language);
+    renderInlineCode(copy, localize(answer.text ?? answer, state.language));
     body.append(letter, copy);
     label.append(input, body);
     if (state.currentAnswer) {
@@ -334,7 +335,9 @@ function renderCodeHints() {
     const paragraph = document.createElement("p");
     const label = document.createElement("strong");
     label.textContent = `${t("hintLabel", index + 1)}: `;
-    paragraph.append(label, document.createTextNode(localize(hint, state.language)));
+    const copy = document.createElement("span");
+    renderInlineCode(copy, localize(hint, state.language));
+    paragraph.append(label, copy);
     elements["code-hints"].append(paragraph);
   });
 }
@@ -439,7 +442,9 @@ function renderTerminalHints() {
     const paragraph = document.createElement("p");
     const label = document.createElement("strong");
     label.textContent = `${t("hintLabel", index + 1)}: `;
-    paragraph.append(label, document.createTextNode(localize(hint, state.language)));
+    const copy = document.createElement("span");
+    renderInlineCode(copy, localize(hint, state.language));
+    paragraph.append(label, copy);
     elements["terminal-hints"].append(paragraph);
   });
 }
@@ -516,7 +521,7 @@ function renderFeedback() {
   elements.feedback.className = `feedback ${isCorrect ? "is-correct" : "is-incorrect"}`;
   elements["feedback-icon"].textContent = isCorrect ? "✓" : solutionRevealed ? "i" : "×";
   elements["feedback-title"].textContent = solutionRevealed ? t("solutionTitle") : t(isCorrect ? "correctTitle" : "incorrectTitle");
-  elements["feedback-explanation"].textContent = localize(currentQuestion().explanation, state.language);
+  renderInlineCode(elements["feedback-explanation"], localize(currentQuestion().explanation, state.language));
   elements["feedback-solution"].hidden = !solutionRevealed;
   elements["feedback-solution"].textContent = solutionRevealed
     ? currentQuestion().type === "terminal"

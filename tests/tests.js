@@ -1,6 +1,7 @@
 import { evaluateTerminalGoals, formatTerminalEvent, normalizePath, TerminalSession, tokenizeCommand } from "../js/terminal-engine.js";
 import { selectBalancedQuestions } from "../js/quiz.js";
 import { buildCodeSolution, isCorrectCodeAnswer, normalizeCodeAnswer } from "../js/code-engine.js";
+import { renderInlineCode } from "../js/inline-code.js";
 
 const messages = [];
 let failures = 0;
@@ -62,6 +63,28 @@ test("code answers accept only configured variants", () => {
   assert(isCorrectCodeAnswer(configuration, " color: red; "), "configured answer rejected");
   assert(!isCorrectCodeAnswer(configuration, "colour: red;"), "invalid answer accepted");
   equal(buildCodeSolution(configuration), "p { color: red; }", "built solution");
+});
+
+test("paired backticks render as inline code", () => {
+  const element = document.createElement("p");
+  renderInlineCode(element, "Use `input()` and `int()`.");
+  equal([...element.querySelectorAll("code.inline-code")].map((code) => code.textContent), ["input()", "int()"], "inline code spans");
+  equal(element.textContent, "Use input() and int().", "visible text");
+});
+
+test("unmatched backticks remain visible", () => {
+  const element = document.createElement("p");
+  renderInlineCode(element, "Use `input().");
+  equal(element.querySelectorAll("code").length, 0, "unexpected code span");
+  equal(element.textContent, "Use `input().", "literal fallback");
+});
+
+test("inline code never interprets source text as HTML", () => {
+  const element = document.createElement("p");
+  const source = "Use `<img src=x onerror=alert(1)>`.";
+  renderInlineCode(element, source);
+  equal(element.querySelectorAll("img").length, 0, "HTML element was created");
+  equal(element.querySelector("code")?.textContent, "<img src=x onerror=alert(1)>", "escaped code text");
 });
 
 const questionSets = ["bash", "git"].map((topicId) => ({
