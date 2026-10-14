@@ -142,7 +142,8 @@ const pythonDataFiles = [
   "../questions/13-python-datenstrukturen.json",
   "../questions/14-python-dateien-fehler.json",
 ];
-const codeDataFiles = ["../questions/09-html.json", "../questions/10-css.json", ...pythonDataFiles];
+const newCodeDataFiles = ["../questions/15-javascript.json", "../questions/16-sql.json"];
+const codeDataFiles = ["../questions/09-html.json", "../questions/10-css.json", ...pythonDataFiles, ...newCodeDataFiles];
 for (const file of codeDataFiles) {
   const data = await fetch(file).then((response) => response.json());
   for (const question of data.questions.filter((item) => item.type === "code")) {
@@ -154,6 +155,11 @@ for (const file of codeDataFiles) {
         "completed snippet",
       );
     });
+    if (question.code.language === "javascript") {
+      test(`${question.id} primary solution has valid JavaScript syntax`, () => {
+        new Function(buildCodeSolution(question.code));
+      });
+    }
   }
 }
 

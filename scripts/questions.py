@@ -39,7 +39,7 @@ for path in files:
         if code_block is not None:
             if question_type not in ("single", "multiple") or title is None:
                 errors.append(f"{prefix}: Codeblock benötigt eine Wissensfrage mit Kurztitel")
-            if not isinstance(code_block, dict) or code_block.get("language") not in ("html", "css", "python"):
+            if not isinstance(code_block, dict) or code_block.get("language") not in ("html", "css", "python", "javascript", "sql"):
                 errors.append(f"{prefix}: Codeblock-Sprache ungültig")
             elif any(
                 not isinstance(code_block.get(field), dict)
@@ -68,7 +68,7 @@ for path in files:
             code = q.get("code", {})
             hints, accepted_answers = code.get("hints", []), code.get("acceptedAnswers", [])
             if any(lang not in q.get("title", {}) for lang in ("de", "en")): errors.append(f"{prefix}: Code-Titel fehlt")
-            if code.get("language") not in ("html", "css", "python"): errors.append(f"{prefix}: Code-Sprache ungültig")
+            if code.get("language") not in ("html", "css", "python", "javascript", "sql"): errors.append(f"{prefix}: Code-Sprache ungültig")
             if not isinstance(code.get("prefix"), str) or not isinstance(code.get("suffix"), str): errors.append(f"{prefix}: Code-Kontext ungültig")
             if not code.get("prefix") and not code.get("suffix"): errors.append(f"{prefix}: Code-Kontext fehlt")
             if not accepted_answers or any(not isinstance(answer, str) or not answer.strip() for answer in accepted_answers): errors.append(f"{prefix}: Code-Lösung ungültig")

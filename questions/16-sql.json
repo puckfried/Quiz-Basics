@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "sql",
+    "title": { "de": "SQL und relationale Datenbanken", "en": "SQL and relational databases" },
+    "group": { "de": "Datenbanken", "en": "Databases" },
+    "description": { "de": "SQLite, Abfragen, Änderungen, Beziehungen und Auswertungen", "en": "SQLite, queries, changes, relationships and analysis" },
+    "order": 16
+  },
+  "questions": [
+    {
+      "id": "sql-001",
+      "type": "single",
+      "difficulty": "easy",
+      "title": { "de": "Datenbank und DBMS", "en": "Database and DBMS" },
+      "prompt": { "de": "Was ist der Unterschied zwischen einer Datenbank und einem DBMS?", "en": "What is the difference between a database and a DBMS?" },
+      "answers": [
+        { "id": "a", "de": "Die Datenbank enthält organisierte Daten und ihre Struktur; das DBMS ist die verwaltende Software.", "en": "The database contains organised data and its structure; the DBMS is the software that manages it." },
+        { "id": "b", "de": "Eine Datenbank ist eine Programmiersprache, ein DBMS ist eine einzelne Tabellenzeile.", "en": "A database is a programming language, while a DBMS is a single table row." },
+        { "id": "c", "de": "Beide Begriffe bezeichnen ausschließlich eine `.db`-Dateiendung.", "en": "Both terms refer only to a `.db` file extension." },
+        { "id": "d", "de": "Das DBMS enthält nur Bilder; die Datenbank enthält nur Text.", "en": "A DBMS contains only images; a database contains only text." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Die Datenbank ist der strukturierte Datenbestand. Das DBMS speichert, sucht, verändert und schützt diese Daten; zusammen bilden beide das Datenbanksystem.", "en": "The database is the structured collection of data. The DBMS stores, searches, changes, and protects that data; together they form the database system." },
+      "source": "39-intro-db/README.md#Wichtige Begriffe"
+    },
+    {
+      "id": "sql-002",
+      "type": "single",
+      "difficulty": "easy",
+      "title": { "de": "Tabellenbestandteile", "en": "Parts of a table" },
+      "prompt": { "de": "Was stellt eine einzelne Zeile in einer relationalen Tabelle dar?", "en": "What does a single row in a relational table represent?" },
+      "answers": [
+        { "id": "a", "de": "Den Namen des DBMS", "en": "The name of the DBMS" },
+        { "id": "b", "de": "Einen konkreten Datensatz", "en": "One specific record" },
+        { "id": "c", "de": "Immer eine vollständige Datenbank", "en": "Always a complete database" },
+        { "id": "d", "de": "Eine SQL-Shell-Anweisung", "en": "An SQL shell instruction" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Eine Zeile enthält die zusammengehörigen Werte eines Datensatzes. Spalten beschreiben die Eigenschaften, die für alle Zeilen vorgesehen sind.", "en": "A row contains the related values of one record. Columns describe the properties defined for all rows." },
+      "source": "39-intro-db/README.md#Relationale Datenbanken"
+    },
+    {
+      "id": "sql-003",
+      "type": "single",
+      "difficulty": "easy",
+      "title": { "de": "SQLite-Punktbefehle", "en": "SQLite dot commands" },
+      "prompt": { "de": "Welche Eingabe ist ein Befehl der SQLite-Shell und keine SQL-Abfrage?", "en": "Which input is an SQLite shell command rather than an SQL query?" },
+      "answers": [
+        { "id": "a", "de": "`SELECT * FROM products;`", "en": "`SELECT * FROM products;`" },
+        { "id": "b", "de": "`WHERE stock > 0;`", "en": "`WHERE stock > 0;`" },
+        { "id": "c", "de": "`.tables`", "en": "`.tables`" },
+        { "id": "d", "de": "`ORDER BY name;`", "en": "`ORDER BY name;`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "SQLite-Punktbefehle beginnen mit einem Punkt und enden ohne Semikolon. `.tables` zeigt die Tabellen der geöffneten Datenbank.", "en": "SQLite dot commands begin with a dot and end without a semicolon. `.tables` shows the tables in the open database." },
+      "source": "39-intro-db/README.md#Befehle die wir im Unterricht gesehen haben"
+    },
+    {
+      "id": "sql-004",
+      "type": "multiple",
+      "difficulty": "medium",
+      "title": { "de": "Abfragebausteine", "en": "Query clauses" },
+      "prompt": { "de": "Welche Aussagen über eine SQL-Abfrage stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about an SQL query are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`SELECT` bestimmt die auszugebenden Spalten.", "en": "`SELECT` determines the output columns." },
+        { "id": "b", "de": "`FROM` bestimmt die verwendete Tabelle.", "en": "`FROM` determines the table being used." },
+        { "id": "c", "de": "`WHERE` filtert Zeilen anhand einer Bedingung.", "en": "`WHERE` filters rows using a condition." },
+        { "id": "d", "de": "`LIMIT` sortiert Text automatisch alphabetisch.", "en": "`LIMIT` automatically sorts text alphabetically." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "`SELECT`, `FROM` und `WHERE` steuern Ausgabe, Datenquelle und Filter. `LIMIT` begrenzt nur die Anzahl der Ergebniszeilen; sortiert wird mit `ORDER BY`.", "en": "`SELECT`, `FROM`, and `WHERE` control output, data source, and filtering. `LIMIT` only restricts the number of result rows; `ORDER BY` performs sorting." },
+      "source": "39-intro-db/cheatsheet.md#Grundaufbau einer Abfrage"
+    },
+    {
+      "id": "sql-005",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Fehlende Werte filtern", "en": "Filter missing values" },
+      "prompt": { "de": "Welche Bedingung findet Datensätze, bei denen `returned_on` keinen Wert enthält?", "en": "Which condition finds records where `returned_on` has no value?" },
+      "answers": [
+        { "id": "a", "de": "`WHERE returned_on = NULL`", "en": "`WHERE returned_on = NULL`" },
+        { "id": "b", "de": "`WHERE returned_on IS NULL`", "en": "`WHERE returned_on IS NULL`" },
+        { "id": "c", "de": "`WHERE returned_on = 0`", "en": "`WHERE returned_on = 0`" },
+        { "id": "d", "de": "`WHERE returned_on EMPTY`", "en": "`WHERE returned_on EMPTY`" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "`NULL` steht für einen fehlenden, unbekannten oder nicht zutreffenden Wert und wird mit `IS NULL` beziehungsweise `IS NOT NULL` geprüft.", "en": "`NULL` represents a missing, unknown, or inapplicable value and is tested with `IS NULL` or `IS NOT NULL`." },
+      "source": "39-intro-db/cheatsheet.md#Fehlende Werte"
+    },
+    {
+      "id": "sql-006",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Änderung sicher vorbereiten", "en": "Prepare a change safely" },
+      "prompt": { "de": "Was sollte vor einem `UPDATE` oder `DELETE` mit derselben `WHERE`-Bedingung geschehen?", "en": "What should be done before an `UPDATE` or `DELETE` using the same `WHERE` condition?" },
+      "answers": [
+        { "id": "a", "de": "Die betroffenen Zeilen zuerst mit `SELECT` kontrollieren.", "en": "First inspect the affected rows with `SELECT`." },
+        { "id": "b", "de": "Die gesamte Datenbankdatei im Texteditor verändern.", "en": "Edit the entire database file in a text editor." },
+        { "id": "c", "de": "Die `WHERE`-Bedingung entfernen, damit die Änderung schneller läuft.", "en": "Remove the `WHERE` condition so the change runs faster." },
+        { "id": "d", "de": "Alle Constraints vorübergehend löschen.", "en": "Temporarily delete all constraints." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Ein `SELECT` mit demselben Filter zeigt vorab, welche Zeilen betroffen wären. Ohne `WHERE` können `UPDATE` oder `DELETE` alle Zeilen verändern beziehungsweise löschen.", "en": "A `SELECT` with the same filter shows which rows would be affected. Without `WHERE`, `UPDATE` or `DELETE` can change or remove every row." },
+      "source": "40-changes-transactions/README.md#Sicheres Vorgehen"
+    },
+    {
+      "id": "sql-007",
+      "type": "multiple",
+      "difficulty": "medium",
+      "title": { "de": "Constraints verstehen", "en": "Understand constraints" },
+      "prompt": { "de": "Welche Aussagen über die gezeigten SQL-Constraints stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about the shown SQL constraints are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`PRIMARY KEY` identifiziert Datensätze eindeutig.", "en": "`PRIMARY KEY` uniquely identifies records." },
+        { "id": "b", "de": "`NOT NULL` verlangt einen vorhandenen Wert.", "en": "`NOT NULL` requires a value to be present." },
+        { "id": "c", "de": "`UNIQUE` verhindert wiederholte Werte in der betreffenden Spalte oder Spaltenkombination.", "en": "`UNIQUE` prevents repeated values in the relevant column or column combination." },
+        { "id": "d", "de": "`DEFAULT` löscht einen Datensatz, wenn ein Wert fehlt.", "en": "`DEFAULT` deletes a record when a value is missing." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Primärschlüssel, Pflichtwerte und Eindeutigkeit schützen die Datenstruktur. `DEFAULT` setzt einen Vorgabewert, wenn beim Einfügen kein Wert angegeben wird.", "en": "Primary keys, required values, and uniqueness protect the data structure. `DEFAULT` supplies a predefined value when none is provided during insertion." },
+      "source": "40-changes-transactions/README.md#Das Schema lesen"
+    },
+    {
+      "id": "sql-008",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Transaktion abschließen", "en": "Finish a transaction" },
+      "prompt": { "de": "Was ist der Unterschied zwischen `ROLLBACK` und `COMMIT`?", "en": "What is the difference between `ROLLBACK` and `COMMIT`?" },
+      "answers": [
+        { "id": "a", "de": "`ROLLBACK` verwirft die laufenden Änderungen; `COMMIT` bestätigt sie dauerhaft.", "en": "`ROLLBACK` discards the current changes; `COMMIT` confirms them permanently." },
+        { "id": "b", "de": "`ROLLBACK` sortiert Tabellen; `COMMIT` benennt sie um.", "en": "`ROLLBACK` sorts tables; `COMMIT` renames them." },
+        { "id": "c", "de": "Beide Befehle zeigen lediglich das Schema an.", "en": "Both commands only display the schema." },
+        { "id": "d", "de": "`COMMIT` darf nur nach einem `SELECT` verwendet werden.", "en": "`COMMIT` may only be used after a `SELECT`." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Eine Transaktion kann zunächst kontrolliert werden. `ROLLBACK` macht ihre Änderungen rückgängig, während `COMMIT` sie bestätigt.", "en": "A transaction can be inspected first. `ROLLBACK` undoes its changes, while `COMMIT` confirms them." },
+      "source": "40-changes-transactions/README.md#Transaktion mit Rollback"
+    },
+    {
+      "id": "sql-009",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Fremdschlüssel bei 1:n", "en": "Foreign key in 1:n" },
+      "prompt": { "de": "Ein Team kann viele Beschäftigte haben, jede beschäftigte Person gehört genau einem Team. Wo steht der Fremdschlüssel?", "en": "A team can have many employees, and every employee belongs to exactly one team. Where is the foreign key stored?" },
+      "answers": [
+        { "id": "a", "de": "`team_id` steht in `employees` und verweist auf `teams`.", "en": "`team_id` is stored in `employees` and references `teams`." },
+        { "id": "b", "de": "`employee_id` muss mehrfach in einer einzelnen Spalte von `teams` stehen.", "en": "Several `employee_id` values must be stored in one column of `teams`." },
+        { "id": "c", "de": "Für eine 1:n-Beziehung werden keine Schlüssel benötigt.", "en": "No keys are needed for a 1:n relationship." },
+        { "id": "d", "de": "Der Fremdschlüssel steht ausschließlich im Namen der Datenbankdatei.", "en": "The foreign key exists only in the database filename." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Bei einer 1:n-Beziehung wird der Schlüssel der 1-Seite als Fremdschlüssel auf der n-Seite gespeichert. So kann jedes `employees`-Element genau einem Team zugeordnet werden.", "en": "In a 1:n relationship, the key from the one side is stored as a foreign key on the many side. This assigns each `employees` record to one team." },
+      "source": "41-schema/README.md#Wo steht der Fremdschlüssel bei 1:n?"
+    },
+    {
+      "id": "sql-010",
+      "type": "single",
+      "difficulty": "hard",
+      "title": { "de": "Passenden JOIN wählen", "en": "Choose the right JOIN" },
+      "prompt": { "de": "Die Auswertung soll alle Kundinnen und Kunden zeigen, auch wenn sie keine Bestellung haben. Welcher JOIN passt?", "en": "The report should show all customers, including those without an order. Which JOIN is appropriate?" },
+      "codeBlock": {
+        "language": "sql",
+        "lead": { "de": "Die Tabelle `customers` steht links:", "en": "The `customers` table is on the left:" },
+        "content": { "de": "SELECT c.name, o.order_id\nFROM customers AS c\n... orders AS o ON c.customer_id = o.customer_id;", "en": "SELECT c.name, o.order_id\nFROM customers AS c\n... orders AS o ON c.customer_id = o.customer_id;" }
+      },
+      "answers": [
+        { "id": "a", "de": "`INNER JOIN`, weil nur vorhandene Zuordnungen gezeigt werden sollen", "en": "`INNER JOIN`, because only existing matches should be shown" },
+        { "id": "b", "de": "`LEFT JOIN`, weil alle Zeilen der linken Tabelle erhalten bleiben", "en": "`LEFT JOIN`, because all rows from the left table are retained" },
+        { "id": "c", "de": "Kein JOIN, weil zwei Tabellen nie verbunden werden dürfen", "en": "No JOIN, because two tables must never be connected" },
+        { "id": "d", "de": "`ORDER BY`, weil es fehlende Bestellungen ergänzt", "en": "`ORDER BY`, because it adds missing orders" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Ein `LEFT JOIN` behält alle Zeilen aus `customers`. Wenn rechts keine Bestellung passt, enthalten die Bestellspalten `NULL`.", "en": "A `LEFT JOIN` keeps every row from `customers`. When no order matches on the right, the order columns contain `NULL`." },
+      "source": "43-recap-outlook/lesson-article-de.md#LEFT JOIN einfach erklärt"
+    },
+    {
+      "id": "sql-011",
+      "type": "multiple",
+      "difficulty": "hard",
+      "title": { "de": "LEFT JOIN richtig zählen", "en": "Count a LEFT JOIN correctly" },
+      "prompt": { "de": "Eine Auswertung nutzt `LEFT JOIN`, damit auch Mitglieder ohne Ausleihe erscheinen. Welche Aussagen stimmen? Wähle alle richtigen Antworten aus.", "en": "A report uses `LEFT JOIN` so members without loans also appear. Which statements are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`COUNT(*)` kann die erzeugte Ergebniszeile ohne passende Ausleihe mitzählen.", "en": "`COUNT(*)` can count the generated result row even without a matching loan." },
+        { "id": "b", "de": "`COUNT(l.loan_id)` zählt nur Zeilen, in denen `loan_id` nicht `NULL` ist.", "en": "`COUNT(l.loan_id)` counts only rows where `loan_id` is not `NULL`." },
+        { "id": "c", "de": "`GROUP BY` kann pro Mitglied eine Ergebnisgruppe bilden.", "en": "`GROUP BY` can form one result group per member." },
+        { "id": "d", "de": "Ein `LEFT JOIN` entfernt grundsätzlich alle `NULL`-Werte.", "en": "A `LEFT JOIN` always removes every `NULL` value." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Beim `LEFT JOIN` bleibt auch ein Mitglied ohne Treffer als Ergebniszeile erhalten. Darum zählt man besser eine nicht-leere ID der rechten Tabelle und gruppiert nach dem Mitglied.", "en": "With a `LEFT JOIN`, a member without a match still remains as a result row. Therefore, count a non-null ID from the right table and group by the member." },
+      "source": "43-recap-outlook/lesson-article-de.md#Gruppieren nach Kundennamen statt Kunden-ID"
+    },
+    {
+      "id": "sql-012",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "SQL-Werte sicher übergeben", "en": "Pass SQL values safely" },
+      "prompt": { "de": "Warum verwendet das Python-Beispiel einen `?`-Platzhalter und übergibt `genre` getrennt, statt einen F-String in die SQL-Abfrage einzusetzen?", "en": "Why does the Python example use a `?` placeholder and pass `genre` separately instead of inserting an f-string into the SQL query?" },
+      "answers": [
+        { "id": "a", "de": "Damit SQLite die Eingabe als Datenwert behandelt und nicht als Teil des SQL-Codes.", "en": "So SQLite treats the input as a data value rather than part of the SQL code." },
+        { "id": "b", "de": "Damit `SELECT` automatisch zu `DELETE` wird.", "en": "So `SELECT` is automatically changed into `DELETE`." },
+        { "id": "c", "de": "Damit keine Datenbankverbindung benötigt wird.", "en": "So no database connection is required." },
+        { "id": "d", "de": "Damit alle Eingaben als Tabellennamen interpretiert werden.", "en": "So every input is interpreted as a table name." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Parameterbindung trennt SQL-Code und Eingabewert. Dadurch wird die gesamte Eingabe als Wert behandelt und das Risiko einer SQL-Injection reduziert.", "en": "Parameter binding separates SQL code from the input value. This treats the complete input as a value and reduces the risk of SQL injection." },
+      "source": "43-recap-outlook/README.md#Python und SQLite nutzen"
+    },
+    {
+      "id": "sql-013",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Spalten auswählen", "en": "Select columns" },
+      "prompt": { "de": "Ergänze die Spaltenliste, sodass nur name und price_cents ausgegeben werden.", "en": "Complete the column list so only name and price_cents are returned." },
+      "code": {
+        "language": "sql",
+        "prefix": "SELECT ",
+        "suffix": "\nFROM products;",
+        "acceptedAnswers": ["name, price_cents", "NAME, PRICE_CENTS"],
+        "hints": [
+          { "de": "Hinter `SELECT` stehen die gewünschten Spaltennamen.", "en": "The requested column names follow `SELECT`." },
+          { "de": "Trenne `name` und `price_cents` mit einem Komma.", "en": "Separate `name` and `price_cents` with a comma." }
+        ]
+      },
+      "explanation": { "de": "Explizite Spaltennamen begrenzen die Ausgabe auf die benötigten Werte und legen deren Reihenfolge fest.", "en": "Explicit column names restrict the output to the required values and determine their order." },
+      "source": "39-intro-db/README.md#Bestimmte Spalten auswählen"
+    },
+    {
+      "id": "sql-014",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Produkte filtern", "en": "Filter products" },
+      "prompt": { "de": "Ergänze die vollständige WHERE-Klausel für Produkte aus der Kategorie Audio.", "en": "Add the complete WHERE clause for products in the Audio category." },
+      "code": {
+        "language": "sql",
+        "prefix": "SELECT name, category\nFROM products\n",
+        "suffix": ";",
+        "acceptedAnswers": ["WHERE category = 'Audio'", "where category = 'Audio'", "WHERE category='Audio'", "where category='Audio'"],
+        "hints": [
+          { "de": "Eine Zeilenbedingung beginnt mit `WHERE`.", "en": "A row condition begins with `WHERE`." },
+          { "de": "Textwerte wie `Audio` stehen in einfachen Anführungszeichen.", "en": "Text values such as `Audio` use single quotation marks." }
+        ]
+      },
+      "explanation": { "de": "`WHERE category = 'Audio'` lässt nur Zeilen mit genau diesem Kategoriewert im Ergebnis.", "en": "`WHERE category = 'Audio'` leaves only rows with that exact category value in the result." },
+      "source": "39-intro-db/README.md#Zeilen mit WHERE filtern"
+    },
+    {
+      "id": "sql-015",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Teuerste Produkte anzeigen", "en": "Show the most expensive products" },
+      "prompt": { "de": "Ergänze Sortierung und Begrenzung, sodass die zwei teuersten Produkte zuerst erscheinen.", "en": "Add sorting and limiting so the two most expensive products appear first." },
+      "code": {
+        "language": "sql",
+        "prefix": "SELECT name, price_cents\nFROM products\n",
+        "suffix": ";",
+        "acceptedAnswers": ["ORDER BY price_cents DESC\nLIMIT 2", "order by price_cents desc\nlimit 2", "ORDER BY price_cents DESC LIMIT 2", "order by price_cents desc limit 2"],
+        "hints": [
+          { "de": "Sortiere `price_cents` mit `ORDER BY` absteigend.", "en": "Sort `price_cents` in descending order with `ORDER BY`." },
+          { "de": "Begrenze das Ergebnis danach mit `LIMIT 2`.", "en": "Then restrict the result with `LIMIT 2`." }
+        ]
+      },
+      "explanation": { "de": "`DESC` stellt hohe Preise zuerst dar. Das anschließende `LIMIT 2` wählt aus dieser festgelegten Reihenfolge die ersten zwei Zeilen.", "en": "`DESC` places high prices first. The following `LIMIT 2` selects the first two rows from that defined order." },
+      "source": "39-intro-db/cheatsheet.md#Sortieren"
+    },
+    {
+      "id": "sql-016",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Datensatz einfügen", "en": "Insert a record" },
+      "prompt": { "de": "Ergänze die VALUES-Klausel passend zur angegebenen Spaltenliste.", "en": "Complete the VALUES clause so it matches the specified column list." },
+      "code": {
+        "language": "sql",
+        "prefix": "INSERT INTO inventory_items\n  (sku, name, category, price_cents, quantity)\n",
+        "suffix": ";",
+        "acceptedAnswers": ["VALUES ('CAM-WEB-1', 'Webcam', 'Video', 6900, 6)", "values ('CAM-WEB-1', 'Webcam', 'Video', 6900, 6)"],
+        "hints": [
+          { "de": "Die einzufügenden Werte folgen auf das Schlüsselwort `VALUES`.", "en": "The values to insert follow the `VALUES` keyword." },
+          { "de": "Reihenfolge: SKU, Name, Kategorie, Preis in Cent und Menge.", "en": "Order: SKU, name, category, price in cents, and quantity." }
+        ]
+      },
+      "explanation": { "de": "Die Werte stehen in derselben Reihenfolge wie die Spaltenliste. Nicht genannte Spalten können automatisch erzeugte oder vorgegebene Werte erhalten.", "en": "The values appear in the same order as the column list. Omitted columns can receive generated or default values." },
+      "source": "40-changes-transactions/README.md#Einen Datensatz einfügen"
+    },
+    {
+      "id": "sql-017",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "UPDATE gezielt begrenzen", "en": "Limit an UPDATE precisely" },
+      "prompt": { "de": "Ergänze die WHERE-Klausel, sodass ausschließlich der Datensatz mit item_id 3 geändert wird.", "en": "Add the WHERE clause so only the record with item_id 3 is changed." },
+      "code": {
+        "language": "sql",
+        "prefix": "BEGIN;\n\nUPDATE inventory_items\nSET quantity = quantity + 5\n",
+        "suffix": ";\n\nSELECT item_id, quantity\nFROM inventory_items\nWHERE item_id = 3;\n\nROLLBACK;",
+        "acceptedAnswers": ["WHERE item_id = 3", "where item_id = 3", "WHERE item_id=3", "where item_id=3"],
+        "hints": [
+          { "de": "Übernimm dieselbe Bedingung wie in der Kontrollabfrage.", "en": "Use the same condition as in the verification query." },
+          { "de": "Die Klausel lautet `WHERE item_id = 3`.", "en": "The clause is `WHERE item_id = 3`." }
+        ]
+      },
+      "explanation": { "de": "Die eindeutige ID begrenzt die Änderung auf eine Zeile. Die Transaktion zeigt außerdem das sichere Muster aus Ändern, Kontrollieren und Zurückrollen.", "en": "The unique ID limits the change to one row. The transaction also demonstrates the safe pattern of changing, checking, and rolling back." },
+      "source": "40-changes-transactions/README.md#Transaktion mit Rollback"
+    },
+    {
+      "id": "sql-018",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Bücher und Autoren verbinden", "en": "Join books and authors" },
+      "prompt": { "de": "Ergänze den INNER JOIN, der jedes Buch über author_id mit seinem Autor oder seiner Autorin verbindet.", "en": "Add the INNER JOIN that connects each book to its author using author_id." },
+      "code": {
+        "language": "sql",
+        "prefix": "SELECT b.title, a.name AS author\nFROM books AS b\n",
+        "suffix": "\nORDER BY b.title;",
+        "acceptedAnswers": ["INNER JOIN authors AS a ON b.author_id = a.author_id", "inner join authors as a on b.author_id = a.author_id", "INNER JOIN authors a ON b.author_id = a.author_id", "inner join authors a on b.author_id = a.author_id"],
+        "hints": [
+          { "de": "Verbinde `books` mit `authors` durch einen `INNER JOIN` und verwende für `authors` den Alias `a`.", "en": "Join `books` to `authors` with an `INNER JOIN` and use `a` as the alias for `authors`." },
+          { "de": "Hinter `ON` müssen `b.author_id` und `a.author_id` übereinstimmen.", "en": "After `ON`, `b.author_id` and `a.author_id` must match." }
+        ]
+      },
+      "explanation": { "de": "Der JOIN sucht für jede Buchzeile die Autorzeile mit derselben `author_id`. Dadurch können Spalten aus beiden Tabellen gemeinsam ausgegeben werden.", "en": "The JOIN finds the author row with the same `author_id` for each book row. This allows columns from both tables to be returned together." },
+      "source": "43-recap-outlook/README.md#Ein einfacher INNER JOIN"
+    }
+  ]
+}

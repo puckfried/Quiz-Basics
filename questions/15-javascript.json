@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "topic": {
+    "id": "javascript",
+    "title": { "de": "JavaScript im Browser", "en": "JavaScript in the browser" },
+    "group": { "de": "Frontend", "en": "Frontend" },
+    "description": { "de": "Laufzeitumgebungen, DOM, Events und Eingabefelder", "en": "Runtime environments, the DOM, events and input fields" },
+    "order": 15
+  },
+  "questions": [
+    {
+      "id": "javascript-001",
+      "type": "single",
+      "difficulty": "easy",
+      "title": { "de": "JavaScript ausführen", "en": "Run JavaScript" },
+      "prompt": { "de": "Welche Aussage beschreibt Node und den Browser korrekt?", "en": "Which statement correctly describes Node and the browser?" },
+      "answers": [
+        { "id": "a", "de": "Nur der Browser kann JavaScript ausführen.", "en": "Only the browser can run JavaScript." },
+        { "id": "b", "de": "Node führt JavaScript im Terminal aus; der Browser führt es innerhalb einer Webseite aus.", "en": "Node runs JavaScript in the terminal; the browser runs it as part of a web page." },
+        { "id": "c", "de": "Node ist eine CSS-Bibliothek für den Browser.", "en": "Node is a CSS library for the browser." },
+        { "id": "d", "de": "Der Browser kann JavaScript nur nach einer Python-Übersetzung ausführen.", "en": "The browser can run JavaScript only after it has been translated by Python." }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Beide sind JavaScript-Laufzeitumgebungen. Node verbindet JavaScript mit einer Terminal- und Betriebssystemumgebung, während der Browser Web-APIs und das DOM bereitstellt.", "en": "Both are JavaScript runtime environments. Node connects JavaScript to a terminal and operating-system environment, while the browser provides web APIs and the DOM." },
+      "source": "34-intro-js/README.md#JavaScript, Node und Browser"
+    },
+    {
+      "id": "javascript-002",
+      "type": "single",
+      "difficulty": "easy",
+      "title": { "de": "Aufgabe von JavaScript", "en": "Role of JavaScript" },
+      "prompt": { "de": "Welche Aufgabe übernimmt JavaScript typischerweise in einer Webseite?", "en": "What role does JavaScript typically have on a web page?" },
+      "answers": [
+        { "id": "a", "de": "Es ersetzt immer die HTML-Struktur.", "en": "It always replaces the HTML structure." },
+        { "id": "b", "de": "Es legt ausschließlich Farben und Abstände fest.", "en": "It only defines colours and spacing." },
+        { "id": "c", "de": "Es steuert Verhalten und reagiert auf Aktionen der nutzenden Person.", "en": "It controls behaviour and responds to user actions." },
+        { "id": "d", "de": "Es speichert jede Webseite automatisch in einer Datenbank.", "en": "It automatically stores every web page in a database." }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "HTML beschreibt die Struktur, CSS die Darstellung und JavaScript das Verhalten, zum Beispiel eine Reaktion auf einen Klick.", "en": "HTML describes the structure, CSS the presentation, and JavaScript the behaviour, such as responding to a click." },
+      "source": "34-intro-js/lesson-article-de.md#Bedeutung und typische Einsatzgebiete von JavaScript"
+    },
+    {
+      "id": "javascript-003",
+      "type": "single",
+      "difficulty": "easy",
+      "title": { "de": "Element auswählen", "en": "Select an element" },
+      "prompt": { "de": "Was liefert `document.querySelector(\".status\")`, wenn mehrere Elemente zur Klasse passen?", "en": "What does `document.querySelector(\".status\")` return when several elements match the class?" },
+      "answers": [
+        { "id": "a", "de": "Das erste passende Element", "en": "The first matching element" },
+        { "id": "b", "de": "Immer alle passenden Elemente", "en": "Always all matching elements" },
+        { "id": "c", "de": "Nur den Text des letzten passenden Elements", "en": "Only the text of the last matching element" },
+        { "id": "d", "de": "Einen neuen CSS-Selektor", "en": "A new CSS selector" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "`querySelector()` verwendet einen CSS-Selektor und gibt das erste passende DOM-Element zurück.", "en": "`querySelector()` uses a CSS selector and returns the first matching DOM element." },
+      "source": "34-intro-js/README.md#Das DOM"
+    },
+    {
+      "id": "javascript-004",
+      "type": "multiple",
+      "difficulty": "medium",
+      "title": { "de": "DOM-Inhalte verändern", "en": "Change DOM content" },
+      "prompt": { "de": "Welche Aussagen stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "`textContent` kann den Text eines Absatzes verändern.", "en": "`textContent` can change the text of a paragraph." },
+        { "id": "b", "de": "Die Eigenschaft `href` kann das Ziel eines Links verändern.", "en": "The `href` property can change a link's destination." },
+        { "id": "c", "de": "`console.log()` verändert automatisch die sichtbare Webseite.", "en": "`console.log()` automatically changes the visible web page." },
+        { "id": "d", "de": "Eine Änderung nur in der DevTools-Konsole verschwindet gewöhnlich nach dem Neuladen.", "en": "A change made only in the DevTools console usually disappears after reloading." }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": { "de": "DOM-Eigenschaften wie `textContent` und `href` verändern Elemente. Eine Konsolenausgabe zeigt dagegen nur Informationen an, und direkte Konsolenänderungen sind nicht in den Dateien gespeichert.", "en": "DOM properties such as `textContent` and `href` change elements. Console output only displays information, and direct console changes are not saved in the files." },
+      "source": "34-intro-js/README.md#Kurzes Browser-Beispiel"
+    },
+    {
+      "id": "javascript-005",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Skript richtig laden", "en": "Load a script correctly" },
+      "prompt": { "de": "Warum wird ein Skript ohne `defer` häufig kurz vor `</body>` eingebunden?", "en": "Why is a script without `defer` often included shortly before `</body>`?" },
+      "answers": [
+        { "id": "a", "de": "Damit JavaScript automatisch in CSS umgewandelt wird.", "en": "So JavaScript is automatically converted into CSS." },
+        { "id": "b", "de": "Damit der Browser vorher die benötigten HTML-Elemente gelesen hat.", "en": "So the browser has read the required HTML elements first." },
+        { "id": "c", "de": "Damit das Skript nur einmal gespeichert werden kann.", "en": "So the script can only be saved once." },
+        { "id": "d", "de": "Damit `document` auch in Node verfügbar wird.", "en": "So `document` also becomes available in Node." }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": { "de": "Der Browser liest HTML von oben nach unten. Am Ende des `body` existieren die vorherigen Elemente bereits im DOM, wenn das Skript ausgeführt wird.", "en": "The browser reads HTML from top to bottom. At the end of the `body`, the preceding elements already exist in the DOM when the script runs." },
+      "source": "34-intro-js/lesson-article-de.md#Warum die Position des script-Tags wichtig ist"
+    },
+    {
+      "id": "javascript-006",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Eingabewert lesen", "en": "Read an input value" },
+      "prompt": { "de": "Mit welcher Eigenschaft liest JavaScript den aktuellen Inhalt eines Texteingabefeldes?", "en": "Which property does JavaScript use to read the current content of a text input?" },
+      "answers": [
+        { "id": "a", "de": "`.textContent`", "en": "`.textContent`" },
+        { "id": "b", "de": "`.classList`", "en": "`.classList`" },
+        { "id": "c", "de": "`.value`", "en": "`.value`" },
+        { "id": "d", "de": "`.selector`", "en": "`.selector`" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "Formularfelder speichern ihren aktuellen Eingabewert in `.value`. Für den Text eines Absatzes oder einer Überschrift wird dagegen `.textContent` verwendet.", "en": "Form fields store their current input value in `.value`. The text of a paragraph or heading is accessed with `.textContent` instead." },
+      "source": "36-input/README.md#Eingaben im Browser"
+    },
+    {
+      "id": "javascript-007",
+      "type": "multiple",
+      "difficulty": "medium",
+      "title": { "de": "Mehrere Elemente auswählen", "en": "Select several elements" },
+      "prompt": { "de": "Welche Aussagen über `querySelectorAll()` stimmen? Wähle alle richtigen Antworten aus.", "en": "Which statements about `querySelectorAll()` are correct? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "Die Methode verwendet CSS-Selektoren.", "en": "The method uses CSS selectors." },
+        { "id": "b", "de": "Sie liefert mehrere passende Elemente, durch die eine `for...of`-Schleife laufen kann.", "en": "It returns matching elements that a `for...of` loop can iterate over." },
+        { "id": "c", "de": "Sie darf nur verwendet werden, wenn mindestens zwei Elemente passen.", "en": "It may only be used when at least two elements match." },
+        { "id": "d", "de": "Sie kann auch eine leere Sammlung liefern, wenn nichts passt.", "en": "It can also return an empty collection when nothing matches." }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": { "de": "`querySelectorAll()` sucht mit einem CSS-Selektor nach allen Treffern. Die zurückgegebene Sammlung kann leer sein und lässt sich mit `for...of` durchlaufen.", "en": "`querySelectorAll()` uses a CSS selector to find all matches. The returned collection can be empty and can be iterated with `for...of`." },
+      "source": "36-input/README.md#Ein Element oder mehrere Elemente auswählen"
+    },
+    {
+      "id": "javascript-008",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Event-Handler übergeben", "en": "Pass an event handler" },
+      "prompt": { "de": "Warum steht in `button.addEventListener(\"click\", handleClick)` hinter `handleClick` kein Klammerpaar?", "en": "Why are there no parentheses after `handleClick` in `button.addEventListener(\"click\", handleClick)`?" },
+      "answers": [
+        { "id": "a", "de": "Die Funktion soll dem Listener übergeben und erst beim Klick aufgerufen werden.", "en": "The function should be passed to the listener and called only when the click occurs." },
+        { "id": "b", "de": "JavaScript-Funktionen dürfen grundsätzlich keine Klammern haben.", "en": "JavaScript functions are never allowed to have parentheses." },
+        { "id": "c", "de": "Ohne Klammern wird das Klick-Event deaktiviert.", "en": "Without parentheses, the click event is disabled." },
+        { "id": "d", "de": "Die Klammern werden nur in Python benötigt.", "en": "Parentheses are only needed in Python." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "Der Listener erhält die Funktion als Referenz. `handleClick()` würde die Funktion sofort beim Einrichten des Listeners ausführen.", "en": "The listener receives a reference to the function. `handleClick()` would execute it immediately while setting up the listener." },
+      "source": "35-js-event/lesson-article-de.md#Die Grundstruktur eines Event-Listeners"
+    },
+    {
+      "id": "javascript-009",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "CSS-Klasse umschalten", "en": "Toggle a CSS class" },
+      "prompt": { "de": "Was bewirkt `lamp.classList.toggle(\"on\")` bei wiederholten Klicks?", "en": "What does `lamp.classList.toggle(\"on\")` do on repeated clicks?" },
+      "answers": [
+        { "id": "a", "de": "Es fügt die Klasse nur beim ersten Laden der Seite hinzu.", "en": "It adds the class only when the page first loads." },
+        { "id": "b", "de": "Es ersetzt das Element durch ein neues Element namens on.", "en": "It replaces the element with a new element named on." },
+        { "id": "c", "de": "Es fügt die Klasse hinzu, wenn sie fehlt, und entfernt sie, wenn sie vorhanden ist.", "en": "It adds the class when missing and removes it when present." },
+        { "id": "d", "de": "Es ändert direkt alle CSS-Dateien des Projekts.", "en": "It directly changes all CSS files in the project." }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": { "de": "`toggle()` schaltet die angegebene Klasse am ausgewählten Element um. Der Klassenname wird dabei ohne den CSS-Punkt geschrieben.", "en": "`toggle()` switches the specified class on the selected element. The class name is written without the CSS dot." },
+      "source": "35-js-event/README.md#CSS-Klassen mit JavaScript ändern"
+    },
+    {
+      "id": "javascript-010",
+      "type": "single",
+      "difficulty": "hard",
+      "title": { "de": "Event-Ziel unterscheiden", "en": "Distinguish event targets" },
+      "prompt": { "de": "Ein Listener hängt an einem `button`, in dem ein `span` liegt. Die Person klickt auf das `span`. Welche Aussage ist richtig?", "en": "A listener is attached to a `button` that contains a `span`. The user clicks the `span`. Which statement is correct?" },
+      "answers": [
+        { "id": "a", "de": "`event.target` kann das `span` sein, während `event.currentTarget` der `button` ist.", "en": "`event.target` can be the `span`, while `event.currentTarget` is the `button`." },
+        { "id": "b", "de": "`event.currentTarget` ist immer das innerste angeklickte Element.", "en": "`event.currentTarget` is always the innermost clicked element." },
+        { "id": "c", "de": "Beide Eigenschaften enthalten immer den Ereignisnamen `click`.", "en": "Both properties always contain the event name `click`." },
+        { "id": "d", "de": "Das Event wird verworfen, weil der Klick nicht direkt auf dem Button lag.", "en": "The event is discarded because the click was not directly on the button." }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "`target` bezeichnet den ursprünglichen Auslöser. `currentTarget` bezeichnet das Element, dessen Listener gerade ausgeführt wird.", "en": "`target` identifies the original trigger. `currentTarget` identifies the element whose listener is currently running." },
+      "source": "35-js-event/lesson-article-de.md#target und currentTarget einfach verstanden"
+    },
+    {
+      "id": "javascript-011",
+      "type": "multiple",
+      "difficulty": "hard",
+      "title": { "de": "DOM-Fehler untersuchen", "en": "Investigate DOM errors" },
+      "prompt": { "de": "`document.querySelector(\"#save\")` liefert `null`. Welche Ursachen sind laut Material plausibel? Wähle alle richtigen Antworten aus.", "en": "`document.querySelector(\"#save\")` returns `null`. Which causes are plausible according to the material? Select all correct answers." },
+      "answers": [
+        { "id": "a", "de": "Die ID im HTML oder im Selektor ist falsch geschrieben.", "en": "The ID is misspelled in the HTML or selector." },
+        { "id": "b", "de": "Das Skript läuft, bevor das Element gelesen wurde.", "en": "The script runs before the element has been read." },
+        { "id": "c", "de": "Die Änderungen wurden nicht gespeichert oder die falsche Datei wurde geöffnet.", "en": "The changes were not saved or the wrong file was opened." },
+        { "id": "d", "de": "Jede ID muss in JavaScript ohne `#` geschrieben werden, auch bei `querySelector()`.", "en": "Every ID must be written without `#` in JavaScript, including with `querySelector()`." }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": { "de": "Selektor, Ladezeitpunkt und verwendete Dateien sollten zuerst geprüft werden. Bei `querySelector()` gehört das `#` zum ID-Selektor; nur `getElementById()` erwartet die reine ID.", "en": "The selector, loading time, and files in use should be checked first. With `querySelector()`, `#` belongs to the ID selector; only `getElementById()` expects the plain ID." },
+      "source": "35-js-event/lesson-article-de.md#Einfache Fehler im Code erkennen und beheben"
+    },
+    {
+      "id": "javascript-012",
+      "type": "single",
+      "difficulty": "medium",
+      "title": { "de": "Filterbedingung lesen", "en": "Read a filter condition" },
+      "prompt": { "de": "Wann wird im gezeigten Code die Klasse `hidden` entfernt?", "en": "When does the shown code remove the `hidden` class?" },
+      "codeBlock": {
+        "language": "javascript",
+        "lead": { "de": "Betrachte die Bedingung:", "en": "Consider the condition:" },
+        "content": { "de": "if (card.textContent.includes(searchInput.value)) {\n  card.classList.remove(\"hidden\");\n} else {\n  card.classList.add(\"hidden\");\n}", "en": "if (card.textContent.includes(searchInput.value)) {\n  card.classList.remove(\"hidden\");\n} else {\n  card.classList.add(\"hidden\");\n}" }
+      },
+      "answers": [
+        { "id": "a", "de": "Wenn der Kartentext den aktuellen Eingabewert enthält", "en": "When the card text contains the current input value" },
+        { "id": "b", "de": "Nur wenn das Eingabefeld vollständig leer ist", "en": "Only when the input field is completely empty" },
+        { "id": "c", "de": "Immer, sobald die Seite geladen wird", "en": "Always as soon as the page loads" },
+        { "id": "d", "de": "Wenn `querySelectorAll()` genau ein Element liefert", "en": "When `querySelectorAll()` returns exactly one element" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": { "de": "`includes()` prüft, ob der Suchtext im Kartentext vorkommt. Bei einem Treffer wird `hidden` entfernt und die Karte sichtbar.", "en": "`includes()` checks whether the search text occurs in the card text. On a match, `hidden` is removed and the card becomes visible." },
+      "source": "36-input/02-filter-elements/script.js"
+    },
+    {
+      "id": "javascript-013",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Text in der Konsole ausgeben", "en": "Print text to the console" },
+      "prompt": { "de": "Ergänze den vollständigen Aufruf, der JavaScript läuft in der Konsole ausgibt.", "en": "Add the complete call that prints the text JavaScript läuft to the console." },
+      "code": {
+        "language": "javascript",
+        "prefix": "",
+        "suffix": "\n",
+        "acceptedAnswers": ["console.log(\"JavaScript läuft\");", "console.log('JavaScript läuft');", "console.log(\"JavaScript läuft\")", "console.log('JavaScript läuft')"],
+        "hints": [
+          { "de": "Die Konsolenmethode heißt `console.log()`.", "en": "The console method is called `console.log()`." },
+          { "de": "Setze den Text in Anführungszeichen und in die runden Klammern.", "en": "Put the text in quotation marks and inside the parentheses." }
+        ]
+      },
+      "explanation": { "de": "`console.log()` zeigt den übergebenen Wert in der Browser- oder Node-Konsole an.", "en": "`console.log()` displays the supplied value in the browser or Node console." },
+      "source": "34-intro-js/README.md#JavaScript im Browser"
+    },
+    {
+      "id": "javascript-014",
+      "type": "code",
+      "difficulty": "easy",
+      "title": { "de": "Status-Element auswählen", "en": "Select the status element" },
+      "prompt": { "de": "Ergänze den Ausdruck, der das Element mit der Klasse status auswählt.", "en": "Add the expression that selects the element with the status class." },
+      "code": {
+        "language": "javascript",
+        "prefix": "const statusText = ",
+        "suffix": ";\nstatusText.textContent = \"Bereit\";",
+        "acceptedAnswers": ["document.querySelector(\".status\")", "document.querySelector('.status')"],
+        "hints": [
+          { "de": "Verwende `document.querySelector()`.", "en": "Use `document.querySelector()`." },
+          { "de": "Eine CSS-Klasse wird im Selektor mit einem Punkt geschrieben.", "en": "A CSS class is written with a dot in the selector." }
+        ]
+      },
+      "explanation": { "de": "`document.querySelector(\".status\")` liefert das erste Element mit der Klasse `status`.", "en": "`document.querySelector(\".status\")` returns the first element with the `status` class." },
+      "source": "35-js-event/live/02-event/script.js"
+    },
+    {
+      "id": "javascript-015",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Klasse umschalten", "en": "Toggle a class" },
+      "prompt": { "de": "Ergänze die Anweisung, die am Element lamp die Klasse on umschaltet.", "en": "Add the statement that toggles the on class on the lamp element." },
+      "code": {
+        "language": "javascript",
+        "prefix": "function toggleLight() {\n  ",
+        "suffix": "\n}",
+        "acceptedAnswers": ["lamp.classList.toggle(\"on\");", "lamp.classList.toggle('on');", "lamp.classList.toggle(\"on\")", "lamp.classList.toggle('on')"],
+        "hints": [
+          { "de": "Klassen eines Elements erreichst du über `classList`.", "en": "Access an element's classes through `classList`." },
+          { "de": "Die Methode heißt `toggle()`; der Klassenname steht ohne Punkt darin.", "en": "The method is called `toggle()`; put the class name inside it without a dot." }
+        ]
+      },
+      "explanation": { "de": "`classList.toggle()` fügt eine fehlende Klasse hinzu oder entfernt eine vorhandene Klasse.", "en": "`classList.toggle()` adds a missing class or removes a class that is present." },
+      "source": "35-js-event/live/02-event/script.js"
+    },
+    {
+      "id": "javascript-016",
+      "type": "code",
+      "difficulty": "medium",
+      "title": { "de": "Klick-Listener registrieren", "en": "Register a click listener" },
+      "prompt": { "de": "Ergänze die vollständige Anweisung, die beim Klick die Funktion toggleLight ausführen lässt.", "en": "Add the complete statement that runs the toggleLight function on a click." },
+      "code": {
+        "language": "javascript",
+        "prefix": "function toggleLight() {\n  lamp.classList.toggle(\"on\");\n}\n\n",
+        "suffix": "\n",
+        "acceptedAnswers": ["button.addEventListener(\"click\", toggleLight);", "button.addEventListener('click', toggleLight);", "button.addEventListener(\"click\", toggleLight)", "button.addEventListener('click', toggleLight)"],
+        "hints": [
+          { "de": "Verwende `button.addEventListener()` mit dem Eventnamen `click`.", "en": "Use `button.addEventListener()` with the event name `click`." },
+          { "de": "Übergib `toggleLight` ohne Klammern als zweiten Wert.", "en": "Pass `toggleLight` without parentheses as the second value." }
+        ]
+      },
+      "explanation": { "de": "Der Event-Listener wartet auf `click` und erhält die Funktion als Referenz, damit sie erst beim Ereignis ausgeführt wird.", "en": "The event listener waits for `click` and receives the function as a reference so it runs only when the event occurs." },
+      "source": "35-js-event/README.md#Events"
+    },
+    {
+      "id": "javascript-017",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Eingabe live anzeigen", "en": "Display input live" },
+      "prompt": { "de": "Ergänze die Zuweisung, die den aktuellen Eingabewert als Text des output-Elements anzeigt.", "en": "Add the assignment that displays the current input value as the text of the output element." },
+      "code": {
+        "language": "javascript",
+        "prefix": "const textInput = document.querySelector(\"#live-text\");\nconst output = document.querySelector(\".output\");\n\nfunction handleInput() {\n  ",
+        "suffix": "\n}\n\ntextInput.addEventListener(\"input\", handleInput);",
+        "acceptedAnswers": ["output.textContent = textInput.value;", "output.textContent = textInput.value"],
+        "hints": [
+          { "de": "Der sichtbare Absatztext wird über `output.textContent` gesetzt.", "en": "Set the visible paragraph text through `output.textContent`." },
+          { "de": "Der aktuelle Wert des Eingabefeldes steht in `textInput.value`.", "en": "The input field's current value is stored in `textInput.value`." }
+        ]
+      },
+      "explanation": { "de": "Beim `input`-Event liest die Funktion `.value` und schreibt den Wert mit `.textContent` in das Ausgabeelement.", "en": "On the `input` event, the function reads `.value` and writes it to the output element with `.textContent`." },
+      "source": "36-input/01-input/script.js"
+    },
+    {
+      "id": "javascript-018",
+      "type": "code",
+      "difficulty": "hard",
+      "title": { "de": "Passende Karten einblenden", "en": "Show matching cards" },
+      "prompt": { "de": "Ergänze die Bedingung, die prüft, ob der Kartentext den aktuellen Suchwert enthält.", "en": "Add the condition that checks whether the card text contains the current search value." },
+      "code": {
+        "language": "javascript",
+        "prefix": "for (const card of topicCards) {\n  if (",
+        "suffix": ") {\n    card.classList.remove(\"hidden\");\n  } else {\n    card.classList.add(\"hidden\");\n  }\n}",
+        "acceptedAnswers": ["card.textContent.includes(searchInput.value)"],
+        "hints": [
+          { "de": "Lies den Text der Karte mit `card.textContent`.", "en": "Read the card text with `card.textContent`." },
+          { "de": "Prüfe mit `.includes(...)`, ob `searchInput.value` darin vorkommt.", "en": "Use `.includes(...)` to check whether `searchInput.value` occurs in it." }
+        ]
+      },
+      "explanation": { "de": "`includes()` liefert `true`, wenn der Suchwert im Text vorkommt. Dann entfernt der Code die Klasse, die die Karte ausblendet.", "en": "`includes()` returns `true` when the search value occurs in the text. The code then removes the class that hides the card." },
+      "source": "36-input/02-filter-elements/script.js"
+    }
+  ]
+}

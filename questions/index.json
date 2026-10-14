@@ -280,6 +280,46 @@
         "order": 14
       },
       "questionCount": 18
+    },
+    {
+      "file": "15-javascript.json",
+      "topic": {
+        "id": "javascript",
+        "title": {
+          "de": "JavaScript im Browser",
+          "en": "JavaScript in the browser"
+        },
+        "group": {
+          "de": "Frontend",
+          "en": "Frontend"
+        },
+        "description": {
+          "de": "Laufzeitumgebungen, DOM, Events und Eingabefelder",
+          "en": "Runtime environments, the DOM, events and input fields"
+        },
+        "order": 15
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "16-sql.json",
+      "topic": {
+        "id": "sql",
+        "title": {
+          "de": "SQL und relationale Datenbanken",
+          "en": "SQL and relational databases"
+        },
+        "group": {
+          "de": "Datenbanken",
+          "en": "Databases"
+        },
+        "description": {
+          "de": "SQLite, Abfragen, Änderungen, Beziehungen und Auswertungen",
+          "en": "SQLite, queries, changes, relationships and analysis"
+        },
+        "order": 16
+      },
+      "questionCount": 18
     }
   ]
 }
