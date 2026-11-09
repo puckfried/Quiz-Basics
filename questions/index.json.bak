@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "topics": [
+    {
+      "file": "01-lernen.json",
+      "topic": {
+        "id": "lernen",
+        "title": {
+          "de": "Lernen und Lernstrategien",
+          "en": "Learning and study strategies"
+        },
+        "group": {
+          "de": "Lernen",
+          "en": "Learning"
+        },
+        "description": {
+          "de": "Gedächtnis, Lernmethoden, Planung und Praxistransfer",
+          "en": "Memory, study methods, planning and practical transfer"
+        },
+        "order": 1
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "02-hardware-dateien.json",
+      "topic": {
+        "id": "hardware-dateien",
+        "title": {
+          "de": "Hardware, Betriebssystem und Dateien",
+          "en": "Hardware, operating systems and files"
+        },
+        "group": {
+          "de": "Computergrundlagen",
+          "en": "Computer fundamentals"
+        },
+        "description": {
+          "de": "Komponenten, Betriebssystemaufgaben und Dateiverwaltung",
+          "en": "Components, operating-system tasks and file management"
+        },
+        "order": 2
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "03-internet-sicherheit.json",
+      "topic": {
+        "id": "internet-sicherheit",
+        "title": {
+          "de": "Internet, E-Mail und IT-Sicherheit",
+          "en": "Internet, email and IT security"
+        },
+        "group": {
+          "de": "Computergrundlagen",
+          "en": "Computer fundamentals"
+        },
+        "description": {
+          "de": "Browser, Recherche, Datenschutz und Schutzmaßnahmen",
+          "en": "Browsers, research, privacy and protective measures"
+        },
+        "order": 3
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "04-virtualisierung.json",
+      "topic": {
+        "id": "virtualisierung",
+        "title": {
+          "de": "Virtualisierung und virtuelle Netzwerke",
+          "en": "Virtualisation and virtual networks"
+        },
+        "group": {
+          "de": "Virtualisierung",
+          "en": "Virtualisation"
+        },
+        "description": {
+          "de": "VMs, Hypervisoren, Ressourcen, Snapshots und Netzwerkmodi",
+          "en": "VMs, hypervisors, resources, snapshots and network modes"
+        },
+        "order": 4
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "05-linux-grundlagen.json",
+      "topic": {
+        "id": "linux-grundlagen",
+        "title": {
+          "de": "Linux-Grundlagen",
+          "en": "Linux fundamentals"
+        },
+        "group": {
+          "de": "Linux",
+          "en": "Linux"
+        },
+        "description": {
+          "de": "Kernel, Distributionen, WSL und erste Schritte",
+          "en": "Kernel, distributions, WSL and first steps"
+        },
+        "order": 5
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "06-linux-terminal.json",
+      "topic": {
+        "id": "linux-terminal",
+        "title": {
+          "de": "Linux-Terminal",
+          "en": "Linux terminal"
+        },
+        "group": {
+          "de": "Linux",
+          "en": "Linux"
+        },
+        "description": {
+          "de": "Pfade, Navigation, Dateioperationen, nano und less",
+          "en": "Paths, navigation, file operations, nano and less"
+        },
+        "order": 6
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "07-linux-rechte.json",
+      "topic": {
+        "id": "linux-rechte",
+        "title": {
+          "de": "Linux-Rechte und Softwareverwaltung",
+          "en": "Linux permissions and software management"
+        },
+        "group": {
+          "de": "Linux",
+          "en": "Linux"
+        },
+        "description": {
+          "de": "Berechtigungen, chmod, Pakete und sicheres Arbeiten",
+          "en": "Permissions, chmod, packages and safe working"
+        },
+        "order": 7
+      },
+      "questionCount": 12
+    },
+    {
+      "file": "08-git.json",
+      "topic": {
+        "id": "git",
+        "title": {
+          "de": "Versionskontrolle mit Git",
+          "en": "Version control with Git"
+        },
+        "group": {
+          "de": "Versionskontrolle",
+          "en": "Version control"
+        },
+        "description": {
+          "de": "Repository, Arbeitsbereich, Staging Area und Commits",
+          "en": "Repository, working tree, staging area and commits"
+        },
+        "order": 8
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "09-html.json",
+      "topic": {
+        "id": "html",
+        "title": {
+          "de": "HTML-Grundlagen",
+          "en": "HTML fundamentals"
+        },
+        "group": {
+          "de": "Frontend",
+          "en": "Frontend"
+        },
+        "description": {
+          "de": "Dokumentstruktur, Elemente, Links, Bilder und Formulare",
+          "en": "Document structure, elements, links, images and forms"
+        },
+        "order": 9
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "10-css.json",
+      "topic": {
+        "id": "css",
+        "title": {
+          "de": "CSS-Grundlagen",
+          "en": "CSS fundamentals"
+        },
+        "group": {
+          "de": "Frontend",
+          "en": "Frontend"
+        },
+        "description": {
+          "de": "Selektoren, Textgestaltung, Box-Modell und Flexbox",
+          "en": "Selectors, text styling, the box model and Flexbox"
+        },
+        "order": 10
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "11-python-grundlagen.json",
+      "topic": {
+        "id": "python-grundlagen",
+        "title": {
+          "de": "Python-Grundlagen",
+          "en": "Python fundamentals"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Sprache, Interpreter, virtuelle Umgebungen, Variablen und Datentypen",
+          "en": "Language, interpreter, virtual environments, variables and data types"
+        },
+        "order": 11
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "12-python-kontrollfluss.json",
+      "topic": {
+        "id": "python-kontrollfluss",
+        "title": {
+          "de": "Kontrollfluss und Funktionen",
+          "en": "Control flow and functions"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Bedingungen, Schleifen, Eingabeprüfung und wiederverwendbare Funktionen",
+          "en": "Conditions, loops, input validation and reusable functions"
+        },
+        "order": 12
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "13-python-datenstrukturen.json",
+      "topic": {
+        "id": "python-datenstrukturen",
+        "title": {
+          "de": "Datenstrukturen und Module",
+          "en": "Data structures and modules"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Listen, Tupel, Dictionaries, Datenverarbeitung und Module",
+          "en": "Lists, tuples, dictionaries, data processing and modules"
+        },
+        "order": 13
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "14-python-dateien-fehler.json",
+      "topic": {
+        "id": "python-dateien-fehler",
+        "title": {
+          "de": "Dateien, Fehler und JSON",
+          "en": "Files, errors and JSON"
+        },
+        "group": {
+          "de": "Python",
+          "en": "Python"
+        },
+        "description": {
+          "de": "Pfade, CSV, Exceptions, Logging, JSON und Type Hints",
+          "en": "Paths, CSV, exceptions, logging, JSON and type hints"
+        },
+        "order": 14
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "15-javascript.json",
+      "topic": {
+        "id": "javascript",
+        "title": {
+          "de": "JavaScript im Browser",
+          "en": "JavaScript in the browser"
+        },
+        "group": {
+          "de": "Frontend",
+          "en": "Frontend"
+        },
+        "description": {
+          "de": "Laufzeitumgebungen, DOM, Events und Eingabefelder",
+          "en": "Runtime environments, the DOM, events and input fields"
+        },
+        "order": 15
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "16-sql.json",
+      "topic": {
+        "id": "sql",
+        "title": {
+          "de": "SQL und relationale Datenbanken",
+          "en": "SQL and relational databases"
+        },
+        "group": {
+          "de": "Datenbanken",
+          "en": "Databases"
+        },
+        "description": {
+          "de": "SQLite, Abfragen, Änderungen, Beziehungen und Auswertungen",
+          "en": "SQLite, queries, changes, relationships and analysis"
+        },
+        "order": 16
+      },
+      "questionCount": 18
+    }
+  ]
+}
