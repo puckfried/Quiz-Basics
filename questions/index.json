@@ -121,6 +121,66 @@
         "order": 7
       },
       "questionCount": 12
+    },
+   {
+      "file": "08-git.json",
+      "topic": {
+        "id": "git",
+        "title": {
+          "de": "Versionskontrolle mit Git",
+          "en": "Version control with Git"
+        },
+        "group": {
+          "de": "Versionskontrolle",
+          "en": "Version control"
+        },
+        "description": {
+          "de": "Repository, Arbeitsbereich, Staging Area und Commits",
+          "en": "Repository, working tree, staging area and commits"
+        },
+        "order": 8
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "09-html.json",
+      "topic": {
+        "id": "html",
+        "title": {
+          "de": "HTML-Grundlagen",
+          "en": "HTML fundamentals"
+        },
+        "group": {
+          "de": "Frontend",
+          "en": "Frontend"
+        },
+        "description": {
+          "de": "Dokumentstruktur, Elemente, Links, Bilder und Formulare",
+          "en": "Document structure, elements, links, images and forms"
+        },
+        "order": 9
+      },
+      "questionCount": 18
+    },
+    {
+      "file": "10-css.json",
+      "topic": {
+        "id": "css",
+        "title": {
+          "de": "CSS-Grundlagen",
+          "en": "CSS fundamentals"
+        },
+        "group": {
+          "de": "Frontend",
+          "en": "Frontend"
+        },
+        "description": {
+          "de": "Selektoren, Textgestaltung, Box-Modell und Flexbox",
+          "en": "Selectors, text styling, the box model and Flexbox"
+        },
+        "order": 10
+      },
+      "questionCount": 18
     }
    
   ]
